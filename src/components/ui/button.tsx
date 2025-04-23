@@ -1,0 +1,58 @@
+import { cn } from '@/lib/utils'
+import { Slot } from '@radix-ui/react-slot'
+import { cva, type VariantProps } from 'class-variance-authority'
+
+interface ButtonProps
+	extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+	VariantProps<typeof buttonVariants> {
+	asChild?: boolean
+}
+
+const buttonVariants = cva(
+	'relative group flex items-center justify-center gap-3 transition-colors duration-300 ease-in ',
+	{
+		variants: {
+			variant: {
+				mainWhite: 'bg-transparent text-foreground border-foreground border-[1.5px] after:bg-foreground hover:text-neutral-900 focus:border-accent-500 focus:ring focus:ring-foreground disable:borderneutral-200 disable:text-neutral-300 active::after:bg-neutral-200',
+				mainBlack: 'bg-transparent text-neutral-900 border-neutral-900 border-[1.5px] after:bg-neutral-900 hover:text-foreground active:after:bg-neutral-600 focus:border-accent-500 focus:ring focus:ring-neutral-900 disable:border-neutral-200 disable:text-neutral-300',
+				secundary: 'border border-accent-500 text-accent-500 after:bg-accent-500 after:bg-accent-500 hover:text-foreground active:after:bg-accent-600 focus:border-foreground focus:ring focus:ring-accent-500 disable:border-neutral-500 disable:text-neutral-300',
+				ghost: 'bg-transparent text-foreground border-neutral-300 border-[1.5px] hover:after:bg-foreground hover:text-neutral-900 hover:border-foreground active:after:bg-neutral-200 focus:border-accent-500 focus:ring focus:ring-neutral-300 disable:border-neutral-300 disable:text-neutral-300',
+			},
+
+			// size: {
+			// 	lg: 'font-medium text-[32px]/9 w-[720px] py-6',
+			// 	md: 'font-medium text-lg/5 w-[var(--button-width-medium)] rounded-sm py-5 px-1',
+			// 	sm: 'font-medium text-base/5 rounded-sm',
+			// }
+		},
+		compoundVariants: [
+			{
+				variant: ['mainWhite', 'mainBlack'],
+				className: 'w-fit font-medium text-base md:text-lg/5 rounded-sm py-4 md:py-5 px-6 md:px-8'
+			},
+			{
+				variant: ['secundary', 'ghost'],
+				className: 'w-fit text-base/5 rounded-sm py-2 px-5 '
+			},
+			{
+				variant: ['mainWhite', 'mainBlack', 'secundary', 'ghost'],
+				className: 'after:content-[""] after:absolute after:w-[120%] after:h-[300%] after:top-1/2 after:-translate-y-1/2 after:-rotate-[15deg] after:-z-1 z-1 after:transition-[width] after:duration-300 after:ease-in after:-translate-x-full hover:after:translate-x-0 after:transition-all after:duration-500 ease-in overflow-hidden',
+			}
+		],
+		defaultVariants: {
+			variant: 'mainWhite',
+		},
+	}
+)
+
+export function Button({ variant, asChild, className, children, ...props }: ButtonProps) {
+	const Comp = asChild ? Slot : 'button' as React.ElementType
+	return (
+		<Comp
+			className={cn('', buttonVariants({ variant }), className)}
+			{...props}
+		>
+			{children}
+		</Comp>
+	)
+}
