@@ -1,14 +1,13 @@
 import { cn } from '@/lib/utils'
-import React from 'react'
 
 type SectionGridProps = {
   children?: React.ReactNode
   className?: string
 }
 
-export default function SectionGrin({ children, className }: SectionGridProps) {
+export default function SectionGrid({ children, className }: SectionGridProps) {
   return (
-    <section className={cn('h-dvh grid grid-cols-2', className)}>
+    <section className={cn('h-lvh grid grid-cols-2', className)}>
       {children}
     </section>
   )

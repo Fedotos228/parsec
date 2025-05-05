@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 import { useEffect, useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import type { Swiper as SwiperType } from 'swiper/types'
@@ -38,7 +40,7 @@ export default function ProjectsSwiper() {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 2500,
+          delay: 4000,
           disableOnInteraction: false,
         }}
         navigation={true}
@@ -47,10 +49,15 @@ export default function ProjectsSwiper() {
         className='project-swiper'
       >
         {slides.map(slide => (
-          // de inlocuit div cu bg-img si shadow cu o imagine cu mask-image
-          <SwiperSlide key={slide.id} className={`relative bg-[url('/assets/image/landscape.png')] bg-cover bg-center`}>
-            <div className="absolute inset-0 h-dvh w-full -z-10 bg-gradient-to-b from-[rgba(0,0,0,0)] via-[rgba(0,0,0,0.48)] to-[rgba(0,0,0,0.6)]"></div>
-            <div className='max-w-[500px] w-full absolute bottom-[135px] left-1/2 -translate-x-1/2'>
+          <SwiperSlide key={slide.id} className='relative'>
+            <Image
+              src={slide.imageUrl}
+              alt={slide.companyName}
+              width={500}
+              height={500}
+              className='absolute inse-0 w-full h-full object-cover object-center lg:rounded-lg shadow-lg -z-10 mask-b-from-30%'
+            />
+            <div className='max-w-[500px] w-full absolute px-3 bottom-[135px] left-1/2 -translate-x-1/2'>
               <Heading level={4} className='mb-2.5'>
                 {slide.companyName}
               </Heading>
@@ -65,7 +72,7 @@ export default function ProjectsSwiper() {
             </div>
           </SwiperSlide>
         ))}
-        <div className='navigation-container max-w-[500px] w-full absolute bottom-[80px] left-1/2 -translate-x-1/2 z-10'>
+        <div className='navigation-container px-3 max-w-[500px] w-full absolute bottom-[80px] left-1/2 -translate-x-1/2 z-10'>
           <div className='buttons-container flex items-center justify-end gap-4'></div>
 
           <div
@@ -74,7 +81,7 @@ export default function ProjectsSwiper() {
           >
             <div className="relative w-full h-1 overflow-hidden">
               <div
-                className="h-full w-0 bg-accent-500 transition-all duration-300 ease-linear"
+                className="h-full w-0 bg-accent-500"
                 ref={progressBar}
               ></div>
             </div>

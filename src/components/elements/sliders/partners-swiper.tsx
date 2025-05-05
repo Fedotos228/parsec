@@ -24,7 +24,7 @@ export default function PartnersSwiper() {
   })
 
   return (
-    <div className='mb-28 px-12 py-20 border border-neutral-600 rounded-sm'>
+    <div className='mb-6 md:mb-28 px-4 md:px-10 lg:px-12 py-10 lg:py-20 border border-neutral-600 rounded-sm'>
       <Swiper
         slidesPerView={1}
         autoplay={{
@@ -37,23 +37,23 @@ export default function PartnersSwiper() {
 
       >
         <SwiperSlide>
-          <div className='flex items-center gap-20'>
+          <div className='flex items-start md:items-center flex-col md:flex-row gap-10 md:gap-20'>
             <Image
               src='/assets/image/endava.png'
               alt='Franzeluta'
               width={114}
               height={38}
-              className='object-cover basis-28'
+              className='object-cover basis-0 md:basis-28'
             />
-            <div className='basis-3/4'>
+            <div className='basis-0 md:basis-3/4'>
               <Paragraph type='lg' color='foreground' fontFamily={'hidi'} className='mb-10'>
                 Colaborarea cu această echipă a fost un adevărat succes. Ne-au ajutat să punem în aplicare strategii clare și eficiente, iar rezultatele au depășit așteptările noastre. Profesionalismul și capacitatea de a înțelege nevoile noastre ne-au impresionat cu adevărat. Recomandăm cu încredere!
               </Paragraph>
-              <div className='flex items-center gap-4'>
+              <div className='flex items-start flex-col sm:flex-row sm:items-center gap-4'>
                 <Paragraph color='gray'>
                   Andrei Popa, Director de Marketing
                 </Paragraph>
-                <span className='h-3 w-[1px] bg-neutral-300'></span>
+                <span className='hidden sm:block h-3 w-[1px] bg-neutral-300'></span>
                 <Link href='/' className='text-sm text-accent-500 underline'>
                   Studiu de caz
                 </Link>
@@ -62,23 +62,23 @@ export default function PartnersSwiper() {
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className='flex items-center gap-20'>
+          <div className='flex items-start md:items-center flex-col md:flex-row gap-10 md:gap-20'>
             <Image
               src='/assets/image/endava.png'
               alt='Franzeluta'
               width={114}
               height={38}
-              className='object-cover basis-28'
+              className='object-cover basis-0 md:basis-28'
             />
-            <div className='basis-3/4'>
+            <div className='basis-0 md:basis-3/4'>
               <Paragraph type='lg' color='foreground' fontFamily={'hidi'} className='mb-10'>
                 Colaborarea cu această echipă a fost un adevărat succes. Ne-au ajutat să punem în aplicare strategii clare și eficiente, iar rezultatele au depășit așteptările noastre. Profesionalismul și capacitatea de a înțelege nevoile noastre ne-au impresionat cu adevărat. Recomandăm cu încredere!
               </Paragraph>
-              <div className='flex items-center gap-4'>
+              <div className='flex items-start flex-col sm:flex-row sm:items-center gap-4'>
                 <Paragraph color='gray'>
                   Andrei Popa, Director de Marketing
                 </Paragraph>
-                <span className='h-3 w-[1px] bg-neutral-300'></span>
+                <span className='hidden sm:block h-3 w-[1px] bg-neutral-300'></span>
                 <Link href='/' className='text-sm text-accent-500 underline'>
                   Studiu de caz
                 </Link>

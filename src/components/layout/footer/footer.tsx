@@ -9,8 +9,8 @@ export default function Footer() {
     <footer className=''>
       <BigLogo />
       <section className='max-w-[1280px] mx-auto px-4 lg:px-0 '>
-        <div className='flex justify-between py-8 lg:py-10'>
-          <div className='flex justify-between flex-col'>
+        <div className='flex flex-col md:flex-row md:justify-between py-8 lg:py-10'>
+          <div className='flex justify-between md:items-start gap-3.5 flex-col mb-8'>
             <Logo />
             <Socials type='buttons' />
           </div>

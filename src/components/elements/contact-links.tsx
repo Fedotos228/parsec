@@ -32,7 +32,7 @@ export default function ContactLinks() {
           <Link
             key={link.href}
             href={hrefDetermitator(link.href) || '#'}
-            className='text-lg text-neutral-200'
+            className='text-lg text-neutral-200 hover:text-accent-500'
           >
             {link.href}
           </Link>

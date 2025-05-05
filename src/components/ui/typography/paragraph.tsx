@@ -10,9 +10,9 @@ interface ParagraphProps
 const paragraphVariants = cva('', {
   variants: {
     type: {
-      lg: 'text-lg/5',
-      md: 'text-base/5',
-      sm: 'text-sm/5',
+      lg: 'text-lg/7',
+      md: 'text-base/7',
+      sm: 'text-sm/7',
     },
     color: {
       black: 'text-neutral-900',

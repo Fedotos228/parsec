@@ -7,7 +7,7 @@ import { Paragraph } from '../../ui/typography/paragraph'
 
 export default function Hero() {
   return (
-    <section className='relative h-dvh'>
+    <section className='relative h-lvh'>
       <video
         className='absolute inset-0 w-full h-full object-cover -z-1'
         autoPlay

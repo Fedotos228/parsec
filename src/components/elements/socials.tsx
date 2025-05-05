@@ -40,7 +40,7 @@ export default function Socials({ type }: SocialProps) {
             >
               <Link href={social.href} target='_blank'>
                 {social.label}
-                <RightUpArrow className='fill-foreground group-hover:fill-neutral-900 group-hover:translate-x-1 group-hover:-translate-y-1'/>
+                <RightUpArrow className='fill-foreground group-hover:fill-neutral-900 group-hover:translate-x-1 group-hover:-translate-y-1 w-4 h-4 md:w-6 md:h-6'/>
               </Link>
             </Button>
           ))}

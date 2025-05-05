@@ -1,3 +1,4 @@
+export const siteTitle = 'Parsec'
 
 export const socials = [
   {
@@ -191,7 +192,7 @@ export const linksMenu = [
     label: 'Toate serviciile',
   },
   {
-    href: '/contacts',
+    href: '/contact',
     label: 'Contact',
   }
 ]

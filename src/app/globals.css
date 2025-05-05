@@ -52,7 +52,28 @@
 
 @layer base {
   .default-padding {
-    @apply pl-4 md:pl-10 lg:pl-[112px];
+    @apply pl-4 md:pl-10 xl:pl-[112px];
+  }
+
+  .clipped {
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .clipped::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -120%;
+    width:  120%;
+    height: 110%;
+    clip-path: polygon(0 0, 90% 0, 100% 100%, 0 100%);
+    z-index: -100;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .clipped:hover::after {
+    left: 0;
   }
 }
 

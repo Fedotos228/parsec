@@ -1,19 +1,19 @@
 import { links } from '@/lib/constans'
-import Image from "next/image"
+import Image from 'next/image'
 import Link from 'next/link'
 import { LineArrowRight } from '../../icons'
 import { Paragraph } from '../../ui/typography/paragraph'
 
-
 export default function Services() {
   return (
-    <div className='relative h-dvh'>
+    <section className='relative h-lvh' style={{ background: 'url("/assets/image/eternal.png") 50% 50% / cover no-repeat' }}>
       <Image
         src='/assets/image/cosmonaut.png'
+        width={351}
+        height={522}
         alt='cosmonaut'
-        width={1430}
-        height={1024}
-        className='absolute inset-0 w-full h-dvh object-cover -z-10'
+        priority
+        className='absolute top-1/2 hidden md:block md:right-1 lg:right-2/12 -translate-x-2/12  -translate-y-1/2'
       />
 
       <div className='h-full flex flex-col justify-center gap-6 default-padding'>
@@ -25,18 +25,19 @@ export default function Services() {
             <Link
               key={link.id}
               href={link.href}
-              className='w-fit flex items-center text-3xl font-semibold hover:text-accent-500 transition-colors duration-500 ease-in-out group'
+              className='w-fit flex items-center text-2xl md:text-3xl font-semibold hover:text-accent-500 transition-colors duration-500 ease-in-out group'
             >
               {link.lable}
               <LineArrowRight
                 width={68}
-                height={68}
+                height={34}
+                viewBox={'0 5.8 24 12'}
                 className='opacity-0 transition-all duration-300 fill-accent-500 group-hover:opacity-100 group-hover:translate-x-5'
               />
             </Link>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   )
 }
