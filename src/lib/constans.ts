@@ -1,5 +1,3 @@
-import { IServiceItem } from '@/types/services.types'
-
 export const siteTitle = 'Parsec'
 
 export const socials = [
