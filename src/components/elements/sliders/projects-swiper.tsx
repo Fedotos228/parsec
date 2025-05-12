@@ -29,8 +29,8 @@ export default function ProjectsSwiper() {
     const navigatioPrevButton = document.querySelector('.project-swiper .swiper-button-prev')
 
     if (buttonsContainer) {
-      navigatioPrevButton && buttonsContainer.appendChild(navigatioPrevButton)
-      navigatioNextButton && buttonsContainer.appendChild(navigatioNextButton)
+      if (navigatioPrevButton) buttonsContainer.appendChild(navigatioPrevButton)
+      if (navigatioNextButton) buttonsContainer.appendChild(navigatioNextButton)
     }
   })
 
@@ -61,7 +61,7 @@ export default function ProjectsSwiper() {
               <Heading level={4} className='mb-2.5'>
                 {slide.companyName}
               </Heading>
-              <Paragraph type='sm' color='gray' fontFamily={'hidi'}>
+              <Paragraph type='sm' color='gray' className='font-hidi'>
                 {slide.service.map((item, index) => (
                   <span key={index}>
                     {item}

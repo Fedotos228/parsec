@@ -4,7 +4,7 @@ import ServicesButtons from '../services-buttons'
 
 export default function ServicesHero() {
   return (
-    <div className='h-lvh'>
+    <div className='h-lvh' style={{ background: 'url("/assets/image/service-bg.png") 50% 50% / cover no-repeat' }}>
       <div className='flex flex-col items-center justify-center h-full'>
         <Paragraph color='accent' className='text-center'>
           Servicii

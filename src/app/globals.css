@@ -55,6 +55,10 @@
     @apply pl-4 md:pl-10 xl:pl-[112px];
   }
 
+  .default-inline-padding {
+    @apply pr-4 md:pr-10 xl:pr-[112px] pl-4 md:pl-10 xl:pl-[112px];
+  }
+
   .clipped {
     overflow: hidden;
     z-index: 1;

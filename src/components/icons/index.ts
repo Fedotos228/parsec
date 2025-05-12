@@ -10,6 +10,3 @@ export * from './line-arrow-right'
 export * from './long-arrow'
 
 export * from './right-up-arrow'
-
-
-export interface IconProps extends React.SVGProps<SVGSVGElement> {}

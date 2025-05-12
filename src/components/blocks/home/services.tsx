@@ -1,8 +1,8 @@
-import { links } from '@/lib/constans'
 import Image from 'next/image'
 import Link from 'next/link'
 import { LineArrowRight } from '../../icons'
 import { Paragraph } from '../../ui/typography/paragraph'
+import { services } from '@/lib/services.constans'
 
 export default function Services() {
   return (
@@ -21,13 +21,13 @@ export default function Services() {
           ne specializăm în
         </Paragraph>
         <div className='flex flex-col w-fit gap-8'>
-          {links.map(link => (
+          {services.map(link => (
             <Link
               key={link.id}
               href={link.href}
               className='w-fit flex items-center text-2xl md:text-3xl font-semibold hover:text-accent-500 transition-colors duration-500 ease-in-out group'
             >
-              {link.lable}
+              {link.title}
               <LineArrowRight
                 width={68}
                 height={34}

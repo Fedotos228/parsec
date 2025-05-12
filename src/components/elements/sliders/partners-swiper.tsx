@@ -18,8 +18,8 @@ export default function PartnersSwiper() {
     const navigatioPrevButton = document.querySelector('.partners-swiper .swiper-button-prev')
 
     if (navigationContainer) {
-      navigatioPrevButton && navigationContainer.appendChild(navigatioPrevButton)
-      navigatioNextButton && navigationContainer.appendChild(navigatioNextButton)
+      if (navigatioPrevButton) navigationContainer.appendChild(navigatioPrevButton)
+      if (navigatioNextButton) navigationContainer.appendChild(navigatioNextButton)
     }
   })
 
@@ -46,7 +46,7 @@ export default function PartnersSwiper() {
               className='object-cover basis-0 md:basis-28'
             />
             <div className='basis-0 md:basis-3/4'>
-              <Paragraph type='lg' color='foreground' fontFamily={'hidi'} className='mb-10'>
+              <Paragraph type='lg' color='foreground' className='font-hidi mb-10'>
                 Colaborarea cu această echipă a fost un adevărat succes. Ne-au ajutat să punem în aplicare strategii clare și eficiente, iar rezultatele au depășit așteptările noastre. Profesionalismul și capacitatea de a înțelege nevoile noastre ne-au impresionat cu adevărat. Recomandăm cu încredere!
               </Paragraph>
               <div className='flex items-start flex-col sm:flex-row sm:items-center gap-4'>
@@ -71,7 +71,7 @@ export default function PartnersSwiper() {
               className='object-cover basis-0 md:basis-28'
             />
             <div className='basis-0 md:basis-3/4'>
-              <Paragraph type='lg' color='foreground' fontFamily={'hidi'} className='mb-10'>
+              <Paragraph type='lg' color='foreground' className='font-hidi mb-10'>
                 Colaborarea cu această echipă a fost un adevărat succes. Ne-au ajutat să punem în aplicare strategii clare și eficiente, iar rezultatele au depășit așteptările noastre. Profesionalismul și capacitatea de a înțelege nevoile noastre ne-au impresionat cu adevărat. Recomandăm cu încredere!
               </Paragraph>
               <div className='flex items-start flex-col sm:flex-row sm:items-center gap-4'>

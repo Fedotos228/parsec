@@ -1,3 +1,5 @@
+import { IServiceItem } from '@/types/services.types'
+
 export const siteTitle = 'Parsec'
 
 export const socials = [
@@ -94,44 +96,6 @@ export const footerNavigation = [
       }
     ]
   }
-]
-
-export const links = [
-  {
-    id: 1,
-    lable: 'Managmentul evenimentelor',
-    href: '/event-managment'
-  },
-  {
-    id: 2,
-    lable: 'Comunicare strategică',
-    href: '/strategic-communication'
-  },
-  {
-    id: 3,
-    lable: 'Comunicare si PR',
-    href: '/pr-communication'
-  },
-  {
-    id: 4,
-    lable: 'Comunicare de criză',
-    href: '/crisis-communication'
-  },
-  {
-    id: 5,
-    lable: 'Foto video',
-    href: '/photo-video'
-  },
-  {
-    id: 6,
-    lable: 'Grafică & Graphic Design',
-    href: '/graphic-design'
-  },
-  {
-    id: 7,
-    lable: 'Dezvoltarea web',
-    href: '/web-development'
-  },
 ]
 
 export const partnersLogo = [

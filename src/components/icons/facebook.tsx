@@ -1,6 +1,4 @@
-import { IconProps } from '.'
-
-export const Facebook = ({ fill = '#0A0A0A', width = 24, height = 24}: IconProps) => {
+export const Facebook = ({ fill = '#0A0A0A', width = 24, height = 24}: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width={width} height={height} viewBox="0 0 24 24" fill="none">
       <g clip-path="url(#clip0_463_1030)">

@@ -1,0 +1,1 @@
+Sa faci la fiecare pagina client component si sa desctructurezi pe componente codu care se alfa la moment inn page.txt
