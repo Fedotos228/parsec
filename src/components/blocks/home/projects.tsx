@@ -6,9 +6,14 @@ import ProjectsSwiper from '@/components/elements/sliders/projects-swiper'
 import { LongArrow } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { Paragraph } from '@/components/ui/typography/paragraph'
+import { IHeadingSection } from '@/types/pages.types'
 import BlockRendererClient from '../block-renderer-client'
 
-export default function Projects({ content }: { content: any }) {
+export default function Projects({
+  content
+}: {
+  content: IHeadingSection
+}) {
   return (
     <SectionGrid className='grid-rows-[30%_1fr] sm:grid-rows-1 grid-cols-1 sm:grid-cols-1 '>
       <Box className='max-w-[468px]'>

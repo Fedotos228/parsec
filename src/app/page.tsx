@@ -16,7 +16,7 @@ export default function Home() {
     queryFn: () => pagesService.getHomePage(),
   })
 
-  if(isLoading) return <Loader />
+  if(isLoading) return <Loader loading={isLoading} />
 
   return (
     <>

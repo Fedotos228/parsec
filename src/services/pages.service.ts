@@ -5,10 +5,18 @@ class PagesService {
     return await instance.single(`/home`).find({
       populate: {
         hero: {
-          populate: '*'
+          populate: {
+            video: {
+              fields: ['url']
+            },
+          }
         },
         about: {
-          populate: '*'
+          populate: {
+            image: {
+              fields: ['url']
+            }
+          }
         },
         projects: {
           populate: '*'

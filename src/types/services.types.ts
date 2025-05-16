@@ -22,3 +22,9 @@ export interface IServiceItem {
   }[]
   portfolio?: PortfolioType
 }
+
+export type ServicesType = {
+  title: string
+  slug: string,
+  documentId: string
+}[]

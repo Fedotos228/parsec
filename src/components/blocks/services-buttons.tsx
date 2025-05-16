@@ -1,9 +1,14 @@
 'use client'
 
+import { ServicesType } from '@/types/services.types'
 import { ArrowRight, RightUpArrow } from '../icons'
 import { Button } from '../ui/button'
 
-export default function ServicesButtons({ slugs }: { slugs: { title: string; slug: string, documentId: string }[] }) {
+export default function ServicesButtons({
+  slugs
+}: {
+  slugs: ServicesType
+}) {
   const handleScroll = (id: string) => {
     const element = document.getElementById(id)
     if (element) {

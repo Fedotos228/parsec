@@ -89,6 +89,10 @@
   .animated-autoRun {
     animation: autoRun 10s linear infinite;
   }
+
+  .animated-autoRotate {
+    animation: autoRotate 5s linear infinite;
+  }
 }
 
 body {
@@ -171,5 +175,14 @@ body {
   100% {
     opacity: 1;
     transform: translateX(12px);
+  }
+}
+
+@keyframes autoRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

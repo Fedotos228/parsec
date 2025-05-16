@@ -3,11 +3,16 @@
 import Box from '@/components/elements/box'
 import SectionGrid from '@/components/elements/section-grid'
 import { strapiMedia } from '@/lib/utils'
+import { HomeAboutTypes } from '@/types/pages.types'
 import Image from 'next/image'
 import { Heading } from '../../ui/typography/heading'
 import { Paragraph } from '../../ui/typography/paragraph'
 
-export default function About({ content }: any) {
+export default function About({
+  content
+}: {
+  content: HomeAboutTypes
+}) {
 
   const mainContent = (
     <>

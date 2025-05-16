@@ -4,6 +4,7 @@ import ServicesHero from '@/components/blocks/services/services-hero'
 import ServicesItems from '@/components/blocks/services/services-items'
 import Loader from '@/components/elements/loader'
 import { servicesService } from '@/services/services.service'
+import { ServicesType } from '@/types/services.types'
 import { useQuery } from '@tanstack/react-query'
 
 export default function ServicesPage() {
@@ -13,15 +14,16 @@ export default function ServicesPage() {
     select: data => data.data
   })
 
-  function getSlugServices() {
+  function getSlugServices(): ServicesType {
     const slugMap = services?.map((item: any) => {
       return {
         title: item.title,
         slug: item.slug,
+        documentId: item.documentId
       }
     })
 
-    return slugMap
+    return slugMap || []
   }
 
   const slugs = getSlugServices()
@@ -30,7 +32,7 @@ export default function ServicesPage() {
 
   return (
     <>
-      <ServicesHero slugs={slugs || []} />
+      <ServicesHero slugs={slugs} />
       <ServicesItems services={services} />
     </>
   )

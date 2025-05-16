@@ -2,8 +2,9 @@ import ScrollButton from '@/components/elements/scroll-button'
 import { Heading } from '@/components/ui/typography/heading'
 import { Paragraph } from '@/components/ui/typography/paragraph'
 import ServicesButtons from '../services-buttons'
+import { ServicesType } from '@/types/services.types'
 
-export default function ServicesHero({ slugs }: { slugs: { title: string; slug: string }[] }) {
+export default function ServicesHero({ slugs }: { slugs: ServicesType }) {
   return (
     <div className='relative h-lvh' style={{ background: 'url("/assets/image/service-bg.png") 50% 50% / cover no-repeat' }}>
       <div className='flex flex-col items-center justify-center h-full'>
