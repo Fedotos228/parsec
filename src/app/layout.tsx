@@ -4,7 +4,9 @@ import Header from '@/components/layout/header/header'
 import { siteTitle } from '@/lib/constans'
 import { hidi, montserrat } from '@/lib/fonts'
 import type { Metadata } from "next"
+import { Toaster } from 'sonner'
 import "./globals.css"
+import Provider from './provider'
 
 export const metadata: Metadata = {
   title: siteTitle,
@@ -21,9 +23,11 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} ${hidi.variable} antialiased`}
       >
-        <Header />
-        {children}
-        <Footer />
+        <Provider>
+          <Header />
+          {children}
+          <Footer />
+        </Provider>
       </body>
     </html>
   )

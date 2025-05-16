@@ -2,22 +2,23 @@
 
 import Box from '@/components/elements/box'
 import SectionGrid from '@/components/elements/section-grid'
+import { strapiMedia } from '@/lib/utils'
 import Image from 'next/image'
 import { Heading } from '../../ui/typography/heading'
 import { Paragraph } from '../../ui/typography/paragraph'
 
-export default function About() {
+export default function About({ content }: any) {
+
   const mainContent = (
     <>
       <Paragraph type='sm' color='accent' className='mb-4'>
-        Despre noi
+        {content?.subtitle}
       </Paragraph>
       <Heading level={2} className='mb-8'>
-        Repede, calitativ
-        și scump
+        {content?.title}
       </Heading>
       <Paragraph type='lg' color='gray'>
-        Parsec construiește ideile în strategii cu impact. Oferim soluții de comunicare, PR, foto-video și web, livrate rapid și eficient.
+        {content?.description}
       </Paragraph>
     </>
   )
@@ -41,7 +42,7 @@ export default function About() {
 
       <div className='relative h-lvh lg:hidden'>
         <Image
-          src={'/assets/image/cyclist.png'}
+          src={strapiMedia(content?.image?.url)}
           alt='About'
           className='absolute inset-0 -z-10 h-full w-full object-cover mask-b-from-35%'
           width={720}

@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export const BigLogo = () => {
   return (
-    <div className='my-20 md:my-[160px]'>
+    <div className='hidden w-full h-full sm:flex justify-center items-center'>
       <Image
         src={'/assets/image/logos/big-logo.svg'}
         alt='Big Logo'
