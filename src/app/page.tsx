@@ -8,24 +8,28 @@ import Projects from '@/components/blocks/home/projects'
 import Services from '@/components/blocks/home/services'
 import Loader from '@/components/elements/loader'
 import { pagesService } from '@/services/pages.service'
+import { IHomePage } from '@/types/pages.types'
 import { useQuery } from '@tanstack/react-query'
 
 export default function Home() {
   const { data, isLoading } = useQuery({
     queryKey: ['home'],
     queryFn: () => pagesService.getHomePage(),
+    select: data => data.data
   })
 
-  if(isLoading) return <Loader loading={isLoading} />
+  const { hero, about, projects, partners, contacts } = data || {} as IHomePage
+
+  if (isLoading) return <Loader loading={isLoading} />
 
   return (
     <>
-      <Hero content={data?.data.hero} />
-      <About content={data?.data.about} />
+      <Hero content={hero} />
+      <About content={about} />
       <Services />
-      <Projects content={data?.data?.projects} />
-      <Partners content={data?.data?.partners} />
-      <Contact content={data?.data?.contacts} />
+      <Projects content={projects} />
+      <Partners content={partners} />
+      <Contact content={contacts} />
     </>
   )
 }

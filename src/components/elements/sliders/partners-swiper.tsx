@@ -46,7 +46,7 @@ export default function PartnersSwiper() {
 
       >
         {sliders?.map(item => (
-          <SwiperSlide>
+          <SwiperSlide key={item.documentId}>
             <div className='flex items-start md:items-center flex-col md:flex-row gap-10 md:gap-20'>
               <Image
                 src={strapiMedia(item.logo.url)}

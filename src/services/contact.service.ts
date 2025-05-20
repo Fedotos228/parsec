@@ -5,6 +5,16 @@ class ContactService {
   async sendContactForm(data: IContactForm) {
     return await instance.collection('contacts').create(data)
   }
+
+  async getContactPage() {
+    return await instance.single('contact-page').find({
+      populate: {
+        contact: {
+          fields: ['heading', 'subtitle']
+        }
+      }
+    })
+  }
 }
 
 export const contactService = new ContactService()

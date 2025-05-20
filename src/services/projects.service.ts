@@ -1,8 +1,10 @@
 import { instance } from './api/strapi'
 
 class ProjectService {
+  private readonly url = '/projects'
+
   async getSliderProjects() {
-    return await instance.collection('/projects').find({
+    return await instance.collection(this.url).find({
       fields: ['title', 'slug', 'company'],
       populate: {
         thumbnail: {
@@ -20,9 +22,9 @@ class ProjectService {
   }
 
   async getSingleProject(documentId: string) {
-    return await instance.collection('/projects').findOne(documentId, {
-      fields: ['title', 'slug', 'company', 'date'],
+    return await instance.collection(this.url).findOne(documentId, {
       populate: {
+        fields: ['title', 'slug', 'company', 'date'],
         services: {
           fields: ['title']
         },

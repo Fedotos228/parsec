@@ -1,8 +1,11 @@
 import { instance } from './api/strapi'
 
 class TestimonialsService {
+  private readonly testimonials = '/testimonials'
+  private readonly clientsLogos = '/clients-logos'
+
   async getTestimonials() {
-    return await instance.collection('testimonials').find({
+    return await instance.collection(this.testimonials).find({
       populate: {
         logo: {
           fields: ['url']
@@ -14,7 +17,7 @@ class TestimonialsService {
     })
   }
   async getClientsLogos() {
-    return await instance.collection('clients-logos').find({
+    return await instance.collection(this.clientsLogos).find({
       fields: ['alt'],
       populate: {
         image: {

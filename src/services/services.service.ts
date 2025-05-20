@@ -1,15 +1,17 @@
 import { instance } from './api/strapi'
 
 class ServicesService {
+  private readonly url = '/services'
+
   async getServicesTitle() {
-    return await instance.collection('/services').find({
+    return await instance.collection(this.url).find({
       fields: ['title']
     })
   }
 
   async getServices() {
-    return await instance.collection('/services').find({
-      populate: {
+    return await instance.collection(this.url).find({
+      populate: { 
         fields: ['title', 'slug', 'description'],
         image: {
           fields: ['url']
@@ -30,7 +32,7 @@ class ServicesService {
   }
 
   async getSingleService(documentId: string) {
-    return await instance.collection('/services').findOne(documentId, {
+    return await instance.collection(this.url).findOne(documentId, {
       populate: {
         fields: ['title', 'description'],
         tags: {

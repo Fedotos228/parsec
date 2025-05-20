@@ -1,8 +1,10 @@
 import { instance } from './api/strapi'
 
 class PagesService {
+  private readonly home = '/home'
+
   async getHomePage() {
-    return await instance.single(`/home`).find({
+    return await instance.single(this.home).find({
       populate: {
         hero: {
           populate: {

@@ -1,15 +1,10 @@
 import { BlocksContent } from '@strapi/blocks-react-renderer'
-
-interface IStrapiMedia {
-  url: string
-  id: number
-  documentId: string
-}
+import { BaseEntity, IMedia } from './strapi.types'
 
 export type HomeHeroTypes = {
   id: number
   heading: BlocksContent
-  video: IStrapiMedia
+  video: IMedia
 }
 
 export type HomeAboutTypes = {
@@ -17,11 +12,19 @@ export type HomeAboutTypes = {
   title: string
   subtitle: string
   description: string
-  image: IStrapiMedia
+  image: IMedia
 }
 
 export interface IHeadingSection {
   id: number
-  heading: BlocksContent
   subtitle: string
+  heading: BlocksContent
+}
+
+export interface IHomePage extends BaseEntity {
+  hero: HomeHeroTypes
+  about: HomeAboutTypes
+  projects: IHeadingSection
+  partners: IHeadingSection
+  contacts: IHeadingSection
 }

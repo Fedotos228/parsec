@@ -15,23 +15,31 @@ import { Button } from '@/components/ui/button'
 import { Heading } from '@/components/ui/typography/heading'
 import paths from '@/lib/paths'
 import { strapiMedia } from '@/lib/utils'
+import { IProject } from '@/types/project.types'
+import { IServiceItem } from '@/types/services.types'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-export default function ServiceSingle({ documentId }: { documentId: string }) {
-  const { data: serviceSingle, isLoading } = useQuery({
+export default function ServiceSingle({
+  documentId
+}: {
+  documentId: string
+}) {
+  const prevRef = React.useRef(null)
+  const nextRef = React.useRef(null)
+  
+  const { data, isLoading } = useQuery({
     queryKey: ['singleService', documentId],
     queryFn: () => servicesService.getSingleService(documentId),
     select: data => data.data
   })
 
-  const prevRef = React.useRef(null)
-  const nextRef = React.useRef(null)
+  const serviceSingle = data || {} as IServiceItem
 
-  if (isLoading) return <Loader />
+  if (isLoading) return <Loader loading={isLoading} />
 
   return (
     <div>
@@ -50,7 +58,7 @@ export default function ServiceSingle({ documentId }: { documentId: string }) {
           </Paragraph>
         </div>
       </SectionGrid>
-      <div className='h-lvh default-inline-padding'>
+      <div className='h-lvh default-inline-padding '>
         <Paragraph color='accent' type='sm'>
           Portofoliu
         </Paragraph>
@@ -77,7 +85,7 @@ export default function ServiceSingle({ documentId }: { documentId: string }) {
           spaceBetween={60}
           className='!h-fit'
         >
-          {serviceSingle?.projects.map((item: any) => (
+          {serviceSingle?.projects.map((item: IProject) => (
             <SwiperSlide key={item.documentId}>
               <Link
                 key={item.documentId}
@@ -94,7 +102,7 @@ export default function ServiceSingle({ documentId }: { documentId: string }) {
                   {item.title} - {item.company}
                 </Heading>
                 <div className='mt-2'>
-                  {item.services.map((service: any, index: number) => (
+                  {item.services.map((service, index: number) => (
                     <p key={service.documentId} className='inline text-sm text-neutral-200'>
                       {service.title}{index < item.services.length - 1 ? ', ' : ''}
                     </p>
@@ -103,26 +111,28 @@ export default function ServiceSingle({ documentId }: { documentId: string }) {
               </Link>
             </SwiperSlide>
           ))}
-          <div className='flex items-center justify-end'>
-            <Button ref={prevRef} variant='longBlack'>
-              <LineArrowLeft
-                className='fill-foreground'
-                width={68}
-                height={34}
-                viewBox={'0 5.8 24 12'}
-              />
-              Înapoi
-            </Button>
-            <Button ref={nextRef} variant='longAccent'>
-              Urmatorul
-              <LineArrowRight
-                className='fill-neutral-900'
-                width={68}
-                height={34}
-                viewBox={'0 5.8 24 12'}
-              />
-            </Button>
-          </div>
+          {serviceSingle?.projects.length > 2 && (
+            <div className='flex items-center justify-end'>
+              <Button ref={prevRef} variant='longBlack'>
+                <LineArrowLeft
+                  className='fill-foreground'
+                  width={68}
+                  height={34}
+                  viewBox={'0 5.8 24 12'}
+                />
+                Înapoi
+              </Button>
+              <Button ref={nextRef} variant='longAccent'>
+                Urmatorul
+                <LineArrowRight
+                  className='fill-neutral-900'
+                  width={68}
+                  height={34}
+                  viewBox={'0 5.8 24 12'}
+                />
+              </Button>
+            </div>
+          )}
         </Swiper>
       </div>
     </div>

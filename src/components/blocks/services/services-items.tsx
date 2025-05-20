@@ -7,13 +7,18 @@ import { Heading } from '@/components/ui/typography/heading'
 import { Paragraph } from '@/components/ui/typography/paragraph'
 import paths from '@/lib/paths'
 import { strapiMedia } from '@/lib/utils'
+import { IServiceItem } from '@/types/services.types'
 import Image from 'next/image'
 import Link from 'next/link'
 
-export default function ServicesItems({ services }: { services: any }) {
+export default function ServicesItems({
+  services
+}: {
+  services: IServiceItem[]
+}) {
   return (
     <>
-      {services?.map((item: any) => (
+      {services?.map(item => (
         <SectionGrid className='grid-rows-2 md:grid-rows-1' id={item.slug} key={item.id}>
           <Box className='relative pr-4 py-5 sm:py-10 md:py-0 bg-neutral-800'>
             <div className='max-w-[468px]'>
@@ -32,7 +37,7 @@ export default function ServicesItems({ services }: { services: any }) {
               </Button>
             </div>
             <div className='absolute bottom-10 lg:bottom-20 hidden md:flex items-center justify-center gap-5 lg:gap-10'>
-              {item.clients_logos.map((logo: any) => (
+              {item?.clients_logos?.map((logo) => (
                 <Image
                   key={logo.id}
                   src={strapiMedia(logo.image.url)}

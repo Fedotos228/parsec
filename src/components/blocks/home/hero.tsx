@@ -7,11 +7,11 @@ import { Button } from '../../ui/button'
 import { Paragraph } from '../../ui/typography/paragraph'
 import BlockRendererClient from '../block-renderer-client'
 
-export default function Hero({
-  content
-}: {
+export default function Hero({ 
+  content,
+ }: {
   content: HomeHeroTypes
-}) {
+ }) {
   return (
     <section className='relative h-lvh'>
       <video
@@ -21,7 +21,7 @@ export default function Hero({
         muted
         playsInline
       >
-        <source src={strapiMedia(content.video.url)} type='video/mp4' />
+        <source src={strapiMedia(content?.video.url)} type='video/mp4' />
       </video>
       <div className='w-full absolute bottom-8 md:bottom-16 pr-3 md:pr-20 default-padding'>
         <Paragraph className='uppercase mb-4' type='sm' color='accent'>

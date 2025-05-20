@@ -5,46 +5,34 @@ import SectionGrid from '@/components/elements/section-grid'
 import { Heading } from '@/components/ui/typography/heading'
 import { Paragraph } from '@/components/ui/typography/paragraph'
 import { formattingDate, strapiMedia } from '@/lib/utils'
+import { IProject } from '@/types/project.types'
 
-type ProjectHeroProps = {
-  date: string
-  slug: string
-  title: string
-  company: string
-  services: {
-    title: string
-    id: number
-    documentId: string
-  }[]
-  thumbnail: {
-    url: string
-    documentId: string
-    id: number
-  }
-}
-
-export default function ProjectHero({ date, title, company, services, thumbnail }: ProjectHeroProps) {
+export default function ProjectHero({
+  hero
+}: {
+  hero: IProject
+}) {
   return (
     <SectionGrid>
       <Box>
         <Paragraph color='accent' type='sm' className='mb-2'>
-          {formattingDate(date)}
+          {formattingDate(hero.date)}
         </Paragraph>
         <Heading level={1} className='mb-4'>
-          {title} - {company}
+          {hero.title} - {hero.company}
         </Heading>
         <Paragraph className=''>
-          {services.map((service, index) => (
-            <span key={service.id}>
+          {hero.services.map((service, index) => (
+            <span key={service.documentId}>
               {service.title}
-              {index < services.length - 1 ? ', ' : ''}
+              {index < hero.services.length - 1 ? ', ' : ''}
             </span>
           ))}
         </Paragraph>
       </Box>
       <Image
-        src={strapiMedia(thumbnail.url)}
-        alt={title || 'Proiect image'}
+        src={strapiMedia(hero.thumbnail.url)}
+        alt={hero.title || 'Proiect image'}
         width={500}
         height={500}
         className='h-lvh w-full object-cover'

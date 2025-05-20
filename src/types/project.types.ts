@@ -1,20 +1,17 @@
-export interface IProjectContent {
-  image: string,
-  alt: string
-  body: {
-    type: 'text' | 'list'
-    text?: string
-    list?: string[]
-  }[]
-}
+import { BlocksContent } from '@strapi/blocks-react-renderer'
+import { BaseEntity, IMedia } from './strapi.types'
 
-export interface IProject {
-  title: string
-  slug: string
-  description: string
-  serviceProvided: string[]
+export interface IProject extends BaseEntity {
+  slug: string,
+  title: string,
   company: string,
-  image: string,
-  date: string,
-  content: IProjectContent[]
+  thumbnail: IMedia,
+  description: string,
+  date: string
+  services: {
+    title: string
+    id: number
+    documentId: string
+  }[]
+  content?: BlocksContent
 }

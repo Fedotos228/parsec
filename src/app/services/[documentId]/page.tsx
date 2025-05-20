@@ -1,7 +1,9 @@
 import ServiceSingle from './service-single'
 
 export async function generateStaticParams() {
-  const { data } = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/services?fields[0]=documentId`).then(res => res.json())
+  const { data } = await fetch(
+    `${process.env.STRAPI_URL}/services?fields[0]=documentId`
+  ).then(res => res.json()).catch((err) => console.log(err))
 
   return data.map((item: { id: number, documentId: string }) => ({
     documentId: item.documentId,

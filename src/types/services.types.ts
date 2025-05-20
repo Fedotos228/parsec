@@ -1,30 +1,29 @@
-export type PortfolioType = {
-  slug: string,
-  title: string,
-  company: string,
-  imageUrl: string,
-  description: string,
-  services: string[],
-}[]
+import { IProject } from './project.types'
+import { BaseEntity, IMedia } from './strapi.types'
 
-export interface IServiceItem {
-  id: number,
-  slug: string,
-  title: string,
-  href: string,
-  description: string,
-  tags: string[],
-  imageUrl: string,
-  clientsLogos: {
-    id: number,
-    alt: string,
-    src: string,
-  }[]
-  portfolio?: PortfolioType
-}
-
-export type ServicesType = {
+export type ServicesSlugs = {
   title: string
   slug: string,
   documentId: string
 }[]
+
+interface ITags {
+  id: number
+  label: string
+}
+
+interface IClientsLogo extends BaseEntity {
+  alt: string
+  slug: string
+  image: IMedia
+}
+
+export interface IServiceItem extends BaseEntity {
+  title: string,
+  slug: string,
+  description: string,
+  image: IMedia
+  tags: ITags[]
+  clients_logos?: IClientsLogo[]
+  projects?: IProject
+}

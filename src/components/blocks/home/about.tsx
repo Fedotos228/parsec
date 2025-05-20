@@ -13,7 +13,6 @@ export default function About({
 }: {
   content: HomeAboutTypes
 }) {
-
   const mainContent = (
     <>
       <Paragraph type='sm' color='accent' className='mb-4'>
