@@ -34,6 +34,20 @@ class ProjectService {
       }
     })
   }
+
+  async getAllIds() {
+    const res = await fetch(`${process.env.STRAPI_URL}/projects?fields[0]=documentId`)
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch projects data')
+    }
+
+    const { data } = await res.json()
+
+    return data.map((item: { id: number, documentId: string }) => ({
+      documentId: item.documentId,
+    }))
+  }
 }
 
 export const projectService = new ProjectService()

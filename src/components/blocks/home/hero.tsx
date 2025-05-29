@@ -1,11 +1,11 @@
 import { strapiMedia } from '@/lib/utils'
 import { HomeHeroTypes } from '@/types/pages.types'
 import Link from 'next/link'
+import BlockRendererClient from '../../elements/block-renderer-client'
 import ScrollButton from '../../elements/scroll-button'
 import { LongArrow } from '../../icons'
 import { Button } from '../../ui/button'
 import { Paragraph } from '../../ui/typography/paragraph'
-import BlockRendererClient from '../block-renderer-client'
 
 export default function Hero({ 
   content,
@@ -29,8 +29,8 @@ export default function Hero({
         </Paragraph>
         <BlockRendererClient content={content?.heading} />
         <div className='w-full flex items-center justify-between'>
-          <Button variant='mainWhite' asChild className='mt-4'>
-            <Link href='/projects'>
+          <Button variant='mainWhite' asChild className='mt-8'>
+            <Link href='/projects' >
               Vezi Proiectele
               <LongArrow className='fill-foreground group-hover:fill-neutral-900' />
             </Link>

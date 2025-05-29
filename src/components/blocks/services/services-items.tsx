@@ -25,7 +25,7 @@ export default function ServicesItems({
               <Heading className='text-foreground text-[28px]/9 sm:text-4xl/9 lg:text-5xl/12 mb-8'>
                 {item.title}
               </Heading>
-              <Tags tags={item.tags} />
+              <Tags tags={item.tags} className='justify-start' />
               <Paragraph type='lg' color='gray' className='mb-11'>
                 {item.description}
               </Paragraph>

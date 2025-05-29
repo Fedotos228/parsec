@@ -31,5 +31,3 @@ export interface CollectionType<T extends BaseEntity> {
   data: T[]
   meta: Meta
 }
-
-// pentru a folosi codul de mai sus folosește asa - type IServices = CollectionType<ServicesType> sau type HomeType = CollectionType<HomeType>

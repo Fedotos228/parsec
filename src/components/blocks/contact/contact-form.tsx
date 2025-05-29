@@ -4,10 +4,10 @@ import { contactService } from '@/services/contact.service'
 import { useMutation } from '@tanstack/react-query'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
-import { LongArrow } from '../icons'
-import { Button } from '../ui/button'
-import Input from '../ui/input'
-import Textarea from '../ui/textarea'
+import { LongArrow } from '../../icons'
+import { Button } from '../../ui/button'
+import Input from '../../ui/input'
+import Textarea from '../../ui/textarea'
 
 export interface IContactForm {
   fullname: string,

@@ -57,6 +57,5 @@ export default function BlockRendererClient({
       bold: ({ children }) => <strong>{children}</strong>,
       italic: ({ children }) => <em>{children}</em>,
     }}
-
   />
 }

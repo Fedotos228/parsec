@@ -29,20 +29,22 @@ export default function About({
 
   return (
     <>
-      <SectionGrid className='hidden lg:grid'>
+      <SectionGrid className='relative hidden lg:grid'>
         <Box className='max-w-[468px]'>
           {mainContent}
         </Box>
 
         <Image
-          src={'/assets/image/cyclist.png'}
+          src={strapiMedia(content?.image?.url)}
           alt='About'
-          className='h-lvh w-full object-cover'
+          className='h-lvh w-full'
+          objectFit='cover'
+          objectPosition='center'
           width={720}
           height={1024}
+          quality={100}
         />
       </SectionGrid>
-
 
       <div className='relative h-lvh lg:hidden'>
         <Image

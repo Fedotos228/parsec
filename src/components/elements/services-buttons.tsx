@@ -19,7 +19,7 @@ export default function ServicesButtons({
   return (
     <div className='flex items-center flex-wrap shrink gap-4 justify-center max-w-2/3'>
       {slugs.map((link) => (
-        <Button key={link.slug} variant='secundary' onClick={() => handleScroll(link.slug)} className='group flex items-center gap-2'>
+        <Button key={link.documentId} variant='secundary' onClick={() => handleScroll(link.slug)} className='group flex items-center gap-2'>
           {link.title}
           <div className='relative w-5 h-5'>
             <RightUpArrow className='absolute inset-0 group-hover:opacity-0 group-hover:invisible fill-accent-500' />

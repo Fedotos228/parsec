@@ -7,7 +7,7 @@ import { LongArrow } from '@/components/icons'
 import { Button } from '@/components/ui/button'
 import { Paragraph } from '@/components/ui/typography/paragraph'
 import { IHeadingSection } from '@/types/pages.types'
-import BlockRendererClient from '../block-renderer-client'
+import BlockRendererClient from '../../elements/block-renderer-client'
 
 export default function Projects({
   content

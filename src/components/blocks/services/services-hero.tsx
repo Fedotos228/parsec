@@ -2,7 +2,7 @@ import ScrollButton from '@/components/elements/scroll-button'
 import { Heading } from '@/components/ui/typography/heading'
 import { Paragraph } from '@/components/ui/typography/paragraph'
 import { ServicesSlugs } from '@/types/services.types'
-import ServicesButtons from '../services-buttons'
+import ServicesButtons from '../../elements/services-buttons'
 
 export default function ServicesHero({ slugs }: { slugs: ServicesSlugs }) {
   return (

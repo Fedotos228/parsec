@@ -1,15 +1,19 @@
-type TagsProps = {
+import { cn } from '@/lib/utils'
+
+export type TagsProps = {
   label: string,
   id: number
 }
 
 export default function Tags({
-  tags
+  tags,
+  className
 }: {
-  tags: TagsProps[]
+  tags: TagsProps[],
+  className?: string
 }) {
   return (
-    <div className='flex items-center justify-center md:justify-start gap-3 flex-wrap mb-2'>
+    <div className={cn('flex items-center gap-3 flex-wrap mb-2', className)}>
       {tags.map(tag => (
         <span
           key={tag.id}

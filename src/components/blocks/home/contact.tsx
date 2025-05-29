@@ -3,8 +3,8 @@ import ContactLinks from '@/components/elements/contact-links'
 import SectionGrin from '@/components/elements/section-grid'
 import { Paragraph } from '@/components/ui/typography/paragraph'
 import { IHeadingSection } from '@/types/pages.types'
-import BlockRendererClient from '../block-renderer-client'
-import ContactForm from '../contact-form'
+import BlockRendererClient from '../../elements/block-renderer-client'
+import ContactForm from '../contact/contact-form'
 
 export default function Contact({
   content

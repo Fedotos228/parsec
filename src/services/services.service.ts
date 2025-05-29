@@ -11,7 +11,7 @@ class ServicesService {
 
   async getServices() {
     return await instance.collection(this.url).find({
-      populate: { 
+      populate: {
         fields: ['title', 'slug', 'description'],
         image: {
           fields: ['url']
@@ -51,6 +51,20 @@ class ServicesService {
         }
       }
     })
+  }
+
+  async getAllIds() {
+    const res = await fetch(`${process.env.STRAPI_URL}/services?fields[0]=documentId`)
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch services data')
+    }
+
+    const { data } = await res.json()
+
+    return data.map((item: { id: number, documentId: string }) => ({
+      documentId: item.documentId,
+    }))
   }
 }
 

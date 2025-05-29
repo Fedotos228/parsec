@@ -10,11 +10,9 @@ import { Paragraph } from '../../ui/typography/paragraph'
 
 export default function Services() {
   const { data } = useQuery({
-    queryKey: ['services'],
+    queryKey: ['homePage services'],
     queryFn: () => servicesService.getServicesTitle(),
   })
-
-  console.log('data', data)
 
   return (
     <section className='relative h-lvh' style={{ background: 'url("/assets/image/eternal.png") 50% 50% / cover no-repeat' }}>
@@ -24,6 +22,7 @@ export default function Services() {
         height={522}
         alt='cosmonaut'
         priority
+        quality={100}
         className='absolute top-1/2 hidden md:block md:right-1 lg:right-2/12 -translate-x-2/12  -translate-y-1/2'
       />
 

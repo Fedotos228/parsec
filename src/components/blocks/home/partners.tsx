@@ -2,7 +2,7 @@ import PartnersLogo from '@/components/elements/parters-logo/partners-logo'
 import PartnersSwiper from '@/components/elements/sliders/partners-swiper'
 import { Paragraph } from '@/components/ui/typography/paragraph'
 import { IHeadingSection } from '@/types/pages.types'
-import BlockRendererClient from '../block-renderer-client'
+import BlockRendererClient from '../../elements/block-renderer-client'
 
 export default function Partners({
   content

@@ -1,9 +1,9 @@
-import { IContactForm } from '@/components/blocks/contact-form'
+import { IContactForm } from '@/components/blocks/contact/contact-form'
 import { instance } from './api/strapi'
 
 class ContactService {
   async sendContactForm(data: IContactForm) {
-    return await instance.collection('contacts').create(data)
+    return await instance.collection('messages').create(data)
   }
 
   async getContactPage() {
