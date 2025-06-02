@@ -6,7 +6,9 @@ import { IProject } from '@/types/project.types'
 import Image from 'next/image'
 
 
+import paths from '@/lib/paths'
 import { strapiMedia } from '@/lib/utils'
+import Link from 'next/link'
 import 'swiper/css'
 import 'swiper/css/navigation'
 
@@ -16,7 +18,6 @@ export default function ServiceSingleProjects({
 }: {
   projects: IProject[]
 }) {
-
   return (
     <div className='relative h-lvh default-inline-padding'>
       <Paragraph color='accent' type='sm'>
@@ -28,27 +29,27 @@ export default function ServiceSingleProjects({
 
       <div className='grid grid-cols-3 gap-4 mt-8'>
         {projects.map(project => (
-          <div key={project.id} className='h-[300px] rounded-lg'>
+          <Link href={paths.projectSingle(project.slug)} key={project.id} className='h-[300px] rounded-lg'>
             <div className='relative w-full h-full inset-0 -z-10'>
               <Image
                 src={strapiMedia(project?.thumbnail?.url)}
                 alt={`Project thumbnail for ${project.title}`}
                 fill
                 objectFit='cover'
-                className='-z-10xw'
               />
             </div>
-            <Heading level={4} className='text-foreground relative bottom-0 z-50'>
+            <Heading level={4} className='text-foreground mt-3'>
               {project.title}
             </Heading>
             <Paragraph className='text-foreground/70 relative bottom-0 z-50'>
-              {project?.services?.map((service) => (
+              {project?.services?.map((service, index) => (
                 <span key={service.id}>
-                  {project?.services.length !== -1 && service.title + ', '}
+                  {service.title}
+                  {index < project.services.length - 1 ? ', ' : ''}
                 </span>
               ))}
             </Paragraph>
-          </div>
+          </Link>
         ))}
       </div>
 

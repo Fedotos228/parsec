@@ -7,11 +7,11 @@ import { IProject } from '@/types/project.types'
 import { useQuery } from '@tanstack/react-query'
 import { notFound } from 'next/navigation'
 
-export default function ProjectSingle({ documentId }: { documentId: string }) {
+export default function ProjectSingle({ slug }: { slug: string }) {
   const { data, isLoading } = useQuery({
-    queryKey: ['singleProject', documentId],
-    queryFn: () => projectService.getSingleProject(documentId),
-    select: data => data.data
+    queryKey: ['singleProject', slug],
+    queryFn: () => projectService.getSingleProject(slug),
+    select: data => data.data[0]
   })
 
   const project = data as IProject | undefined

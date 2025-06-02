@@ -21,8 +21,13 @@ class ProjectService {
     })
   }
 
-  async getSingleProject(documentId: string) {
-    return await instance.collection(this.url).findOne(documentId, {
+  async getSingleProject(slug: string) {
+    return await instance.collection(this.url).find({
+      filters: {
+        slug: {
+          $eq: slug
+        }
+      },
       populate: {
         fields: ['title', 'slug', 'company', 'date'],
         services: {
