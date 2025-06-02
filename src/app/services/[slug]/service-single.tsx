@@ -9,14 +9,14 @@ import ServiceSingleProjects from '@/components/blocks/service-single/service-si
 import { IServiceItem } from '@/types/services.types'
 
 export default function ServiceSingle({
-  documentId
+  slug
 }: {
-  documentId: string
+  slug: string
 }) {
   const { data, isLoading } = useQuery({
-    queryKey: ['singleService', documentId],
-    queryFn: () => servicesService.getSingleService(documentId),
-    select: data => data.data
+    queryKey: ['singleService', slug],
+    queryFn: () => servicesService.getSingleService(slug),
+    select: data => data.data[0]
   })
 
   const serviceSingle = data || {} as IServiceItem
@@ -24,7 +24,7 @@ export default function ServiceSingle({
   if (isLoading) return <Loader loading={isLoading} />
 
   return (
-    <div>
+    <>
       <ServiceSingleHero
         title={serviceSingle?.title}
         tags={serviceSingle?.tags}
@@ -33,6 +33,6 @@ export default function ServiceSingle({
       <ServiceSingleProjects
         projects={serviceSingle?.projects}
       />
-    </div>
+    </>
   )
 }

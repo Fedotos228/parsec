@@ -6,18 +6,18 @@ const services = await servicesService.getAllIds()
 const projects = await projectService.getAllIds()
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const servicesUrls = services.map((item: { documentId: string }) => {
+  const servicesUrls = services.map((item: { slug: string }) => {
     return {
-      url: `${process.env.SITE_URL}/services/${item.documentId}`,
+      url: `${process.env.SITE_URL}/services/${item.slug}`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.5,
     }
   })
 
-  const projectsUrls = projects.map((item: { documentId: string }) => {
+  const projectsUrls = projects.map((item: { slug: string }) => {
     return {
-      url: `${process.env.SITE_URL}/projects/${item.documentId}`,
+      url: `${process.env.SITE_URL}/projects/${item.slug}`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.5,
@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const baseUrls = [
     {
-      url: process.env.SITE_URL || 'https://parsec.md',
+      url: process.env.SITE_URL,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 1,

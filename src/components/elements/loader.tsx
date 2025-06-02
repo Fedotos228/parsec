@@ -8,12 +8,10 @@ export default function Loader({
   loading?: boolean
 }) {
   useEffect(() => {
-    const body = document.body
-
     if (loading) {
-      body.classList.add('overflow-hidden')
+      document.body.classList.add('overflow-hidden')
     } else {
-      body.classList.remove('overflow-hidden')
+      document.body.classList.remove('overflow-hidden')
     }
 
     return () => {

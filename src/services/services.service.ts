@@ -31,8 +31,13 @@ class ServicesService {
     })
   }
 
-  async getSingleService(documentId: string) {
-    return await instance.collection(this.url).findOne(documentId, {
+  async getSingleService(slug: string) {
+    return await instance.collection(this.url).find({
+      filters: {
+        slug: {
+          $eq: slug
+        }
+      },
       populate: {
         fields: ['title', 'description'],
         tags: {
@@ -54,7 +59,7 @@ class ServicesService {
   }
 
   async getAllIds() {
-    const res = await fetch(`${process.env.STRAPI_URL}/services?fields[0]=documentId`)
+    const res = await fetch(`${process.env.STRAPI_URL}/services?fields[0]=slug`)
 
     if (!res.ok) {
       throw new Error('Failed to fetch services data')
@@ -62,8 +67,8 @@ class ServicesService {
 
     const { data } = await res.json()
 
-    return data.map((item: { id: number, documentId: string }) => ({
-      documentId: item.documentId,
+    return data.map((item: { id: number, slug: string }) => ({
+      slug: item.slug,
     }))
   }
 }

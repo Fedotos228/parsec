@@ -30,7 +30,7 @@ export default function ServicesItems({
                 {item.description}
               </Paragraph>
               <Button asChild>
-                <Link href={paths.servicesSingle(item.documentId)} className='flex items-center gap-2'>
+                <Link href={paths.servicesSingle(item.slug)} className='flex items-center gap-2'>
                   Vezi Proiecte
                   <LongArrow className='fill-foreground group-hover:fill-neutral-900' />
                 </Link>
