@@ -18,8 +18,10 @@ export const metadata: Metadata = {
     title: 'Parsec',
     description: 'Logistica si comunicare',
     url: 'https://parsec.md',
-    siteName: 'My Site',
-    images: [{ url: 'https://example.com/og.png' }]
+    siteName: 'Parsec',
+    images: [{
+      url: `${process.env.STRAPI_BASE}/uploads/FAVICON_2_19516a7bd6.svg`
+    }]
   },
 }
 

@@ -21,7 +21,7 @@ export default function ServiceSingle({
 
   const serviceSingle = data || {} as IServiceItem
 
-  if (isLoading) return <Loader loading={isLoading} />
+  if (isLoading) return <Loader />
 
   return (
     <>

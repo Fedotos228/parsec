@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import type { Swiper as SwiperType } from 'swiper/types'
 
@@ -23,6 +23,8 @@ export default function ProjectsSwiper() {
     select: data => data.data,
   })
 
+  const prevButton = useRef<HTMLButtonElement>(null)
+  const nextButton = useRef<HTMLButtonElement>(null)
   const progressBar = useRef<HTMLDivElement | null>(null)
 
   const onAutoplayTimeLeft = (swiper: SwiperType, timeLeft: number, percentage: number) => {
@@ -31,18 +33,7 @@ export default function ProjectsSwiper() {
     }
   }
 
-  useEffect(() => {
-    const buttonsContainer = document.querySelector('.buttons-container')
-    const navigatioNextButton = document.querySelector('.project-swiper .swiper-button-next')
-    const navigatioPrevButton = document.querySelector('.project-swiper .swiper-button-prev')
-
-    if (buttonsContainer) {
-      if (navigatioPrevButton) buttonsContainer.appendChild(navigatioPrevButton)
-      if (navigatioNextButton) buttonsContainer.appendChild(navigatioNextButton)
-    }
-  })
-
-  if (isLoading) return <Loader /> 
+  if (isLoading) return <Loader />
 
   return (
     <>
@@ -53,7 +44,16 @@ export default function ProjectsSwiper() {
           delay: 4000,
           disableOnInteraction: false,
         }}
-        navigation={true}
+        onBeforeInit={(swiper) => {
+          if (swiper.params.navigation && typeof swiper.params.navigation !== 'boolean') {
+            swiper.params.navigation.prevEl = prevButton.current
+            swiper.params.navigation.nextEl = nextButton.current
+          }
+        }}
+        navigation={{
+          nextEl: nextButton.current,
+          prevEl: prevButton.current,
+        }}
         modules={[Autoplay, Navigation]}
         onAutoplayTimeLeft={onAutoplayTimeLeft}
         className='project-swiper'
@@ -83,7 +83,10 @@ export default function ProjectsSwiper() {
           </SwiperSlide>
         ))}
         <div className='navigation-container px-3 max-w-[500px] w-full absolute bottom-[80px] left-1/2 -translate-x-1/2 z-10'>
-          <div className='buttons-container flex items-center justify-end gap-4'></div>
+          <div className='buttons-container flex items-center justify-end gap-4'>
+            <button className='swiper-button-next' ref={prevButton}></button>
+            <button className='swiper-button-prev' ref={nextButton}></button>
+          </div>
 
           <div
             className="z-10 р-12 flex items-center justify-center text-accent-500"

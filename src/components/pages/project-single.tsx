@@ -17,7 +17,6 @@ export default function ProjectSingle({ slug }: { slug: string }) {
   const project = data as IProject | undefined
 
   if (isLoading) return <Loader />
-
   if (!project) return notFound()
 
   return (

@@ -1,4 +1,4 @@
-import ServiceSingle from './service-single'
+import ServiceSingle from '@/components/pages/service-single'
 
 export async function generateMetadata({
   params

@@ -1,4 +1,4 @@
-import ProjectSingle from './project-single'
+import ProjectSingle from '@/components/pages/project-single'
 
 export async function generateMetadata({
   params

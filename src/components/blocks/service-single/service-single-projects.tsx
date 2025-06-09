@@ -5,7 +5,6 @@ import { IProject } from '@/types/project.types'
 
 import Image from 'next/image'
 
-
 import paths from '@/lib/paths'
 import { strapiMedia } from '@/lib/utils'
 import Link from 'next/link'

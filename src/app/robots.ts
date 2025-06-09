@@ -11,7 +11,9 @@ export default function robots(): MetadataRoute.Robots {
         '/api',
         '/api/*',
       ],
+      
     },
+    
     sitemap: `${process.env.SITE_URL}/sitemap.xml`,
   }
 }

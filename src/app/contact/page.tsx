@@ -16,7 +16,7 @@ export default function ContactPage() {
   console.log('contactPage', data)
 
   const contactPage = data || {} as IHeadingSection
-  if (isLoading) return <Loader loading={isLoading} />
+  if (isLoading) return <Loader />
 
   return <Contact content={contactPage || {}} />
 }

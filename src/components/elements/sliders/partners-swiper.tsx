@@ -1,17 +1,19 @@
 'use client'
+import { useRef } from 'react'
+
+import { Paragraph } from '@/components/ui/typography/paragraph'
+import { strapiMedia } from '@/lib/utils'
+import { testimonialsService } from '@/services/testimonials.service'
+import { useQuery } from '@tanstack/react-query'
+
+import Image from 'next/image'
+import Link from 'next/link'
 
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
 import 'swiper/css'
 
-import { Paragraph } from '@/components/ui/typography/paragraph'
-import { strapiMedia } from '@/lib/utils'
-import { testimonialsService } from '@/services/testimonials.service'
-import { useQuery } from '@tanstack/react-query'
-import Image from 'next/image'
-import Link from 'next/link'
-import { useEffect } from 'react'
 
 export default function PartnersSwiper() {
   const { data: sliders } = useQuery({
@@ -20,17 +22,8 @@ export default function PartnersSwiper() {
     select: (data) => data.data,
   })
 
-  useEffect(() => {
-    const navigationContainer = document.querySelector('.partners-navigation-container')
-    const navigatioNextButton = document.querySelector('.partners-swiper .swiper-button-next')
-    const navigatioPrevButton = document.querySelector('.partners-swiper .swiper-button-prev')
-
-    if (navigationContainer) {
-      if (navigatioPrevButton) navigationContainer.appendChild(navigatioPrevButton)
-      if (navigatioNextButton) navigationContainer.appendChild(navigatioNextButton)
-    }
-  })
-
+  const nextButton = useRef<HTMLButtonElement>(null)
+  const prevButton = useRef<HTMLButtonElement>(null)
 
   return (
     <div className='mb-6 md:mb-20 px-4 md:px-10 lg:px-12 py-10 lg:py-20 border border-neutral-600 rounded-sm'>
@@ -40,7 +33,19 @@ export default function PartnersSwiper() {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        navigation
+        onBeforeInit={(swiper) => {
+          if (
+            swiper.params.navigation &&
+            typeof swiper.params.navigation !== 'boolean'
+          ) {
+            swiper.params.navigation.prevEl = prevButton.current
+            swiper.params.navigation.nextEl = nextButton.current
+          }
+        }}
+        navigation={{
+          nextEl: nextButton.current,
+          prevEl: prevButton.current,
+        }}
         modules={[Navigation]}
         className='partners-swiper'
 
@@ -75,7 +80,10 @@ export default function PartnersSwiper() {
             </div>
           </SwiperSlide>
         ))}
-        <div className='partners-navigation-container flex items-center justify-end gap-4 mt-10'></div>
+        <div className='partners-navigation-container flex items-center justify-end gap-4 mt-10'>
+          <button ref={prevButton} className='swiper-button-prev'></button>
+          <button ref={nextButton} className='swiper-button-next'></button>
+        </div>
       </Swiper>
     </div>
   )

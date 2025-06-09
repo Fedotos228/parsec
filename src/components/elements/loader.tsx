@@ -2,20 +2,12 @@
 
 import { useEffect } from 'react'
 
-export default function Loader({
-  loading
-}: {
-  loading?: boolean
-}) {
+export default function Loader() {
   useEffect(() => {
-    if (loading) {
-      document.body.classList.add('overflow-hidden')
-    } else {
-      document.body.classList.remove('overflow-hidden')
-    }
+    document.body.style.overflow = 'hidden'
 
     return () => {
-      document.body.classList.remove('overflow-hidden')
+      document.body.style.overflow = 'auto'
     }
   })
 

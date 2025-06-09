@@ -28,7 +28,7 @@ export default function ServicePage() {
 
   const slugs = getSlugServices()
 
-  if (isLoading) return <Loader loading={isLoading} />
+  if (isLoading) return <Loader />
 
   return (
     <>
