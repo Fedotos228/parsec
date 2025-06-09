@@ -10,7 +10,7 @@ export default function Navigation({ handleClick }: { handleClick: () => void })
 
   return (
     <div>
-      <nav className='w-fit flex flex-col mg:gap-5 lg:gap-11'>
+      <nav className='w-fit flex flex-col gap-5 lg:gap-11'>
         {linksMenu.map((link, index) => (
           <Link
             key={link.href}
@@ -32,5 +32,6 @@ export default function Navigation({ handleClick }: { handleClick: () => void })
         }
       </nav>
     </div>
+
   )
 }

@@ -1,13 +1,16 @@
 'use client'
 
+import { contactService } from '@/services/contact.service'
+import { useMutation } from '@tanstack/react-query'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { LongArrow } from '../icons'
-import { Button } from '../ui/button'
-import Input from '../ui/input'
-import Textarea from '../ui/textarea'
+import { toast } from 'sonner'
+import { LongArrow } from '../../icons'
+import { Button } from '../../ui/button'
+import Input from '../../ui/input'
+import Textarea from '../../ui/textarea'
 
-interface IContactForm {
-  name: string,
+export interface IContactForm {
+  fullname: string,
   phone: string,
   company: string,
   email: string,
@@ -15,14 +18,26 @@ interface IContactForm {
 }
 
 export default function ContactForm() {
+  const { mutate, isPending } = useMutation({
+    mutationKey: ['contact'],
+    mutationFn: (data: IContactForm) => contactService.sendContactForm(data),
+    onSuccess: () => {
+      toast.success('Mesajul a fost trimis cu succes!')
+    },
+    onError: () => {
+      toast.error('A apărut o eroare. Te rugăm să încerci din nou.')
+    },
+  })
+
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<IContactForm>()
 
-  const onSubmit: SubmitHandler<IContactForm> = async data => {
-    console.log(data)
+  const onSubmit: SubmitHandler<IContactForm> = data => {
+    mutate(data)
+    
   }
 
   return (
@@ -31,11 +46,11 @@ export default function ContactForm() {
         type='text'
         label='Numele tau'
         placeholder='Nume'
-        {...register('name', { required: 'Numele este necesar' })}
-        className={errors.name ? 'border-error-100' : ''}
-        labelClassName={errors.name ? '!text-error-100' : ''}
-        aria-invalid={errors.name ? 'true' : 'false'}
-        aria-errormessage={errors.name ? 'name-error' : undefined}
+        {...register('fullname', { required: 'Numele este necesar' })}
+        className={errors.fullname ? 'border-error-100' : ''}
+        labelClassName={errors.fullname ? '!text-error-100' : ''}
+        aria-invalid={errors.fullname ? 'true' : 'false'}
+        aria-errormessage={errors.fullname ? 'name-error' : undefined}
         disabled={isSubmitting}
         autoComplete='name'
         pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
@@ -92,9 +107,15 @@ export default function ContactForm() {
         aria-errormessage={errors.message ? 'message-error' : undefined}
         disabled={isSubmitting}
       />
-      <Button variant='mainBlack'>
-        Trimite
-        <LongArrow className='fill-neutral-900 group-hover:fill-foreground transition-colors duratio-500' />
+      <Button variant='mainBlack' className='w-[190px]' disabled={isPending}>
+        {
+          isPending
+            ? <div className='animate-spin h-5 w-5 border-2 border-t-transparent rounded-full border-white' />
+            : <>
+              Trimite
+              <LongArrow className='fill-neutral-900 group-hover:fill-foreground transition-colors duratio-500' />
+            </>
+        }
       </Button>
     </form>
   )

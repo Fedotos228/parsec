@@ -89,17 +89,16 @@
   .animated-autoRun {
     animation: autoRun 10s linear infinite;
   }
+
+  .animated-autoRotate {
+    animation: autoRotate 5s linear infinite;
+  }
 }
 
 body {
   background: var(--surface-primary);
   color: var(--foreground);
   font-family: var(--font-montserrat);
-}
-
-.swiper {
-  width: 100%;
-  height: 100%;
 }
 
 .swiper-button-prev,
@@ -171,5 +170,14 @@ body {
   100% {
     opacity: 1;
     transform: translateX(12px);
+  }
+}
+
+@keyframes autoRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

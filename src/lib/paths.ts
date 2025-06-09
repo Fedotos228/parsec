@@ -5,14 +5,14 @@ const paths = {
   services() {
     return '/services'
   },
-  servicesSingle(slug: string) {
-    return `/services/${slug}`
+  servicesSingle(documentId: string) {
+    return `/services/${documentId}`
   },
   contact() {
     return '/contact'
   }, 
-  projectSingle(slug: string) {
-    return `/project/${slug}`
+  projectSingle(documentId: string) {
+    return `/project/${documentId}`
   },
 }
 

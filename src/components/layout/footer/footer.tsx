@@ -6,9 +6,9 @@ import FooterNavigation from './footer-navigation'
 
 export default function Footer() {
   return (
-    <footer className=''>
+    <footer className='h-lvh flex flex-col justify-between'>
       <BigLogo />
-      <section className='max-w-[1280px] mx-auto px-4 lg:px-0 '>
+      <section className='default-inline-padding mx-auto w-full'>
         <div className='flex flex-col md:flex-row md:justify-between py-8 lg:py-10'>
           <div className='flex justify-between md:items-start gap-3.5 flex-col mb-8'>
             <Logo />

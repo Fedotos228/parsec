@@ -1,9 +1,5 @@
-import { Logo } from '@/components/ui/logo'
+import Loader from '@/components/elements/loader'
 
 export default function Loading() {
-  return (
-    <div className='flex h-screen w-full items-center justify-center'>
-      <Logo className='animate-pulse' />
-    </div>
-  )
+  return <Loader />
 }

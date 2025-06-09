@@ -9,7 +9,7 @@ interface ParagraphProps
 const paragraphVariants = cva('', {
   variants: {
     type: {
-      lg: 'text-base md:text-lg/7',
+      lg: 'text-lg md:text-lg/7',
       md: 'text-base/7',
       sm: 'text-sm/7',
     },

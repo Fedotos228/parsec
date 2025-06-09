@@ -1,5 +1,3 @@
-import { IServiceItem } from '@/types/services.types'
-
 export const siteTitle = 'Parsec'
 
 export const socials = [
@@ -93,6 +91,11 @@ export const footerNavigation = [
         id: 3,
         label: 'str. Mitropolit G. Bănulescu-Bodoni 59/B, MD-2005',
         href: 'https://goo.gl/maps/2v1xk3G5Z4Q2'
+      },
+      {
+        id: 4,
+        label: 'contact@parsec.md',
+        href: 'mailto:contact@parsec.md'
       }
     ]
   }

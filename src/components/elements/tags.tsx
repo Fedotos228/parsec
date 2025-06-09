@@ -1,17 +1,25 @@
+import { cn } from '@/lib/utils'
+
+export type TagsProps = {
+  label: string,
+  id: number
+}
 
 export default function Tags({
-  tags
+  tags,
+  className
 }: {
-  tags: string[]
+  tags: TagsProps[],
+  className?: string
 }) {
   return (
-    <div className='flex items-center gap-3 flex-wrap mb-2'>
-      {tags.map((tag, index) => (
+    <div className={cn('flex items-center gap-3 flex-wrap mb-2', className)}>
+      {tags.map(tag => (
         <span
-          key={index}
-          className="text-center text-accent-500 px-3 py-2 font-medium/10 bg-neutral-600 rounded-sm"
+          key={tag.id}
+          className="text-sm md:text-center text-accent-500 px-2 md:px-3 py-2 md:py-2 font-medium/10 bg-neutral-600 rounded-sm"
         >
-          {tag}
+          {tag.label}
         </span>
       ))}
     </div>

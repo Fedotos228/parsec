@@ -1,19 +1,5 @@
-import About from '@/components/blocks/home/about'
-import Contact from '@/components/blocks/home/contact'
-import Hero from '@/components/blocks/home/hero'
-import Partners from '@/components/blocks/home/partners'
-import Projects from '@/components/blocks/home/projects'
-import Services from '@/components/blocks/home/services'
+import Home from '@/components/pages/home'
 
-export default function Home() {
-  return (
-    <>
-      <Hero />
-      <About />
-      <Services />
-      <Projects />
-      <Partners />
-      <Contact />
-    </>
-  )
+export default function HomePage() {
+  return <Home />
 }

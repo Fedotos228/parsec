@@ -7,6 +7,7 @@ import Menu from './menu'
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  
   const handleClick = () => {
     setIsOpen((prev) => !prev)
   }

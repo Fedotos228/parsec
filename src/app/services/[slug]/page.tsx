@@ -1,11 +1,31 @@
-import Portfolio from '@/components/blocks/services/portfolio'
-import Box from '@/components/elements/box'
-import SectionGrid from '@/components/elements/section-grid'
-import Tags from '@/components/elements/tags'
-import { Heading } from '@/components/ui/typography/heading'
-import { Paragraph } from '@/components/ui/typography/paragraph'
-import { services } from '@/lib/services.constans'
+import ServiceSingle from '@/components/pages/service-single'
 
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ slug: string }>
+}) {
+  const { slug } = await params
+
+  const { data } = await fetch(
+    `${process.env.STRAPI_URL}/services?filters[slug][$eq]=${slug}&fields[0]=title&fields[1]=documentId`
+  ).then(res => res.json()).catch((err) => console.log(err))
+
+  return data?.map((item: { id: number, slug: string, title: string }) => ({
+    slug: item.slug,
+    title: item.title,
+  }))
+}
+
+export async function generateStaticParams() {
+  const { data } = await fetch(
+    `${process.env.STRAPI_URL}/services?fields[0]=slug&fields[1]=documentId`
+  ).then(res => res.json()).catch((err) => console.log(err))
+
+  return data?.map((item: { id: number, slug: string }) => ({
+    slug: item.slug,
+  }))
+}
 
 export default async function ServicesPage({
   params,
@@ -13,30 +33,8 @@ export default async function ServicesPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const singleService = await Promise.resolve(services.find((service) => service.slug === slug))
 
   return (
-    <div>
-      <SectionGrid>
-        <Box className='bg-neutral-800'>
-          <div className='max-w-[468px]'>
-            <Heading level={1} className='mb-8'>
-              {singleService?.title}
-            </Heading>
-            <Tags tags={singleService?.tags || []} />
-          </div>
-        </Box>
-        <div className='flex items-center justify-center bg-accent-500'>
-          <Paragraph type="lg" color='black' className='font-hidi font-lights max-w-[500px] px-4'>
-            {singleService?.description}
-          </Paragraph>
-        </div>
-      </SectionGrid>
-      {singleService?.portfolio && (
-        <Portfolio
-          portfolio={singleService.portfolio}
-        />
-      )}
-    </div>
+    <ServiceSingle slug={slug} />
   )
 }

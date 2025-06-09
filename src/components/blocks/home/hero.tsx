@@ -1,11 +1,17 @@
+import { strapiMedia } from '@/lib/utils'
+import { HomeHeroTypes } from '@/types/pages.types'
 import Link from 'next/link'
+import BlockRendererClient from '../../elements/block-renderer-client'
 import ScrollButton from '../../elements/scroll-button'
 import { LongArrow } from '../../icons'
 import { Button } from '../../ui/button'
-import { Heading } from '../../ui/typography/heading'
 import { Paragraph } from '../../ui/typography/paragraph'
 
-export default function Hero() {
+export default function Hero({ 
+  content,
+ }: {
+  content: HomeHeroTypes
+ }) {
   return (
     <section className='relative h-lvh'>
       <video
@@ -15,19 +21,16 @@ export default function Hero() {
         muted
         playsInline
       >
-        <source src='/assets/video/hero.mp4' type='video/mp4' />
+        <source src={strapiMedia(content?.video.url)} type='video/mp4' />
       </video>
       <div className='w-full absolute bottom-8 md:bottom-16 pr-3 md:pr-20 default-padding'>
         <Paragraph className='uppercase mb-4' type='sm' color='accent'>
           Agenție de comunicare
         </Paragraph>
-        <Heading level={1} className='mb-8 md:mb-12'>
-          Transformăm ideile în <br />
-          <i>strategii</i> care contează
-        </Heading>
+        <BlockRendererClient content={content?.heading} />
         <div className='w-full flex items-center justify-between'>
-          <Button variant='mainWhite' asChild>
-            <Link href='/projects'>
+          <Button variant='mainWhite' asChild className='mt-8'>
+            <Link href='/projects' >
               Vezi Proiectele
               <LongArrow className='fill-foreground group-hover:fill-neutral-900' />
             </Link>

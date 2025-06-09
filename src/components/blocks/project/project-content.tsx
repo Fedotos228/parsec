@@ -1,12 +1,9 @@
-import Image from 'next/image'
 
-import { Paragraph } from '@/components/ui/typography/paragraph'
-import { IProjectContent } from '@/types/project.types'
 
-export default function ProjectContent({ content }: { content: IProjectContent }) {
+export default function ProjectContent() {
   return (
     <div className='grid grid-cols-1 lg:grid-cols-2 group'>
-      <Image
+      {/* <Image
         src={content.image}
         alt={content.alt}
         width={500}
@@ -28,7 +25,7 @@ export default function ProjectContent({ content }: { content: IProjectContent }
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
