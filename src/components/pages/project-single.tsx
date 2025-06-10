@@ -1,6 +1,6 @@
 'use client'
 
-import ProjectHero from '@/components/blocks/project/project-hero'
+import ProjectSingleHero from '@/components/blocks/project-single/project-single-hero'
 import Loader from '@/components/elements/loader'
 import { projectService } from '@/services/projects.service'
 import { IProject } from '@/types/project.types'
@@ -21,7 +21,7 @@ export default function ProjectSingle({ slug }: { slug: string }) {
 
   return (
     <div>
-      <ProjectHero
+      <ProjectSingleHero
         hero={project}
       />
       {/* {project?.content.map((content, index) => (

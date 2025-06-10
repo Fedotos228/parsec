@@ -15,7 +15,7 @@ export default function Projects({
   content: IHeadingSection
 }) {
   return (
-    <SectionGrid className='grid-rows-[30%_1fr] sm:grid-rows-1 grid-cols-1 sm:grid-cols-1 '>
+    <SectionGrid className='grid-rows-[30%_1fr] sm:grid-rows-1 grid-cols-1 sm:grid-cols-2'>
       <Box className='max-w-[468px]'>
         <Paragraph type='sm' color='accent' className='mb-4'>
           {content?.subtitle}

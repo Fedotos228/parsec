@@ -53,6 +53,27 @@ class ProjectService {
       slug: item.slug,
     }))
   }
+
+  async getFilteredProjects(filter: string) {
+    return await instance.collection(this.url).find({
+      filters: {
+        services: {
+          slug: {
+            $eq: filter 
+          }
+        }
+      },
+      fields: ['title', 'slug', 'company', 'date'],
+      populate: {
+        services: {
+          fields: ['title']
+        },
+        thumbnail: {
+          fields: ['url']
+        }
+      }
+    })
+  }
 }
 
 export const projectService = new ProjectService()

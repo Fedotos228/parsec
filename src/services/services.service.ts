@@ -5,7 +5,7 @@ class ServicesService {
 
   async getServicesTitle() {
     return await instance.collection(this.url).find({
-      fields: ['title']
+      fields: ['title', 'slug']
     })
   }
 

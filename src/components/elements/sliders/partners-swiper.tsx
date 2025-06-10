@@ -12,6 +12,7 @@ import Link from 'next/link'
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+import paths from '@/lib/paths'
 import 'swiper/css'
 
 
@@ -70,11 +71,10 @@ export default function PartnersSwiper() {
                   </Paragraph>
                   {item.project && <span className='hidden sm:block h-3 w-[1px] bg-neutral-300'></span>}
                   {item.project && (
-                    <Link href={`/projects/${item.project.slug}`} className='text-sm text-accent-500 underline'>
+                    <Link href={paths.projectsSingle(item.project.slug)} className='text-sm text-accent-500 underline'>
                       Studiu de caz
                     </Link>
                   )}
-
                 </div>
               </div>
             </div>

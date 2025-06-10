@@ -10,7 +10,7 @@ import Provider from './provider'
 export const metadata: Metadata = {
   metadataBase: new URL('https://parsec.md'),
   title: { default: siteTitle, template: '%s | Parsec' },
-  description: 'Parsec - Companie de comunicare si logistica',
+  description: 'Parsec este o agenție de PR și comunicare cu servicii complete: strategii de comunicare, criză, branding, media, influenceri, evenimente, producție, IT. Experiență națională și internațională.',
   alternates: {
     canonical: 'https://parsec.md',
   },
@@ -19,10 +19,20 @@ export const metadata: Metadata = {
     description: 'Logistica si comunicare',
     url: 'https://parsec.md',
     siteName: 'Parsec',
+    type: 'website',
     images: [{
       url: `${process.env.STRAPI_BASE}/uploads/FAVICON_2_19516a7bd6.svg`
     }]
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Parsec',
+    description: 'Logistica si comunicare',
+    images: [{
+      url: `${process.env.STRAPI_BASE}/uploads/FAVICON_2_19516a7bd6.svg`
+    }]
+  },
+  
 }
 
 export default function RootLayout({

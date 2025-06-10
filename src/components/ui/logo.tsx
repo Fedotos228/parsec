@@ -1,3 +1,4 @@
+import paths from '@/lib/paths'
 import { cn } from '@/lib/utils'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -18,7 +19,7 @@ export function Logo(
   }: LogoProps
 ) {
   return (
-    <Link href='/'>
+    <Link href={paths.home()}>
       <Image
         src={`/assets/image/logos/logo-${type}.svg`}
         alt='Logo'
