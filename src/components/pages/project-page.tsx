@@ -1,7 +1,8 @@
 'use client'
 
+import { useStrapiQuery } from '@/hooks/use-strapi'
 import { servicesService } from '@/services/services.service'
-import { useQuery } from '@tanstack/react-query'
+import { IServicesSlugs } from '@/types/services.types'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useCallback, useState } from 'react'
 import ProjectHero from '../blocks/project/project-hero'
@@ -11,15 +12,14 @@ import { Button } from '../ui/button'
 export default function ProjectPage() {
   const [active, setActive] = useState<string>('')
 
-  const { data: services } = useQuery({
-    queryKey: ['project services'],
-    queryFn: () => servicesService.getServicesTitle(),
-    select: (data) => data.data,
-  })
-
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
+
+  const { data: services } = useStrapiQuery<IServicesSlugs[]>(
+    ['project services'],
+    () => servicesService.getServicesTitle(),
+  )
 
   const createQueryString = useCallback(
     (name: string, value: string) => {

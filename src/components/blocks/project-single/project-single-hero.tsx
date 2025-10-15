@@ -19,7 +19,10 @@ export default function ProjectSingleHero({
           {formattingDate(hero.date)}
         </Paragraph>
         <Heading level={1} className='mb-4'>
-          {hero.title} - {hero.company}
+          {hero.title}
+        </Heading>
+        <Heading level={2} className='mb-4'>
+          {hero.company}
         </Heading>
         <Paragraph className=''>
           {hero.services.map((service, index) => (

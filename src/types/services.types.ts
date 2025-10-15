@@ -1,11 +1,12 @@
 import { IProject } from './project.types'
 import { BaseEntity, IMedia } from './strapi.types'
 
-export type ServicesSlugs = {
+export interface IServicesSlugs {
+  id: number
   title: string
   slug: string,
   documentId: string
-}[]
+}
 
 interface ITags {
   id: number

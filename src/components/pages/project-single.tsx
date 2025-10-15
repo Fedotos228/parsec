@@ -2,17 +2,16 @@
 
 import ProjectSingleHero from '@/components/blocks/project-single/project-single-hero'
 import Loader from '@/components/elements/loader'
+import { useStrapiQuery } from '@/hooks/use-strapi'
 import { projectService } from '@/services/projects.service'
 import { IProject } from '@/types/project.types'
-import { useQuery } from '@tanstack/react-query'
 import { notFound } from 'next/navigation'
 
 export default function ProjectSingle({ slug }: { slug: string }) {
-  const { data, isLoading } = useQuery({
-    queryKey: ['singleProject', slug],
-    queryFn: () => projectService.getSingleProject(slug),
-    select: data => data.data[0]
-  })
+  const { data, isLoading } = useStrapiQuery<IProject>(
+    ['singleProject', slug],
+    () => projectService.getSingleProject(slug),
+  )
 
   const project = data as IProject | undefined
 

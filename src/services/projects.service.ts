@@ -1,3 +1,4 @@
+import { IProject } from '@/types/project.types'
 import { instance } from './api/strapi'
 
 class ProjectService {
@@ -22,7 +23,7 @@ class ProjectService {
   }
 
   async getSingleProject(slug: string) {
-    return await instance.collection(this.url).find({
+    const response = await instance.collection(this.url).find({
       filters: {
         slug: {
           $eq: slug
@@ -38,6 +39,8 @@ class ProjectService {
         }
       }
     })
+
+    return response as unknown as  { data: IProject }
   }
 
   async getAllIds() {

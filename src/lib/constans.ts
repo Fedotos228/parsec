@@ -1,4 +1,3 @@
-export const siteTitle = 'Parsec'
 
 export const socials = [
   {

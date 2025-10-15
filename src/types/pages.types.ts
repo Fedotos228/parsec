@@ -1,5 +1,5 @@
 import { BlocksContent } from '@strapi/blocks-react-renderer'
-import { BaseEntity, IMedia } from './strapi.types'
+import { IMedia } from './strapi.types'
 
 export type HomeHeroTypes = {
   id: number
@@ -21,10 +21,18 @@ export interface IHeadingSection {
   heading: BlocksContent
 }
 
-export interface IHomePage extends BaseEntity {
+export interface IHomePage {
   hero: HomeHeroTypes
   about: HomeAboutTypes
   projects: IHeadingSection
   partners: IHeadingSection
   contacts: IHeadingSection
+}
+
+export interface IContactForm {
+  fullname: string,
+  phone: string,
+  company: string,
+  email: string,
+  message: string,
 }

@@ -4,8 +4,6 @@ import { Heading } from '@/components/ui/typography/heading'
 import { IProject } from '@/types/project.types'
 
 import ProjectCard from '@/components/elements/project-card'
-import 'swiper/css'
-import 'swiper/css/navigation'
 
 
 export default function ServiceSingleProjects({

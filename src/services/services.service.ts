@@ -1,16 +1,19 @@
+import { IServiceItem, IServicesSlugs } from '@/types/services.types'
 import { instance } from './api/strapi'
 
 class ServicesService {
   private readonly url = '/services'
 
-  async getServicesTitle() {
-    return await instance.collection(this.url).find({
+  async getServicesTitle(): Promise<{data: IServicesSlugs[]}> {
+    const response =  await instance.collection(this.url).find({
       fields: ['title', 'slug']
     })
+
+    return response as unknown as {data: IServicesSlugs[]}
   }
 
-  async getServices() {
-    return await instance.collection(this.url).find({
+  async getServices(): Promise<{ data: IServiceItem[] }> {
+    const response = await instance.collection(this.url).find({
       populate: {
         fields: ['title', 'slug', 'description'],
         image: {
@@ -29,10 +32,12 @@ class ServicesService {
         }
       }
     })
+
+    return response as unknown as { data: IServiceItem[] }
   }
 
-  async getSingleService(slug: string) {
-    return await instance.collection(this.url).find({
+  async getSingleService(slug: string): Promise<{ data: IServiceItem[] }> {
+    const response = await instance.collection(this.url).find({
       filters: {
         slug: {
           $eq: slug
@@ -56,6 +61,8 @@ class ServicesService {
         }
       }
     })
+
+    return response as unknown as { data: IServiceItem[] }
   }
 
   async getAllIds() {

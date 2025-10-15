@@ -1,13 +1,13 @@
 'use client'
 
-import { ServicesSlugs } from '@/types/services.types'
+import { IServicesSlugs } from '@/types/services.types'
 import { ArrowRight, RightUpArrow } from '../icons'
 import { Button } from '../ui/button'
 
 export default function ServicesButtons({
   slugs
 }: {
-  slugs: ServicesSlugs
+  slugs: IServicesSlugs[]
 }) {
   const handleScroll = (id: string) => {
     const element = document.getElementById(id)
