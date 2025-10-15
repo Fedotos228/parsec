@@ -1,12 +1,12 @@
 import { IContactForm, IHeadingSection, IHomePage } from '@/types/pages.types'
 import { DocumentResponse } from '@strapi/client'
-import { instance } from './api/strapi'
+import { createCollectionEntry, findSingle } from './api/strapi'
 
 class PagesService {
   private readonly home = '/home'
 
   async getHomePage(): Promise<{ data: IHomePage }> {
-    const response = await instance.single(this.home).find({
+    const response = await findSingle<IHomePage>(this.home, {
       populate: {
         hero: {
           populate: {
@@ -33,16 +33,15 @@ class PagesService {
         }
       }
     })
-
-    return response as unknown as { data: IHomePage }
+    return response
   }
 
   async sendContactForm(data: IContactForm): Promise<DocumentResponse<IContactForm>> {
-    return (await instance.collection('messages').create(data)) as unknown as DocumentResponse<IContactForm>
+    return await createCollectionEntry<IContactForm>('messages', data)
   }
 
   async getContactPage(): Promise<DocumentResponse<IHeadingSection>> {
-    const response = await instance.single('contact-page').find({
+    const response = await findSingle<IHeadingSection>('contact-page', {
       populate: {
         fields: ['heading', 'subtitle']
       }

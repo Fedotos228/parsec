@@ -1,4 +1,3 @@
-
 const paths = {
   home() {
     return '/'

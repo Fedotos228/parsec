@@ -36,3 +36,14 @@ export interface IContactForm {
   email: string,
   message: string,
 }
+
+export interface ITestimonials {
+  content: string,
+  person: string,
+  logo: IMedia,
+  project: {
+    id: number,
+    documentId: string,
+    slug: string
+  }
+}

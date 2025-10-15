@@ -10,18 +10,17 @@ import 'swiper/css/pagination'
 
 import { Heading } from '@/components/ui/typography/heading'
 import { Paragraph } from '@/components/ui/typography/paragraph'
+import { useStrapiQuery } from '@/hooks/use-strapi'
 import { strapiMedia } from '@/lib/utils'
 import { projectService } from '@/services/projects.service'
-import { useQuery } from '@tanstack/react-query'
 import { Autoplay, Navigation } from 'swiper/modules'
 import Loader from '../loader'
 
 export default function ProjectsSwiper() {
-  const { data: slides, isLoading } = useQuery({
-    queryKey: ['projects'],
-    queryFn: () => projectService.getSliderProjects(),
-    select: data => data.data,
-  })
+  const { data: slides, isLoading } = useStrapiQuery(
+    ['projects'],
+    () => projectService.getSliderProjects(),
+  )
 
   const nextButton = useRef<HTMLButtonElement>(null)
   const prevButton = useRef<HTMLButtonElement>(null)
@@ -114,5 +113,3 @@ export default function ProjectsSwiper() {
     </>
   )
 }
-
-

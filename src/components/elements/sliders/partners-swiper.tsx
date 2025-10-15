@@ -4,7 +4,6 @@ import { useRef } from 'react'
 import { Paragraph } from '@/components/ui/typography/paragraph'
 import { strapiMedia } from '@/lib/utils'
 import { testimonialsService } from '@/services/testimonials.service'
-import { useQuery } from '@tanstack/react-query'
 
 import Image from 'next/image'
 import Link from 'next/link'
@@ -12,16 +11,16 @@ import Link from 'next/link'
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+import { useStrapiQuery } from '@/hooks/use-strapi'
 import paths from '@/lib/paths'
 import 'swiper/css'
 
 
 export default function PartnersSwiper() {
-  const { data: sliders } = useQuery({
-    queryKey: ['partners'],
-    queryFn: () => testimonialsService.getTestimonials(),
-    select: (data) => data.data,
-  })
+  const { data: sliders } = useStrapiQuery(
+    ['partners'],
+    () => testimonialsService.getTestimonials(),
+  )
 
   const nextButton = useRef<HTMLButtonElement>(null)
   const prevButton = useRef<HTMLButtonElement>(null)

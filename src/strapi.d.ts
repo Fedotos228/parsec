@@ -7,8 +7,7 @@ declare module '@strapi/client' {
     createdAt: string
     updatedAt: string
     publishedAt: string
-    data?: T
-    [key: string]: any
+    [key: string]: T
   }
 
   interface DocumentResponse<T = Document> {

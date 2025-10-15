@@ -9,11 +9,10 @@ import Services from '@/components/blocks/home/services'
 import Loader from '@/components/elements/loader'
 import { useStrapiQuery } from '@/hooks/use-strapi'
 import { pagesService } from '@/services/pages.service'
-import { IHomePage } from '@/types/pages.types'
 import { notFound } from 'next/navigation'
 
 export default function Home() {
-  const { data, isLoading } = useStrapiQuery<IHomePage>(
+  const { data, isLoading } = useStrapiQuery(
     ['home'],
     () => pagesService.getHomePage()
   )

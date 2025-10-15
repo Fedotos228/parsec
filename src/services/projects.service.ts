@@ -1,11 +1,12 @@
 import { IProject } from '@/types/project.types'
-import { instance } from './api/strapi'
+import { DocumentResponse } from '@strapi/client'
+import { findCollection, instance } from './api/strapi'
 
 class ProjectService {
   private readonly url = '/projects'
 
-  async getSliderProjects() {
-    return await instance.collection(this.url).find({
+  async getSliderProjects(): Promise<DocumentResponse<IProject[]>> {
+    return await findCollection<IProject>(this.url, {
       fields: ['title', 'slug', 'company'],
       populate: {
         thumbnail: {
