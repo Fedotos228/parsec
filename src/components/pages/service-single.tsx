@@ -4,7 +4,6 @@ import Loader from '@/components/elements/loader'
 
 import { useStrapiQuery } from '@/hooks/use-strapi'
 import { servicesService } from '@/services/services.service'
-import { notFound } from 'next/navigation'
 import ServiceSingleHero from '../blocks/service-single/service-single-hero'
 import ServiceSingleProjects from '../blocks/service-single/service-single-projects'
 
@@ -21,7 +20,10 @@ export default function ServiceSingle({
   if (isLoading) return <Loader />
   
   const serviceSingle = data?.[0]
-  if (!serviceSingle) return notFound()
+  if (!serviceSingle) return <div>
+    <h1 className='text-8xl font-bold text-center text-accent-500'>404</h1>
+    <h2 className='text-3xl font-bold text-center text-neutral-300'>Pagina nu există</h2>
+  </div>
 
   const { title, tags, description, projects } = serviceSingle
 
