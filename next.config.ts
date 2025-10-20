@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     STRAPI_API: process.env.STRAPI_API,
     STRAPI_URL: process.env.STRAPI_URL,
     STRAPI_BASE: process.env.STRAPI_BASE,
-    SITE_URL: process.env.SITE_URL, 
+    SITE_URL: process.env.SITE_URL,
   },
   images: {
     remotePatterns: [
@@ -28,6 +28,9 @@ const nextConfig: NextConfig = {
       //   hostname: "placehold.co",
       // },
     ],
+  },
+  reactComponentAnnotation: {
+    enabled: process.env.NODE_ENV === 'development',
   },
 }
 
