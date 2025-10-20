@@ -29,8 +29,10 @@ const nextConfig: NextConfig = {
       // },
     ],
   },
-  reactComponentAnnotation: {
-    enabled: process.env.NODE_ENV === 'development',
+  sentry: {
+    reactComponentAnnotation: {
+      enabled: process.env.NODE_ENV === 'development', // Disable in production
+    },
   },
 }
 
