@@ -11,8 +11,11 @@ const paths = {
   contact() {
     return '/contact'
   }, 
-  projectSingle(documentId: string) {
-    return `/project/${documentId}`
+  projectsSingle(documentId: string) {
+    return `/projects/${documentId}`
+  },
+  projects() {
+    return `/projects`
   },
 }
 

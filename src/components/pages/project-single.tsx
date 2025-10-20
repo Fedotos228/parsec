@@ -1,28 +1,33 @@
 'use client'
 
-import ProjectHero from '@/components/blocks/project/project-hero'
 import Loader from '@/components/elements/loader'
-import { projectService } from '@/services/projects.service'
-import { IProject } from '@/types/project.types'
-import { useQuery } from '@tanstack/react-query'
+import { useStrapiQuery } from '@/hooks/use-strapi'
+import { projectsService } from '@/services/projects.service'
 import { notFound } from 'next/navigation'
+import ProjectSingleHero from '../blocks/project-single/project-single-hero'
 
 export default function ProjectSingle({ slug }: { slug: string }) {
-  const { data, isLoading } = useQuery({
-    queryKey: ['singleProject', slug],
-    queryFn: () => projectService.getSingleProject(slug),
-    select: data => data.data[0]
-  })
+  const { data, isLoading } = useStrapiQuery(
+    ['singleProject', slug],
+    () => projectsService.getSingleProject(slug),
+  )
 
-  const project = data as IProject | undefined
+  const project = data?.[0]
+
 
   if (isLoading) return <Loader />
   if (!project) return notFound()
 
+  const { title, thumbnail, company, date, services } = project
+
   return (
     <div>
-      <ProjectHero
-        hero={project}
+      <ProjectSingleHero
+        title={title}
+        company={company}
+        thumbnail={thumbnail}
+        date={date}
+        services={services}
       />
       {/* {project?.content.map((content, index) => (
         <ProjectContent

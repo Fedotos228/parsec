@@ -5,18 +5,16 @@ import Tags, { TagsProps } from '@/components/elements/tags'
 import { Heading } from '@/components/ui/typography/heading'
 import { Paragraph } from '@/components/ui/typography/paragraph'
 
-type ServiceSingleHeroProps = {
-  title: string
-  tags: TagsProps[]
-  description: string
-}
-
 export default function ServiceSingleHero({
   title,
   tags,
   description
 }:
-  ServiceSingleHeroProps
+  {
+    title: string,
+    tags: TagsProps[],
+    description: string
+  }
 ) {
   return (
     <SectionGrid>

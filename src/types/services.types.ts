@@ -1,29 +1,33 @@
-import { IProject } from './project.types'
-import { BaseEntity, IMedia } from './strapi.types'
+import type { Document, StrapiImage } from '@strapi/client'
+import { ProjectsType } from './projects.types'
 
-export type ServicesSlugs = {
+export interface IServiceSlugs {
   title: string
-  slug: string,
-  documentId: string
-}[]
+  slug: string
+}
 
 interface ITags {
   id: number
   label: string
 }
 
-interface IClientsLogo extends BaseEntity {
+interface IClientsLogo {
   alt: string
   slug: string
-  image: IMedia
+  image: StrapiImage
 }
 
-export interface IServiceItem extends BaseEntity {
+type ClientsLogosType = Document<IClientsLogo>
+
+export interface IService {
   title: string,
   slug: string,
   description: string,
-  image: IMedia
+  image: StrapiImage
   tags: ITags[]
-  clients_logos?: IClientsLogo[]
-  projects?: IProject
+  clients_logos?: ClientsLogosType[]
+  projects?: ProjectsType[]
 }
+
+export type ServiceSlugsType = Document<IServiceSlugs>
+export type ServiceType = Document<IService>

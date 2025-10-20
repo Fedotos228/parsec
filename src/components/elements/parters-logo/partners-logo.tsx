@@ -1,6 +1,6 @@
+import { useStrapiQuery } from '@/hooks/use-strapi'
 import { partnersLogo } from '@/lib/constans'
 import { testimonialsService } from '@/services/testimonials.service'
-import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import styles from './partners-logo.module.css'
 
@@ -12,11 +12,10 @@ const stylesRoot = {
 } as React.CSSProperties
 
 export default function PartnersLogo() {
-  const { data: logos } = useQuery({
-    queryKey: ['partnersLogo'],
-    queryFn: () => testimonialsService.getClientsLogos(),
-    select: data => data.data
-  })
+  const { data: logos } = useStrapiQuery(
+    ['partnersLogo'],
+    () => testimonialsService.getClientsLogos(),
+  )
 
   return (
     <div

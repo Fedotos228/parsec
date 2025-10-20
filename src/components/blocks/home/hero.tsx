@@ -1,3 +1,4 @@
+import paths from '@/lib/paths'
 import { strapiMedia } from '@/lib/utils'
 import { HomeHeroTypes } from '@/types/pages.types'
 import Link from 'next/link'
@@ -30,7 +31,7 @@ export default function Hero({
         <BlockRendererClient content={content?.heading} />
         <div className='w-full flex items-center justify-between'>
           <Button variant='mainWhite' asChild className='mt-8'>
-            <Link href='/projects' >
+            <Link href={paths.projects()} >
               Vezi Proiectele
               <LongArrow className='fill-foreground group-hover:fill-neutral-900' />
             </Link>

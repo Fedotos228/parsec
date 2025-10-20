@@ -1,9 +1,9 @@
-import { projectService } from '@/services/projects.service'
+import { projectsService } from '@/services/projects.service'
 import { servicesService } from '@/services/services.service'
 import type { MetadataRoute } from 'next'
 
 const services = await servicesService.getAllIds()
-const projects = await projectService.getAllIds()
+const projects = await projectsService.getAllIds()
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const servicesUrls = services.map((item: { slug: string }) => {

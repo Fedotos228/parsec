@@ -7,14 +7,14 @@ import { Heading } from '@/components/ui/typography/heading'
 import { Paragraph } from '@/components/ui/typography/paragraph'
 import paths from '@/lib/paths'
 import { strapiMedia } from '@/lib/utils'
-import { IServiceItem } from '@/types/services.types'
+import { ServiceType } from '@/types/services.types'
 import Image from 'next/image'
 import Link from 'next/link'
 
 export default function ServicesItems({
   services
 }: {
-  services: IServiceItem[]
+  services: ServiceType[]
 }) {
   return (
     <>

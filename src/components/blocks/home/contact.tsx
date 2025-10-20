@@ -15,7 +15,7 @@ export default function Contact({
     <SectionGrin className='grid-cols-1 md:grid-cols-2'>
       <Box className='gap-1/2 max-w-[468px] hidden md:flex'>
         <div className='mb-8 md:mb-20'>
-          <Paragraph color='accent'>
+          <Paragraph color='accent' className='mb-4'>
             {content?.subtitle}
           </Paragraph>
           <BlockRendererClient content={content?.heading} />

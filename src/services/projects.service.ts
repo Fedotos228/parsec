@@ -1,43 +1,75 @@
-import { instance } from './api/strapi'
+import { ProjectsType } from '@/types/projects.types'
+import { DocumentResponseCollection } from '@strapi/client'
+import { findCollection } from './api/strapi'
 
-class ProjectService {
+class ProjectsService {
   private readonly url = '/projects'
 
   async getSliderProjects() {
-    return await instance.collection(this.url).find({
-      fields: ['title', 'slug', 'company'],
-      populate: {
-        thumbnail: {
-          fields: ['url']
+    return await findCollection<DocumentResponseCollection<ProjectsType>>(
+      this.url,
+      {
+        fields: ['title', 'slug', 'company'],
+        populate: {
+          thumbnail: {
+            fields: ['url']
+          },
+          services: {
+            fields: ['title']
+          }
         },
-        services: {
-          fields: ['title']
+        pagination: {
+          page: 1,
+          pageSize: 4
         }
-      },
-      pagination: {
-        page: 1,
-        pageSize: 4
       }
-    })
+    )
+  }
+
+  async getFilteredProjects(filter: string) {
+    return await findCollection<DocumentResponseCollection<ProjectsType>>(
+      this.url,
+      {
+        filters: {
+          services: {
+            slug: {
+              $eq: filter
+            }
+          }
+        },
+        fields: ['title', 'slug', 'company', 'date'],
+        populate: {
+          services: {
+            fields: ['title']
+          },
+          thumbnail: {
+            fields: ['url']
+          }
+        }
+      }
+    )
   }
 
   async getSingleProject(slug: string) {
-    return await instance.collection(this.url).find({
-      filters: {
-        slug: {
-          $eq: slug
-        }
-      },
-      populate: {
-        fields: ['title', 'slug', 'company', 'date'],
-        services: {
-          fields: ['title']
+    return await findCollection<DocumentResponseCollection<ProjectsType>>(
+      this.url,
+      {
+        filters: {
+          slug: {
+            $eq: slug
+          }
         },
-        thumbnail: {
-          fields: ['url']
+        populate: {
+          fields: ['title', 'slug', 'company', 'date'],
+          services: {
+            fields: ['title']
+          },
+          thumbnail: {
+            fields: ['url']
+          }
         }
       }
-    })
+    )
   }
 
   async getAllIds() {
@@ -55,4 +87,4 @@ class ProjectService {
   }
 }
 
-export const projectService = new ProjectService()
+export const projectsService = new ProjectsService()

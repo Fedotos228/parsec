@@ -1,18 +1,18 @@
 'use client'
 
+import { useStrapiQuery } from '@/hooks/use-strapi'
 import paths from '@/lib/paths'
 import { servicesService } from '@/services/services.service'
-import { useQuery } from '@tanstack/react-query'
 import Image from 'next/image'
 import Link from 'next/link'
 import { LineArrowRight } from '../../icons'
 import { Paragraph } from '../../ui/typography/paragraph'
 
 export default function Services() {
-  const { data } = useQuery({
-    queryKey: ['homePage services'],
-    queryFn: () => servicesService.getServicesTitle(),
-  })
+  const { data } = useStrapiQuery(
+    ['homePage services'],
+    () => servicesService.getServicesTitle(),
+  )
 
   return (
     <section className='relative h-lvh' style={{ background: 'url("/assets/image/eternal.png") 50% 50% / cover no-repeat' }}>
@@ -31,7 +31,7 @@ export default function Services() {
           ne specializăm în
         </Paragraph>
         <div className='flex flex-col w-fit gap-8'>
-          {data?.data.map(link => (
+          {data?.map(link => (
             <Link
               key={link.documentId}
               href={paths.servicesSingle(link.documentId)}

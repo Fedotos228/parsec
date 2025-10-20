@@ -1,42 +1,20 @@
-import Image from 'next/image'
-
-import Box from '@/components/elements/box'
-import SectionGrid from '@/components/elements/section-grid'
+import ScrollButton from '@/components/elements/scroll-button'
 import { Heading } from '@/components/ui/typography/heading'
 import { Paragraph } from '@/components/ui/typography/paragraph'
-import { formattingDate, strapiMedia } from '@/lib/utils'
-import { IProject } from '@/types/project.types'
 
-export default function ProjectHero({
-  hero
-}: {
-  hero: IProject
-}) {
+export default function ProjectHero() {
   return (
-    <SectionGrid>
-      <Box>
-        <Paragraph color='accent' type='sm' className='mb-2'>
-          {formattingDate(hero.date)}
+    <div className='relative h-lvh' style={{ background: 'url("/assets/image/service-bg.png") 50% 50% / cover no-repeat' }}>
+      <div className='flex flex-col items-center justify-center h-full'>
+        <Paragraph color='accent' className='text-center'>
+          Proiecte
         </Paragraph>
-        <Heading level={1} className='mb-4'>
-          {hero.title} - {hero.company}
+        <Heading level={1} className='text-center mb-11'>
+          De la idee la execuție, <br />
+          acoperim <em>totul</em>
         </Heading>
-        <Paragraph className=''>
-          {hero.services.map((service, index) => (
-            <span key={service.documentId}>
-              {service.title}
-              {index < hero.services.length - 1 ? ', ' : ''}
-            </span>
-          ))}
-        </Paragraph>
-      </Box>
-      <Image
-        src={strapiMedia(hero.thumbnail.url)}
-        alt={hero.title || 'Proiect image'}
-        width={500}
-        height={500}
-        className='h-lvh w-full object-cover'
-      />
-    </SectionGrid>
+      </div>
+      <ScrollButton className='absolute bottom-9 right-2.5 md:bottom-20 md:right-20' />
+    </div>
   )
 }

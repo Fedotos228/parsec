@@ -1,16 +1,19 @@
-import { instance } from './api/strapi'
+import { ServiceSlugsType, ServiceType } from '@/types/services.types'
+import { DocumentResponseCollection } from '@strapi/client'
+import { findCollection } from './api/strapi'
+
 
 class ServicesService {
   private readonly url = '/services'
 
   async getServicesTitle() {
-    return await instance.collection(this.url).find({
-      fields: ['title']
+    return await findCollection<DocumentResponseCollection<ServiceSlugsType>>(this.url, {
+      fields: ['title', 'slug']
     })
   }
 
   async getServices() {
-    return await instance.collection(this.url).find({
+    return await findCollection<DocumentResponseCollection<ServiceType>>(this.url, {
       populate: {
         fields: ['title', 'slug', 'description'],
         image: {
@@ -32,7 +35,7 @@ class ServicesService {
   }
 
   async getSingleService(slug: string) {
-    return await instance.collection(this.url).find({
+    return await findCollection<DocumentResponseCollection<ServiceType>>(this.url, {
       filters: {
         slug: {
           $eq: slug

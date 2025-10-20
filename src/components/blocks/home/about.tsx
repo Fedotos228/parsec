@@ -39,7 +39,6 @@ export default function About({
           alt='About'
           className='h-lvh w-full'
           objectFit='cover'
-          objectPosition='center'
           width={720}
           height={1024}
           quality={100}

@@ -1,6 +1,6 @@
 'use client'
 
-import { contactService } from '@/services/contact.service'
+import { pagesService } from '@/services/pages.service'
 import { useMutation } from '@tanstack/react-query'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -8,19 +8,12 @@ import { LongArrow } from '../../icons'
 import { Button } from '../../ui/button'
 import Input from '../../ui/input'
 import Textarea from '../../ui/textarea'
-
-export interface IContactForm {
-  fullname: string,
-  phone: string,
-  company: string,
-  email: string,
-  message: string,
-}
+import { IContactForm } from '@/types/contact.type'
 
 export default function ContactForm() {
   const { mutate, isPending } = useMutation({
     mutationKey: ['contact'],
-    mutationFn: (data: IContactForm) => contactService.sendContactForm(data),
+    mutationFn: (data: IContactForm) => pagesService.sendContactForm(data),
     onSuccess: () => {
       toast.success('Mesajul a fost trimis cu succes!')
     },
@@ -37,7 +30,6 @@ export default function ContactForm() {
 
   const onSubmit: SubmitHandler<IContactForm> = data => {
     mutate(data)
-    
   }
 
   return (
@@ -47,11 +39,9 @@ export default function ContactForm() {
         label='Numele tau'
         placeholder='Nume'
         {...register('fullname', { required: 'Numele este necesar' })}
-        className={errors.fullname ? 'border-error-100' : ''}
-        labelClassName={errors.fullname ? '!text-error-100' : ''}
-        aria-invalid={errors.fullname ? 'true' : 'false'}
-        aria-errormessage={errors.fullname ? 'name-error' : undefined}
-        disabled={isSubmitting}
+        field='fullname'
+        errors={errors}
+        isSubmitting={isSubmitting}
         autoComplete='name'
         pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
       />
@@ -60,24 +50,21 @@ export default function ContactForm() {
         label='Nr. meu de telefon este'
         placeholder='Telefon'
         {...register('phone', { required: 'Numărul de telefon este necesar' })}
-        className={errors.phone ? '!border-error-100' : ''}
-        labelClassName={errors.phone ? '!text-error-100' : ''}
-        aria-invalid={errors.phone ? 'true' : 'false'}
-        aria-errormessage={errors.phone ? 'phone-error' : undefined}
-        disabled={isSubmitting}
+        field='phone'
+        errors={errors}
+        isSubmitting={isSubmitting}
         autoComplete='tel'
+        pattern='[0-9+() -]{3,}'
       />
       <Input
         type='text'
         label='Lucrez la'
         placeholder='Compania'
         {...register('company', { required: 'Compania este necesară' })}
-        className={errors.company ? 'border-error-100' : ''}
-        labelClassName={errors.company ? '!text-error-100' : ''}
-        aria-invalid={errors.company ? 'true' : 'false'}
-        aria-errormessage={errors.company ? 'company-error' : undefined}
-        disabled={isSubmitting}
-        autoComplete='organization'
+        field='company'
+        errors={errors}
+        isSubmitting={isSubmitting}
+        pattern='[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}'
       />
       <Input
         type='text'
@@ -90,11 +77,9 @@ export default function ContactForm() {
             message: 'E-mail invalid',
           },
         })}
-        className={errors.email ? 'border-error-100' : ''}
-        labelClassName={errors.email ? '!text-error-100' : ''}
-        aria-invalid={errors.email ? 'true' : 'false'}
-        aria-errormessage={errors.email ? 'email-error' : undefined}
-        disabled={isSubmitting}
+        field='email'
+        errors={errors}
+        isSubmitting={isSubmitting}
         autoComplete='email'
       />
       <Textarea

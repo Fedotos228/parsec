@@ -10,10 +10,6 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "tailwindui.com",
-      },
-      {
         protocol: "http",
         hostname: "127.0.0.1",
         port: "1337",
@@ -23,14 +19,14 @@ const nextConfig: NextConfig = {
         hostname: "localhost",
         port: "1337",
       },
-      {
-        protocol: "https",
-        hostname: "res.cloudinary.com",
-      },
-      {
-        protocol: "https",
-        hostname: "placehold.co",
-      },
+      // {
+      //   protocol: "https",
+      //   hostname: "res.cloudinary.com",
+      // },
+      // {
+      //   protocol: "https",
+      //   hostname: "placehold.co",
+      // },
     ],
   },
 }

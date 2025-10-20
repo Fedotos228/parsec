@@ -1,11 +1,13 @@
-import { instance } from './api/strapi'
+import { ClientLogoType, TestimonialsType } from '@/types/testimonials.types'
+import type { DocumentResponseCollection } from '@strapi/client'
+import { findCollection } from './api/strapi'
 
 class TestimonialsService {
   private readonly testimonials = '/testimonials'
-  private readonly clientsLogos = '/clients-logos'
+  private readonly clientsLogo = '/clients-logos'
 
   async getTestimonials() {
-    return await instance.collection(this.testimonials).find({
+    return await findCollection<DocumentResponseCollection<TestimonialsType>>(this.testimonials, {
       populate: {
         logo: {
           fields: ['url']
@@ -16,8 +18,9 @@ class TestimonialsService {
       }
     })
   }
+
   async getClientsLogos() {
-    return await instance.collection(this.clientsLogos).find({
+    return await findCollection<DocumentResponseCollection<ClientLogoType>>(this.clientsLogo, {
       fields: ['alt'],
       populate: {
         image: {

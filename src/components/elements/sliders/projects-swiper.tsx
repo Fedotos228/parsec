@@ -10,21 +10,21 @@ import 'swiper/css/pagination'
 
 import { Heading } from '@/components/ui/typography/heading'
 import { Paragraph } from '@/components/ui/typography/paragraph'
+import { useStrapiQuery } from '@/hooks/use-strapi'
 import { strapiMedia } from '@/lib/utils'
-import { projectService } from '@/services/projects.service'
-import { useQuery } from '@tanstack/react-query'
+import { projectsService } from '@/services/projects.service'
 import { Autoplay, Navigation } from 'swiper/modules'
 import Loader from '../loader'
 
 export default function ProjectsSwiper() {
-  const { data: slides, isLoading } = useQuery({
-    queryKey: ['projects'],
-    queryFn: () => projectService.getSliderProjects(),
-    select: data => data.data,
-  })
+  const { data: slides, isLoading } = useStrapiQuery(
+    ['projects'],
+    () => projectsService.getSliderProjects(),
+  )
 
-  const prevButton = useRef<HTMLButtonElement>(null)
   const nextButton = useRef<HTMLButtonElement>(null)
+  const prevButton = useRef<HTMLButtonElement>(null)
+
   const progressBar = useRef<HTMLDivElement | null>(null)
 
   const onAutoplayTimeLeft = (swiper: SwiperType, timeLeft: number, percentage: number) => {
@@ -45,7 +45,10 @@ export default function ProjectsSwiper() {
           disableOnInteraction: false,
         }}
         onBeforeInit={(swiper) => {
-          if (swiper.params.navigation && typeof swiper.params.navigation !== 'boolean') {
+          if (
+            swiper.params.navigation &&
+            typeof swiper.params.navigation !== 'boolean'
+          ) {
             swiper.params.navigation.prevEl = prevButton.current
             swiper.params.navigation.nextEl = nextButton.current
           }
@@ -84,8 +87,14 @@ export default function ProjectsSwiper() {
         ))}
         <div className='navigation-container px-3 max-w-[500px] w-full absolute bottom-[80px] left-1/2 -translate-x-1/2 z-10'>
           <div className='buttons-container flex items-center justify-end gap-4'>
-            <button className='swiper-button-next' ref={prevButton}></button>
-            <button className='swiper-button-prev' ref={nextButton}></button>
+            <button
+              ref={prevButton}
+              className='swiper-button-prev'
+            ></button>
+            <button
+              ref={nextButton}
+              className='swiper-button-next'
+            ></button>
           </div>
 
           <div
@@ -104,5 +113,3 @@ export default function ProjectsSwiper() {
     </>
   )
 }
-
-
