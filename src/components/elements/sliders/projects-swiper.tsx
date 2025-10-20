@@ -12,14 +12,14 @@ import { Heading } from '@/components/ui/typography/heading'
 import { Paragraph } from '@/components/ui/typography/paragraph'
 import { useStrapiQuery } from '@/hooks/use-strapi'
 import { strapiMedia } from '@/lib/utils'
-import { projectService } from '@/services/projects.service'
+import { projectsService } from '@/services/projects.service'
 import { Autoplay, Navigation } from 'swiper/modules'
 import Loader from '../loader'
 
 export default function ProjectsSwiper() {
   const { data: slides, isLoading } = useStrapiQuery(
     ['projects'],
-    () => projectService.getSliderProjects(),
+    () => projectsService.getSliderProjects(),
   )
 
   const nextButton = useRef<HTMLButtonElement>(null)

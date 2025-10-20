@@ -1,13 +1,12 @@
 'use client'
 
 import { useStrapiQuery } from '@/hooks/use-strapi'
-import { servicesService } from '@/services/services.service'
-import { IServicesSlugs } from '@/types/services.types'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useCallback, useState } from 'react'
 import ProjectHero from '../blocks/project/project-hero'
 import ProjectList from '../blocks/project/project-list'
 import { Button } from '../ui/button'
+import { servicesService } from '@/services/services.service'
 
 export default function ProjectPage() {
   const [active, setActive] = useState<string>('')
@@ -16,7 +15,7 @@ export default function ProjectPage() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  const { data: services } = useStrapiQuery<IServicesSlugs[]>(
+  const { data: services } = useStrapiQuery(
     ['project services'],
     () => servicesService.getServicesTitle(),
   )

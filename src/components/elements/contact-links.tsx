@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Socials from './socials'
 
-
 const menuContacts = [
   {
     href: 'contact@parsec.md',

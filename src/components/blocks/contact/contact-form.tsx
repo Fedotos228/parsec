@@ -1,7 +1,6 @@
 'use client'
 
 import { pagesService } from '@/services/pages.service'
-import { IContactForm } from '@/types/pages.types'
 import { useMutation } from '@tanstack/react-query'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -9,6 +8,7 @@ import { LongArrow } from '../../icons'
 import { Button } from '../../ui/button'
 import Input from '../../ui/input'
 import Textarea from '../../ui/textarea'
+import { IContactForm } from '@/types/contact.type'
 
 export default function ContactForm() {
   const { mutate, isPending } = useMutation({

@@ -1,7 +1,8 @@
-import { useQuery, UseQueryOptions } from '@tanstack/react-query'
+import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query'
+
 
 export function useStrapiQuery<TData, TError = Error>(
-  queryKey: string[],
+  queryKey: QueryKey,
   queryFn: () => Promise<{ data: TData }>,
   options?: Omit<UseQueryOptions<{ data: TData }, TError, TData>, 'queryKey' | 'queryFn' | 'select'>
 ) {

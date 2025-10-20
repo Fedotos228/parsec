@@ -1,20 +1,19 @@
-import { IServiceItem, IServicesSlugs } from '@/types/services.types'
-import { DocumentResponse } from '@strapi/client'
-import { findCollection, instance } from './api/strapi'
+import { ServiceSlugsType, ServiceType } from '@/types/services.types'
+import { DocumentResponseCollection } from '@strapi/client'
+import { findCollection } from './api/strapi'
+
 
 class ServicesService {
   private readonly url = '/services'
 
-  async getServicesTitle(): Promise<DocumentResponse<IServicesSlugs[]>> {
-    const response = await findCollection<IServicesSlugs>(this.url, {
+  async getServicesTitle() {
+    return await findCollection<DocumentResponseCollection<ServiceSlugsType>>(this.url, {
       fields: ['title', 'slug']
     })
-
-    return response
   }
 
-  async getServices(): Promise<{ data: IServiceItem[] }> {
-    const response = await instance.collection(this.url).find({
+  async getServices() {
+    return await findCollection<DocumentResponseCollection<ServiceType>>(this.url, {
       populate: {
         fields: ['title', 'slug', 'description'],
         image: {
@@ -33,12 +32,10 @@ class ServicesService {
         }
       }
     })
-
-    return response as unknown as { data: IServiceItem[] }
   }
 
-  async getSingleService(slug: string): Promise<{ data: IServiceItem[] }> {
-    const response = await instance.collection(this.url).find({
+  async getSingleService(slug: string) {
+    return await findCollection<DocumentResponseCollection<ServiceType>>(this.url, {
       filters: {
         slug: {
           $eq: slug
@@ -62,8 +59,6 @@ class ServicesService {
         }
       }
     })
-
-    return response as unknown as { data: IServiceItem[] }
   }
 
   async getAllIds() {

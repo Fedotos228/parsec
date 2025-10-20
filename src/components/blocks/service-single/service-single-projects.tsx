@@ -1,7 +1,7 @@
 import { Paragraph } from '@/components/ui/typography/paragraph'
 
 import { Heading } from '@/components/ui/typography/heading'
-import { IProject } from '@/types/project.types'
+import { ProjectsType } from '@/types/projects.types'
 
 import ProjectCard from '@/components/elements/project-card'
 
@@ -9,7 +9,7 @@ import ProjectCard from '@/components/elements/project-card'
 export default function ServiceSingleProjects({
   projects
 }: {
-  projects: IProject[]
+  projects: ProjectsType[]
 }) {
   return (
     <div className='relative h-lvh default-inline-padding'>

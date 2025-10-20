@@ -1,11 +1,12 @@
 import { BlocksContent } from '@strapi/blocks-react-renderer'
-import { BaseEntity, IMedia } from './strapi.types'
+import type { Document } from '@strapi/client'
+import { StrapiImage } from '@strapi/client'
 
-export interface IProject extends BaseEntity {
+interface IProject {
   slug: string,
   title: string,
   company: string,
-  thumbnail: IMedia,
+  thumbnail: StrapiImage,
   description: string,
   date: string
   services: {
@@ -15,3 +16,5 @@ export interface IProject extends BaseEntity {
   }[]
   content?: BlocksContent
 }
+
+export type ProjectsType = Document<IProject>

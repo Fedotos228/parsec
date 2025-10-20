@@ -1,27 +1,33 @@
 'use client'
 
-import ProjectSingleHero from '@/components/blocks/project-single/project-single-hero'
 import Loader from '@/components/elements/loader'
 import { useStrapiQuery } from '@/hooks/use-strapi'
-import { projectService } from '@/services/projects.service'
-import { IProject } from '@/types/project.types'
+import { projectsService } from '@/services/projects.service'
 import { notFound } from 'next/navigation'
+import ProjectSingleHero from '../blocks/project-single/project-single-hero'
 
 export default function ProjectSingle({ slug }: { slug: string }) {
-  const { data, isLoading } = useStrapiQuery<IProject>(
+  const { data, isLoading } = useStrapiQuery(
     ['singleProject', slug],
-    () => projectService.getSingleProject(slug),
+    () => projectsService.getSingleProject(slug),
   )
 
-  const project = data as IProject | undefined
+  const project = data?.[0]
+
 
   if (isLoading) return <Loader />
   if (!project) return notFound()
 
+  const { title, thumbnail, company, date, services } = project
+
   return (
     <div>
       <ProjectSingleHero
-        hero={project}
+        title={title}
+        company={company}
+        thumbnail={thumbnail}
+        date={date}
+        services={services}
       />
       {/* {project?.content.map((content, index) => (
         <ProjectContent

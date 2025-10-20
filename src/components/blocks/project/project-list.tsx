@@ -1,8 +1,7 @@
 'use client'
 
 import ProjectCard from '@/components/elements/project-card'
-import { projectService } from '@/services/projects.service'
-import { IProject } from '@/types/project.types'
+import { projectsService } from '@/services/projects.service'
 import { useQuery } from '@tanstack/react-query'
 import { useSearchParams } from 'next/navigation'
 
@@ -10,13 +9,11 @@ export default function ProjectList() {
   const servicesSearchParams = useSearchParams().get('service')
   const service = servicesSearchParams ? servicesSearchParams : 'event-managment'
 
-  const { data, isLoading } = useQuery({
+  const { data: projects, isLoading } = useQuery({
     queryKey: ['projects', service],
-    queryFn: () => projectService.getFilteredProjects(service),
+    queryFn: () => projectsService.getFilteredProjects(service),
     select: (data) => data.data,
   })
-
-  const projects = data as IProject[]
 
   return (
     <div>

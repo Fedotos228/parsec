@@ -1,10 +1,9 @@
 'use client'
 
 import Loader from '@/components/elements/loader'
-import { servicesService } from '@/services/services.service'
 
 import { useStrapiQuery } from '@/hooks/use-strapi'
-import { IServiceItem } from '@/types/services.types'
+import { servicesService } from '@/services/services.service'
 import { notFound } from 'next/navigation'
 import ServiceSingleHero from '../blocks/service-single/service-single-hero'
 import ServiceSingleProjects from '../blocks/service-single/service-single-projects'
@@ -14,7 +13,7 @@ export default function ServiceSingle({
 }: {
   slug: string
 }) {
-  const { data, isLoading } = useStrapiQuery<IServiceItem[]>(
+  const { data, isLoading } = useStrapiQuery(
     ['singleService', slug],
     () => servicesService.getSingleService(slug),
   )
@@ -25,6 +24,7 @@ export default function ServiceSingle({
   if (!serviceSingle) return notFound()
 
   const { title, tags, description, projects } = serviceSingle
+
 
   return (
     <>

@@ -1,6 +1,6 @@
 import paths from '@/lib/paths'
 import { formattingDate, strapiMedia } from '@/lib/utils'
-import { IProject } from '@/types/project.types'
+import { ProjectsType } from '@/types/projects.types'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Heading } from '../ui/typography/heading'
@@ -9,7 +9,7 @@ import { Paragraph } from '../ui/typography/paragraph'
 export default function ProjectCard({
   project
 }: {
-  project: IProject
+  project: ProjectsType
 }) {
   return (
     <Link href={paths.projectsSingle(project.slug)} key={project.id} className=''>

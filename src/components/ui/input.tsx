@@ -1,6 +1,6 @@
+import { IContactForm } from '@/types/contact.type'
 import React from 'react'
 import { FieldErrors } from 'react-hook-form'
-import { IContactForm } from '../blocks/contact/contact-form'
 
 interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement>, React.ComponentProps<'input'> {

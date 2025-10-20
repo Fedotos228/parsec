@@ -3,22 +3,24 @@
 import Loader from '@/components/elements/loader'
 import { useStrapiQuery } from '@/hooks/use-strapi'
 import { servicesService } from '@/services/services.service'
-import { IServiceItem, IServicesSlugs } from '@/types/services.types'
+import type { ServiceSlugsType } from '@/types/services.types'
 import ServicesItems from '../blocks/services/services-items'
 import ScrollButton from '../elements/scroll-button'
 import ServicesButtons from '../elements/services-buttons'
 import { Heading } from '../ui/typography/heading'
 import { Paragraph } from '../ui/typography/paragraph'
 
+
+
 export default function ServicePage() {
-  const { data: services, isLoading } = useStrapiQuery<IServiceItem[]>(
+  const { data: services, isLoading } = useStrapiQuery(
     ['services'],
     () => servicesService.getServices(),
   )
 
-  console.log(services)
+  function getSlugServices(): ServiceSlugsType[] {
+    if (!services) return []
 
-  function getSlugServices(): IServicesSlugs[] {
     const slugMap = services?.map((item) => {
       return {
         id: item.id,
@@ -28,10 +30,11 @@ export default function ServicePage() {
       }
     })
 
-    return slugMap || []
+    return slugMap
   }
 
   const slugs = getSlugServices()
+
 
   if (isLoading) return <Loader />
 
