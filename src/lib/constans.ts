@@ -1,4 +1,3 @@
-
 export const socials = [
   {
     href: 'https://www.facebook.com/parsec.md',

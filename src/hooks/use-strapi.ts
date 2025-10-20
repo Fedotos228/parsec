@@ -1,6 +1,5 @@
 import { QueryKey, useQuery, UseQueryOptions } from '@tanstack/react-query'
 
-
 export function useStrapiQuery<TData, TError = Error>(
   queryKey: QueryKey,
   queryFn: () => Promise<{ data: TData }>,
