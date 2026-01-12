@@ -3,7 +3,6 @@
 import Loader from '@/components/elements/loader'
 import { useStrapiQuery } from '@/hooks/use-strapi'
 import { projectsService } from '@/services/projects.service'
-import { notFound } from 'next/navigation'
 import ProjectSingleHero from '../blocks/project-single/project-single-hero'
 
 export default function ProjectSingle({ slug }: { slug: string }) {
@@ -16,7 +15,10 @@ export default function ProjectSingle({ slug }: { slug: string }) {
 
 
   if (isLoading) return <Loader />
-  if (!project) return notFound()
+  if (!project) return <div>
+    <h1 className='text-8xl font-bold text-center text-accent-500'>404</h1>
+    <h2 className='text-3xl font-bold text-center text-neutral-300'>Pagina nu există</h2>
+  </div>
 
   const { title, thumbnail, company, date, services } = project
 
