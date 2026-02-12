@@ -46,6 +46,7 @@ export const DomainQuery = graphql(`
       serviceFields {
         hero {
           description
+          shortDescription
           video {
             ...Video
           }
