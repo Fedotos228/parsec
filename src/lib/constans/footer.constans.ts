@@ -1,6 +1,11 @@
-import { IFooterNav } from '@/types/footer.types'
 
-export const footerNav: IFooterNav[] = [
+interface FooterNav {
+  id: number,
+  label: string,
+  href: string
+}
+
+export const footerNav: FooterNav[] = [
   {
     id: 0,
     label: 'Homepage',
@@ -23,7 +28,7 @@ export const footerNav: IFooterNav[] = [
   },
 ]
 
-export const footerContacts: IFooterNav[] = [
+export const footerContacts: FooterNav[] = [
   {
     id: 0,
     label: 'Facebook',
