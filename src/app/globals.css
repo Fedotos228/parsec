@@ -10,6 +10,7 @@
   --color-footer: var(--footer);
   --color-raven: var(--raven);
   --color-pastel: var(--pastel);
+  --animate-upDown: upDown 2.2s ease-in-out infinite;
   --font-sans: var(--font-helix);
   --font-serif: var(--font-eb-garamond);
   --color-sidebar-ring: var(--sidebar-ring);
@@ -48,6 +49,24 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 14px);
   --radius-4xl: calc(var(--radius) + 16px);
+
+  @keyframes upDown {
+    0% {
+      opacity: 1;
+      top: 16px
+    }
+
+    75% {
+      opacity: 0.7;
+    }
+    90%{
+      top: 32px;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
 }
 
 :root {
@@ -141,8 +160,6 @@
   .project-card-bg {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(102, 102, 102, 0.2) 100%);
   }
-
-  .project-single__content {}
 
   .project-single__content h4 {
     @apply mb-4

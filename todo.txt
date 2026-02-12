@@ -2,5 +2,4 @@
 2. De controlat mobile toate paginile
 3. De conectat formularul de contact la contact@parsec.md
 4. Pagina privacy and policy
-5. Link urile contact din adminca (options page)
 6. Header pe homepage

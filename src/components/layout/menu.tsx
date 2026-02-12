@@ -4,11 +4,7 @@ import { useEffect, useState } from 'react'
 import Burger from '../shared/burger'
 import Navigation from './navigation'
 
-export default function Menu({
-  mobile = false
-}: {
-  mobile?: boolean
-}) {
+export default function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
  
   useEffect(() => {

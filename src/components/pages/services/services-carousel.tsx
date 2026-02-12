@@ -20,10 +20,10 @@ export default function ServicesCarousel({ services }: ServicesCarouselProps) {
   return (
     <div className='relative py-20 px-6'>
       <Carousel>
+        <Hr position='top' mobileTop='0' />
         <CarouselContent>
           {service.map(item => (
             <CarouselItem key={item.id} className='py-6'>
-              <Hr position='top' mobileTop='0' />
               <h3 className='font-serif mb-4 text-4xl'>
                 {item.name}
               </h3>

@@ -49,12 +49,12 @@ export default function Navigation({
 
   return (
     <motion.div
-      className='absolute z-20'
+      className='absolute z-90 top-3'
       initial={{ left: '-100%' }}
       animate={{ left: isMenuOpen ? '12px' : '-100%' }}
       ref={menuRef}
     >
-      <div className='px-5 py-9 md:p-9 top-3 bg-[#F4F4F4]' >
+      <div className='px-5 py-9 md:p-9 bg-[#F4F4F4]' >
         <div className='flex items-center gap-2 cursor-pointer' onClick={() => setIsMenuOpen(false)}>
           <X color='black' />
           <span className='text-background'>
