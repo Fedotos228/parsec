@@ -1,6 +1,6 @@
 import type { CodegenConfig } from '@graphql-codegen/cli'
 
-const BASE_URL = process.env.API_URL as string
+const BASE_URL = 'http://parsec.stellarsolutions.md/graphql'
 
 const config: CodegenConfig = {
   schema: BASE_URL,
