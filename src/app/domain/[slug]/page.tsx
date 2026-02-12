@@ -4,7 +4,25 @@ import CTA from '@/components/shared/cta'
 import { getNodes } from '@/lib/utils/notNullable'
 import { DomainQuery } from '@/queries/domains.queries'
 import { wpFetch } from '@/queries/wordpress'
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const { slug } = await params
+  const data = await wpFetch(DomainQuery, { slug })
+
+  const title = data.domainBy?.title || 'Serviciu PR'
+  const description = data.domainBy?.serviceFields?.hero?.description || 'Servicii profesionale de consultanță.'
+
+  return {
+    title: `${title} | Parsec`,
+    description: description.substring(0, 160), // Limită pentru Google
+    openGraph: {
+      title: `${title} | Consultanță Strategică`,
+      images: [data.domainBy?.featuredImage?.node.sourceUrl || '/og-image.jpg'],
+    },
+  }
+}
 
 export default async function page({ params }: PageProps<'/domain/[slug]'>) {
   const { slug } = (await params)

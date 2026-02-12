@@ -30,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="ro">
       <body
         className={`${ebGaramond.variable} ${helix.variable} antialiased`}
       >

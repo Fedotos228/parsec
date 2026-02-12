@@ -37,6 +37,12 @@ export const DomainQuery = graphql(`
       id
       slug
       title
+      featuredImage {
+        node {
+          altText
+          sourceUrl(size: LARGE)
+        }
+      }
       serviceFields {
         hero {
           description

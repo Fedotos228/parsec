@@ -15,6 +15,7 @@ export default function Home() {
       "@type": "PostalAddress",
       "addressCountry": "Moldova"
     },
+    "areaServed": ["Moldova", "Romania"],
     "knowsAbout": [
       "Comunicare de criză",
       "Strategii de comunicare",
@@ -25,10 +26,6 @@ export default function Home() {
       "Producție video",
       "Web development"
     ],
-    "memberOf": [
-      { "@type": "Organization", "name": "USAID" },
-      { "@type": "Organization", "name": "UNDP" }
-    ]
   }
 
   return (
