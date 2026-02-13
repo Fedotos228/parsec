@@ -34,7 +34,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <header className='absolute top-0 w-full p-8 z-30 opacity-100 md:opacity-0'>
+      <header className='absolute top-0 w-full p-8 z-40 opacity-100 md:opacity-0'>
         <Menu />
       </header>
       <main>

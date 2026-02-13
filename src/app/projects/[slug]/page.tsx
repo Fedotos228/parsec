@@ -1,6 +1,6 @@
-import Description from '@/components/pages/projects-singele/description'
-import Gallery from '@/components/pages/projects-singele/gallery'
-import Hero from '@/components/pages/projects-singele/hero'
+import Description from '@/components/pages/projects-single/description'
+import Gallery from '@/components/pages/projects-single/gallery'
+import Hero from '@/components/pages/projects-single/hero'
 import { Button } from '@/components/ui/button'
 import { getNodes } from '@/lib/utils/notNullable'
 import { SingleProject } from '@/queries/projects.queries'
@@ -14,7 +14,21 @@ export async function generateMetadata({
 }: {
   params: Promise<{ slug: string }>
 }) {
+  const { slug } = await params
 
+  const data = await wpFetch(SingleProject, { slug: slug })
+
+  const title = data.projectBy?.title || 'Serviciu PR'
+  const description = data.projectBy?.projectFields?.description || 'Project dezvoltat și realizat de echipa Parsec'
+
+  return {
+    title: `${title} | Parsec`,
+    description: description.substring(0, 160),
+    openGraph: {
+      title: `${title} | Consultanță Strategică`,
+      images: [data.projectBy?.featuredImage?.node.sourceUrl || '/og-image.jpg'],
+    },
+  }
 }
 
 export default async function SingleProjectPage({ params }: PageProps<'/projects/[slug]'>) {
@@ -36,7 +50,7 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
           alt={singleProject?.featuredImage?.node.altText || 'Single project imaghe'}
           width={1872}
           height={1000}
-          className='p-6 h-auto aspect-video object-cover'
+          className='px-3 md:p-6 h-auto aspect-video object-cover'
         />
       )}
       <div className='container px-4 mx-auto my-20'>
@@ -48,9 +62,11 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
           />
           <Gallery />
         </div>
-        <Button className='mt-14'>
-          Angajează-ne
-        </Button>
+        <div className='max-md:w-full mt-14'>
+          <Button className='max-md:block max-md:mx-auto'>
+            Angajează-ne
+          </Button>
+        </div>
       </div>
     </div>
   )

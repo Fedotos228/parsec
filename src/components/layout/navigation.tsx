@@ -43,10 +43,6 @@ export default function Navigation({
     }
   }, [isMenuOpen])
 
-  useEffect(() => {
-
-  }, [])
-
   return (
     <motion.div
       className='absolute z-90 top-3'
