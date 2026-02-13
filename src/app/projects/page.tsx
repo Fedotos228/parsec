@@ -1,23 +1,22 @@
-import Grid from '@/components/pages/projects/grid'
+import GridWrapper from '@/components/pages/projects/grid-wrapper'
 import Hero from '@/components/pages/projects/hero'
+import ProjectsGridSkeleton from '@/components/pages/projects/skeleton-card'
 import { getNodes } from '@/lib/utils/notNullable'
-import { Projects } from '@/queries/projects.queries'
 import { ServcesTaxonomieQuery } from '@/queries/service.queries'
 import { wpFetch } from '@/queries/wordpress'
-
-
+import { Suspense } from 'react'
 
 export default async function ProjectsPage() {
   const { services } = await wpFetch(ServcesTaxonomieQuery)
-  const { projects } = await wpFetch(Projects)
 
   const servicesNode = getNodes(services)
-  const projectNode = getNodes(projects)
 
   return (
     <main>
       <Hero title='Proiecte' services={servicesNode} />
-      <Grid projects={projectNode} />
+      <Suspense fallback={<ProjectsGridSkeleton />}>
+        <GridWrapper />
+      </Suspense>
     </main>
   )
 }

@@ -12,11 +12,11 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const data = await wpFetch(DomainQuery, { slug })
 
   const title = data.domainBy?.title || 'Serviciu PR'
-  const description = data.domainBy?.serviceFields?.hero?.description || 'Servicii profesionale de consultanță.'
+  const description = data.domainBy?.serviceFields?.hero?.shortDescription || 'Servicii profesionale de consultanță.'
 
   return {
     title: `${title} | Parsec`,
-    description: description.substring(0, 160), // Limită pentru Google
+    description: description.substring(0, 160),
     openGraph: {
       title: `${title} | Consultanță Strategică`,
       images: [data.domainBy?.featuredImage?.node.sourceUrl || '/og-image.jpg'],

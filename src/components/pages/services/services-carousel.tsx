@@ -21,6 +21,10 @@ export default function ServicesCarousel({ services }: ServicesCarouselProps) {
     <div className='relative py-20 px-6'>
       <Carousel>
         <Hr position='top' mobileTop='0' />
+        <div className='flex items-center gap-2 pt-6'>
+          <CarouselPrevious />
+          <CarouselNext />
+        </div>
         <CarouselContent>
           {service.map(item => (
             <CarouselItem key={item.id} className='py-6'>
@@ -36,10 +40,7 @@ export default function ServicesCarousel({ services }: ServicesCarouselProps) {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <div className='flex items-center gap-2 my-6'>
-          <CarouselPrevious />
-          <CarouselNext />
-        </div>
+
         <Hr position='bottom' mobileBottom='0' />
       </Carousel>
     </div>
