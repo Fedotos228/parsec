@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://parsec.md'),
   title: {
     default: 'Parsec | Consultanță Strategică și PR Full-Service',
     template: '%s | Parsec',

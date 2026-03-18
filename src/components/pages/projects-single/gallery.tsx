@@ -1,55 +1,41 @@
 'use client'
 
+import { FragmentType, useFragment } from '@/gql'
 import useFancybox from '@/hook/useFancybox'
+import { GalleryFragment } from '@/queries/fragments.queries'
 import "@fancyapps/ui/dist/fancybox/fancybox.css"
 import Image from 'next/image'
 import Link from 'next/link'
 
-interface IGallery {
-  id: number,
-  url: string,
-  alt: string
+interface GalleryProps {
+  images: FragmentType<typeof GalleryFragment>
 }
 
-const gallery: IGallery[] = [
-  {
-    id: 0,
-    url: '/gallery1.png',
-    alt: 'Gallerye',
-  },
-  {
-    id: 1,
-    url: '/galery2.png',
-    alt: 'Gallerye',
-  },
-  {
-    id: 2,
-    url: '/gallery3.png',
-    alt: 'Gallerye',
-  }
-]
-
-export default function Gallery() {
+export default function Gallery({ images }: GalleryProps) {
+  const galleryImages = useFragment(GalleryFragment, images)
   const [fancyboxRef] = useFancybox({
     Carousel: {}
   })
 
+
   return (
     <div ref={fancyboxRef} className='grid grid-cols-2 gap-6'>
-      {gallery.map((item, i) => (
+      {galleryImages.nodes.map((item, i) => (
         <Link
           key={i}
-          href={item.url}
+          href={item.sourceUrl || '#'}
           data-fancybox="project gallery"
           className='first-of-type:col-span-2 h-auto'
         >
-          <Image
-            src={item.url}
-            alt={item.alt}
-            width={450}
-            height={500}
-            className='w-full h-full object-cover'
-          />
+          {item.sourceUrl && (
+            <Image
+              src={item.sourceUrl}
+              alt={item.altText || 'Gallery image'}
+              width={450}
+              height={500}
+              className='w-full h-full object-cover'
+            />
+          )}
         </Link>
       ))}
     </div>

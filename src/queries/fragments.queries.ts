@@ -18,3 +18,13 @@ export const ServicesTaxonomiesFragment = graphql(`
     name
   }
 `)
+
+export const GalleryFragment = graphql(`
+  fragment GalleryFragment on AcfMediaItemConnection {
+    nodes {
+      id
+      altText
+      sourceUrl
+    }
+  }
+`)

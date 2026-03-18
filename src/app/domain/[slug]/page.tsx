@@ -1,7 +1,7 @@
 import Hero from '@/components/pages/services/hero'
 import ServicesList from '@/components/pages/services/services-list'
 import CTA from '@/components/shared/cta'
-import { getNodes } from '@/lib/utils/notNullable'
+import { getNodes } from '@/lib/utils/getNodes'
 import { DomainQuery } from '@/queries/domains.queries'
 import { wpFetch } from '@/queries/wordpress'
 import { Metadata } from 'next'

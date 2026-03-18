@@ -21,3 +21,21 @@ export const HomeQuery = graphql(`
     }  
   }
 `)
+
+export const PartnersQuery = graphql(`
+  query PartnersQuery {
+    pageBy(uri: "home") {
+      id
+      home {
+        partners {
+          image {
+            node {
+              altText
+              sourceUrl(size: LARGE)
+            }
+          }
+        }
+      }
+    }
+  }
+`)

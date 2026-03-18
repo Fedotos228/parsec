@@ -1,4 +1,4 @@
-import { getNodes } from '@/lib/utils/notNullable'
+import { getNodes } from '@/lib/utils/getNodes'
 import { Projects } from '@/queries/projects.queries'
 import { wpFetch } from '@/queries/wordpress'
 import Grid from './grid'

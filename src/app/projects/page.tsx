@@ -1,7 +1,7 @@
 import GridWrapper from '@/components/pages/projects/grid-wrapper'
 import Hero from '@/components/pages/projects/hero'
 import ProjectsGridSkeleton from '@/components/pages/projects/skeleton-card'
-import { getNodes } from '@/lib/utils/notNullable'
+import { getNodes } from '@/lib/utils/getNodes'
 import { ServcesTaxonomieQuery } from '@/queries/service.queries'
 import { wpFetch } from '@/queries/wordpress'
 import { Suspense } from 'react'
