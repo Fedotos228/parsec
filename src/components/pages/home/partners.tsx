@@ -12,16 +12,18 @@ export default async function Partners() {
     <section className=''>
       <h2 className='mt-20 mb-5 text-center'>Partenerii Noștri</h2>
       <div className="container mx-auto py-12 px-4">
-        <div className='grid grid-cols-2 md:grid-cols-4 gap-6 items-center justify-items-center'>
+        <div className='grid grid-cols-2 md:grid-cols-4 gap-4 items-stretch'>
           {partners && partners.map((partner, i) => (
-            <div key={i} className='group flex items-center justify-center p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-all duration-300 h-32 w-full'>
+            <div key={i} className='group flex items-center justify-center p-6 bg-white/5 rounded-xl hover:bg-white/10 border border-white/5 hover:border-white/15 transition-all duration-300 aspect-3/2'>
               {partner?.image && partner?.image.node.sourceUrl ? (
-                <Image
-                  src={partner.image.node.sourceUrl}
-                  alt={partner.image.node.altText || 'Partner Logo'}
-                  width={220}
-                  height={140}
-                  className="max-h-full w-auto object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
+                <div className="relative w-full h-full flex items-center justify-center">
+                  <Image
+                    src={partner.image.node.sourceUrl}
+                    alt={partner.image.node.altText || 'Partner Logo'}
+                    width={220}
+                    height={120}
+                    className="max-w-[75%] max-h-[60%] w-auto h-auto object-contain filter grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" />
+                </div>
               ) : null}
             </div>
           ))}
