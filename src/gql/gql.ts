@@ -21,14 +21,16 @@ type Documents = {
     "\n  query DomainQuery($slug: String!) {\n    domainBy(slug: $slug) {\n      id\n      slug\n      title\n      featuredImage {\n        node {\n          altText\n          sourceUrl(size: LARGE)\n        }\n      }\n      serviceFields {\n        hero {\n          description\n          shortDescription\n          video {\n            ...Video\n          }\n        }\n      }\n      services {\n        nodes {\n          ...ServicesFragment\n        }\n      }\n    }\n  }\n": typeof types.DomainQueryDocument,
     "\n  fragment Video on AcfMediaItemConnectionEdge {\n    node {\n      id\n      mimeType\n      altText\n      filePath(size: LARGE)\n    }\n  }\n": typeof types.VideoFragmentDoc,
     "\n  fragment ServicesTaxonomiesFragment on Service {\n    id\n    slug\n    name\n  }\n": typeof types.ServicesTaxonomiesFragmentFragmentDoc,
+    "\n  fragment GalleryFragment on AcfMediaItemConnection {\n    nodes {\n      id\n      altText\n      sourceUrl\n    }\n  }\n": typeof types.GalleryFragmentFragmentDoc,
     "\n  fragment SocialsFields on GeneralSettingsOptionsSocials {\n    links {\n      link {\n        target\n        title\n        url\n      }\n    }\n  }\n": typeof types.SocialsFieldsFragmentDoc,
     "\n  query SocialsQuery {\n    generalSettings {\n      generalSettingsOptions {\n        socials {\n          ...SocialsFields\n        }\n      }\n    }\n  }\n": typeof types.SocialsQueryDocument,
     "\n  fragment RepresentativeVideo on HomeRepresentativeVideos_Fields {\n    title\n    video {\n      ...Video\n    }\n  }\n": typeof types.RepresentativeVideoFragmentDoc,
     "\n  query HomepageQuery {\n    pageBy(uri: \"home\") {\n      id\n      home {\n        representativeVideos {\n          ...RepresentativeVideo\n        }\n      }\n    }  \n  }\n": typeof types.HomepageQueryDocument,
+    "\n  query PartnersQuery {\n    pageBy(uri: \"home\") {\n      id\n      home {\n        partners {\n          image {\n            node {\n              altText\n              sourceUrl(size: LARGE)\n            }\n          }\n        }\n      }\n    }\n  }\n": typeof types.PartnersQueryDocument,
     "\n  fragment CardFragment on Project {\n    title\n    slug\n    projectFields {\n      year\n      client\n      description\n      shortDescription\n    }\n    featuredImage {\n      node {\n        sourceUrl\n        altText\n      }\n    }\n  }\n": typeof types.CardFragmentFragmentDoc,
     "\n  fragment ProjectDetails on Project {\n    id\n    ...CardFragment\n    services {\n      nodes {\n        slug\n      }\n    }\n  }\n": typeof types.ProjectDetailsFragmentDoc,
     "\n  query Projects {\n    projects(first: 10) {\n      nodes {\n        ...ProjectDetails\n      }\n    }\n  }\n": typeof types.ProjectsDocument,
-    "\n  query SingleProject($slug: String!) {\n    projectBy(slug: $slug) {\n      id\n      slug\n      title\n      featuredImage {\n        node {\n          id\n          altText\n          sourceUrl\n        }\n      }\n      services{\n        nodes{\n          ...ServicesTaxonomiesFragment\n        }\n      }\n      projectFields {\n        client\n        year\n        description\n        gallery{\n          nodes{\n            id\n            altText\n            sourceUrl\n          }\n        }\n      }\n    }\n  }\n": typeof types.SingleProjectDocument,
+    "\n  query SingleProject($slug: String!) {\n    projectBy(slug: $slug) {\n      id\n      slug\n      title\n      featuredImage {\n        node {\n          id\n          altText\n          sourceUrl\n        }\n      }\n      services{\n        nodes{\n          ...ServicesTaxonomiesFragment\n        }\n      }\n      projectFields {\n        client\n        year\n        description\n        gallery{\n          ...GalleryFragment\n        }\n      }\n    }\n  }\n": typeof types.SingleProjectDocument,
     "\n  query ServicesTaxonomies {\n    services {\n      nodes {\n        ...ServicesTaxonomiesFragment\n      }\n    }\n  }\n": typeof types.ServicesTaxonomiesDocument,
 };
 const documents: Documents = {
@@ -39,14 +41,16 @@ const documents: Documents = {
     "\n  query DomainQuery($slug: String!) {\n    domainBy(slug: $slug) {\n      id\n      slug\n      title\n      featuredImage {\n        node {\n          altText\n          sourceUrl(size: LARGE)\n        }\n      }\n      serviceFields {\n        hero {\n          description\n          shortDescription\n          video {\n            ...Video\n          }\n        }\n      }\n      services {\n        nodes {\n          ...ServicesFragment\n        }\n      }\n    }\n  }\n": types.DomainQueryDocument,
     "\n  fragment Video on AcfMediaItemConnectionEdge {\n    node {\n      id\n      mimeType\n      altText\n      filePath(size: LARGE)\n    }\n  }\n": types.VideoFragmentDoc,
     "\n  fragment ServicesTaxonomiesFragment on Service {\n    id\n    slug\n    name\n  }\n": types.ServicesTaxonomiesFragmentFragmentDoc,
+    "\n  fragment GalleryFragment on AcfMediaItemConnection {\n    nodes {\n      id\n      altText\n      sourceUrl\n    }\n  }\n": types.GalleryFragmentFragmentDoc,
     "\n  fragment SocialsFields on GeneralSettingsOptionsSocials {\n    links {\n      link {\n        target\n        title\n        url\n      }\n    }\n  }\n": types.SocialsFieldsFragmentDoc,
     "\n  query SocialsQuery {\n    generalSettings {\n      generalSettingsOptions {\n        socials {\n          ...SocialsFields\n        }\n      }\n    }\n  }\n": types.SocialsQueryDocument,
     "\n  fragment RepresentativeVideo on HomeRepresentativeVideos_Fields {\n    title\n    video {\n      ...Video\n    }\n  }\n": types.RepresentativeVideoFragmentDoc,
     "\n  query HomepageQuery {\n    pageBy(uri: \"home\") {\n      id\n      home {\n        representativeVideos {\n          ...RepresentativeVideo\n        }\n      }\n    }  \n  }\n": types.HomepageQueryDocument,
+    "\n  query PartnersQuery {\n    pageBy(uri: \"home\") {\n      id\n      home {\n        partners {\n          image {\n            node {\n              altText\n              sourceUrl(size: LARGE)\n            }\n          }\n        }\n      }\n    }\n  }\n": types.PartnersQueryDocument,
     "\n  fragment CardFragment on Project {\n    title\n    slug\n    projectFields {\n      year\n      client\n      description\n      shortDescription\n    }\n    featuredImage {\n      node {\n        sourceUrl\n        altText\n      }\n    }\n  }\n": types.CardFragmentFragmentDoc,
     "\n  fragment ProjectDetails on Project {\n    id\n    ...CardFragment\n    services {\n      nodes {\n        slug\n      }\n    }\n  }\n": types.ProjectDetailsFragmentDoc,
     "\n  query Projects {\n    projects(first: 10) {\n      nodes {\n        ...ProjectDetails\n      }\n    }\n  }\n": types.ProjectsDocument,
-    "\n  query SingleProject($slug: String!) {\n    projectBy(slug: $slug) {\n      id\n      slug\n      title\n      featuredImage {\n        node {\n          id\n          altText\n          sourceUrl\n        }\n      }\n      services{\n        nodes{\n          ...ServicesTaxonomiesFragment\n        }\n      }\n      projectFields {\n        client\n        year\n        description\n        gallery{\n          nodes{\n            id\n            altText\n            sourceUrl\n          }\n        }\n      }\n    }\n  }\n": types.SingleProjectDocument,
+    "\n  query SingleProject($slug: String!) {\n    projectBy(slug: $slug) {\n      id\n      slug\n      title\n      featuredImage {\n        node {\n          id\n          altText\n          sourceUrl\n        }\n      }\n      services{\n        nodes{\n          ...ServicesTaxonomiesFragment\n        }\n      }\n      projectFields {\n        client\n        year\n        description\n        gallery{\n          ...GalleryFragment\n        }\n      }\n    }\n  }\n": types.SingleProjectDocument,
     "\n  query ServicesTaxonomies {\n    services {\n      nodes {\n        ...ServicesTaxonomiesFragment\n      }\n    }\n  }\n": types.ServicesTaxonomiesDocument,
 };
 
@@ -95,6 +99,10 @@ export function graphql(source: "\n  fragment ServicesTaxonomiesFragment on Serv
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function graphql(source: "\n  fragment GalleryFragment on AcfMediaItemConnection {\n    nodes {\n      id\n      altText\n      sourceUrl\n    }\n  }\n"): (typeof documents)["\n  fragment GalleryFragment on AcfMediaItemConnection {\n    nodes {\n      id\n      altText\n      sourceUrl\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function graphql(source: "\n  fragment SocialsFields on GeneralSettingsOptionsSocials {\n    links {\n      link {\n        target\n        title\n        url\n      }\n    }\n  }\n"): (typeof documents)["\n  fragment SocialsFields on GeneralSettingsOptionsSocials {\n    links {\n      link {\n        target\n        title\n        url\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
@@ -111,6 +119,10 @@ export function graphql(source: "\n  query HomepageQuery {\n    pageBy(uri: \"ho
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
+export function graphql(source: "\n  query PartnersQuery {\n    pageBy(uri: \"home\") {\n      id\n      home {\n        partners {\n          image {\n            node {\n              altText\n              sourceUrl(size: LARGE)\n            }\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query PartnersQuery {\n    pageBy(uri: \"home\") {\n      id\n      home {\n        partners {\n          image {\n            node {\n              altText\n              sourceUrl(size: LARGE)\n            }\n          }\n        }\n      }\n    }\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
 export function graphql(source: "\n  fragment CardFragment on Project {\n    title\n    slug\n    projectFields {\n      year\n      client\n      description\n      shortDescription\n    }\n    featuredImage {\n      node {\n        sourceUrl\n        altText\n      }\n    }\n  }\n"): (typeof documents)["\n  fragment CardFragment on Project {\n    title\n    slug\n    projectFields {\n      year\n      client\n      description\n      shortDescription\n    }\n    featuredImage {\n      node {\n        sourceUrl\n        altText\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
@@ -123,7 +135,7 @@ export function graphql(source: "\n  query Projects {\n    projects(first: 10) {
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  query SingleProject($slug: String!) {\n    projectBy(slug: $slug) {\n      id\n      slug\n      title\n      featuredImage {\n        node {\n          id\n          altText\n          sourceUrl\n        }\n      }\n      services{\n        nodes{\n          ...ServicesTaxonomiesFragment\n        }\n      }\n      projectFields {\n        client\n        year\n        description\n        gallery{\n          nodes{\n            id\n            altText\n            sourceUrl\n          }\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query SingleProject($slug: String!) {\n    projectBy(slug: $slug) {\n      id\n      slug\n      title\n      featuredImage {\n        node {\n          id\n          altText\n          sourceUrl\n        }\n      }\n      services{\n        nodes{\n          ...ServicesTaxonomiesFragment\n        }\n      }\n      projectFields {\n        client\n        year\n        description\n        gallery{\n          nodes{\n            id\n            altText\n            sourceUrl\n          }\n        }\n      }\n    }\n  }\n"];
+export function graphql(source: "\n  query SingleProject($slug: String!) {\n    projectBy(slug: $slug) {\n      id\n      slug\n      title\n      featuredImage {\n        node {\n          id\n          altText\n          sourceUrl\n        }\n      }\n      services{\n        nodes{\n          ...ServicesTaxonomiesFragment\n        }\n      }\n      projectFields {\n        client\n        year\n        description\n        gallery{\n          ...GalleryFragment\n        }\n      }\n    }\n  }\n"): (typeof documents)["\n  query SingleProject($slug: String!) {\n    projectBy(slug: $slug) {\n      id\n      slug\n      title\n      featuredImage {\n        node {\n          id\n          altText\n          sourceUrl\n        }\n      }\n      services{\n        nodes{\n          ...ServicesTaxonomiesFragment\n        }\n      }\n      projectFields {\n        client\n        year\n        description\n        gallery{\n          ...GalleryFragment\n        }\n      }\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

@@ -11,5 +11,5 @@ export async function wpFetch<TResult, TVariables>(
   query: TypedDocumentNode<TResult, TVariables>,
   variables?: TVariables
 ): Promise<TResult> {
-  return await client.request(query, variables as any)
+  return await client.request(query, variables as object | undefined)
 }

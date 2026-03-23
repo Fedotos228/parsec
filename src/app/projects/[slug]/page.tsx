@@ -2,7 +2,7 @@ import Description from '@/components/pages/projects-single/description'
 import Gallery from '@/components/pages/projects-single/gallery'
 import Hero from '@/components/pages/projects-single/hero'
 import { Button } from '@/components/ui/button'
-import { getNodes } from '@/lib/utils/notNullable'
+import { getNodes } from '@/lib/utils/getNodes'
 import { SingleProject } from '@/queries/projects.queries'
 import { wpFetch } from '@/queries/wordpress'
 import Image from 'next/image'
@@ -22,10 +22,10 @@ export async function generateMetadata({
   const description = data.projectBy?.projectFields?.description || 'Project dezvoltat și realizat de echipa Parsec'
 
   return {
-    title: `${title} | Parsec`,
+    title: `${title}`,
     description: description.substring(0, 160),
     openGraph: {
-      title: `${title} | Consultanță Strategică`,
+      title: `${title} | Parsec`,
       images: [data.projectBy?.featuredImage?.node.sourceUrl || '/og-image.jpg'],
     },
   }
@@ -37,6 +37,8 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
 
   const singleProject = data.projectBy
   const servicesNode = getNodes(singleProject?.services)
+
+
 
   return (
     <div>
@@ -60,7 +62,9 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
             year={singleProject?.projectFields?.year}
             client={singleProject?.projectFields?.client}
           />
-          <Gallery />
+          {singleProject?.projectFields?.gallery && (
+            <Gallery images={singleProject?.projectFields?.gallery} />
+          )}
         </div>
         <div className='max-md:w-full mt-14'>
           <Button className='max-md:block max-md:mx-auto'>

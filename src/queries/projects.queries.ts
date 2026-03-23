@@ -1,4 +1,6 @@
 import { graphql } from '@/gql'
+
+
 export const CardDetails = graphql(`
   fragment CardFragment on Project {
     title
@@ -63,11 +65,7 @@ export const SingleProject = graphql(`
         year
         description
         gallery{
-          nodes{
-            id
-            altText
-            sourceUrl
-          }
+          ...GalleryFragment
         }
       }
     }
