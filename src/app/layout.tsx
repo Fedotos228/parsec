@@ -19,6 +19,11 @@ export const metadata: Metadata = {
     locale: 'ro_RO',
     type: 'website',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Parsec | Comunicare Strategică',
+    description: 'Expertiză în PR, campanii media și reputație publică cu experiență la nivel guvernamental și internațional.',
+  },
   robots: {
     index: true,
     follow: true,
