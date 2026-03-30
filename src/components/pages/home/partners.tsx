@@ -14,7 +14,7 @@ export default async function Partners() {
       <div className="container mx-auto py-12 px-4">
         <div className='grid grid-cols-2 md:grid-cols-4 gap-4 items-stretch'>
           {partners && partners.map((partner, i) => (
-            <div key={i} className='group flex items-center justify-center p-6 bg-white/5 rounded-xl hover:bg-white/10 border border-white/5 hover:border-white/15 transition-all duration-300 aspect-3/2'>
+            <div key={i} className='group flex items-center justify-center p-6 bg-white/5 rounded-xl hover:bg-white transition-all duration-300 aspect-3/2'>
               {partner?.image && partner?.image.node.sourceUrl ? (
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Image

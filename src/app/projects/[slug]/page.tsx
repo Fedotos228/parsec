@@ -7,8 +7,6 @@ import { SingleProject } from '@/queries/projects.queries'
 import { wpFetch } from '@/queries/wordpress'
 import Image from 'next/image'
 
-// Descrie Metadata pentru proiecte
-
 export async function generateMetadata({
   params
 }: {
@@ -24,9 +22,16 @@ export async function generateMetadata({
   return {
     title: `${title}`,
     description: description.substring(0, 160),
+    alternates: {
+      canonical: `https://parsec.md/projects/${slug}`,
+    },
     openGraph: {
       title: `${title} | Parsec`,
-      images: [data.projectBy?.featuredImage?.node.sourceUrl || '/og-image.jpg'],
+      images: [{
+        url: data.projectBy?.featuredImage?.node.sourceUrl || '/og-image.jpg',
+        width: 1200,
+        height: 630,
+      }],
     },
   }
 }

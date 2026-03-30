@@ -17,9 +17,16 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   return {
     title: `${title} | Parsec`,
     description: description.substring(0, 160),
+    alternates: {
+      canonical: `https://parsec.md/domain/${slug}`,
+    },
     openGraph: {
       title: `${title} | Consultanță Strategică`,
-      images: [data.domainBy?.featuredImage?.node.sourceUrl || '/og-image.jpg'],
+      images: [{
+        url: data.domainBy?.featuredImage?.node.sourceUrl || '/og-image.jpg',
+        width: 1200,
+        height: 630,
+      }],
     },
   }
 }
