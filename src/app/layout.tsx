@@ -43,6 +43,7 @@ export default function RootLayout({
         <div className="wrapper">
           {children}
         </div>
+        {/* <CookieBanner /> */}
       </body>
     </html>
   )
