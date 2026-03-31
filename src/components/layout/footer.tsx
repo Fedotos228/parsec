@@ -3,7 +3,6 @@
 import { useBreakpoint } from '@/hook/useBreakpoint'
 import { footerContacts, footerNav } from '@/lib/constans/footer.constans'
 import Link from 'next/link'
-import Language from './language'
 
 export default function Footer() {
   const { isMobile } = useBreakpoint()
@@ -29,7 +28,7 @@ export default function Footer() {
             </Link>
           ))}
         </div>
-        {!isMobile && <Language className='justify-end' />}
+        {/* {!isMobile && <Language className='justify-end' />} */}
       </div>
     </footer>
   )
