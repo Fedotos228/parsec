@@ -1,4 +1,7 @@
 import { ebGaramond, helix } from '@/lib/utils/fonts'
+import { GoogleAnalytics } from '@next/third-parties/google'
+import { Analytics } from "@vercel/analytics/next"
+
 import type { Metadata } from "next"
 import "./globals.css"
 
@@ -45,6 +48,8 @@ export default function RootLayout({
         </div>
         {/* <CookieBanner /> */}
       </body>
+      <GoogleAnalytics gaId='G-MVYRTRHH8G' />
+      <Analytics />
     </html>
   )
 }

@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   const description = data.domainBy?.serviceFields?.hero?.shortDescription || 'Servicii profesionale de consultanță.'
 
   return {
-    title: `${title} | Parsec`,
+    title: `${title}`,
     description: description.substring(0, 160),
     alternates: {
       canonical: `https://parsec.md/domain/${slug}`,
