@@ -24,7 +24,7 @@ export default function CTA() {
       ease: 'power3.out',
       scrollTrigger: {
         trigger: containerRef.current,
-        start: 'top 80%',
+        start: 'top 60%',
         end: 'bottom 20%',
         toggleActions: 'play none none reverse',
       }

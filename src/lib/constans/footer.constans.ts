@@ -32,16 +32,16 @@ export const footerContacts: FooterNav[] = [
   {
     id: 0,
     label: 'Facebook',
-    href: 'facebook.com'
+    href: 'https://www.facebook.com/parsec.md'
   },
   {
     id: 1,
     label: 'LinkedIn',
-    href: 'linkedin.com'
+    href: 'https://www.linkedin.com/company/parsec'
   },
   {
     id: 2,
     label: 'Instagram',
-    href: 'instagram.com'
+    href: 'https://www.instagram.com/parsecosmos/'
   },
 ]
