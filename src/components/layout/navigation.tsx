@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 
 const navigation: { name: string; href: string }[] = [
-  { name: 'Homepage', href: '/' },
+  { name: 'Acasă', href: '/' },
   { name: 'Proiecte', href: '/projects' },
   { name: 'Strategic', href: '/domain/strategic' },
   { name: 'PR & Marketing', href: '/domain/pr-marketing' },

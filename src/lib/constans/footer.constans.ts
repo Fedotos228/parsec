@@ -8,7 +8,7 @@ interface FooterNav {
 export const footerNav: FooterNav[] = [
   {
     id: 0,
-    label: 'Homepage',
+    label: 'Acasă',
     href: '/'
   },
   {
