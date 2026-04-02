@@ -9,7 +9,7 @@ export default async function Partners() {
   if (!partners) return null
 
   return (
-    <section className=''>
+    <section>
       <h2 className='mt-20 mb-5 text-center'>Partenerii Noștri</h2>
       <div className="container mx-auto py-12 px-4">
         <div className='grid grid-cols-2 md:grid-cols-4 gap-4 items-stretch'>

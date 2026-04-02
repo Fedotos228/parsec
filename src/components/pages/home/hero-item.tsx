@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { FragmentType, useFragment } from '@/gql'
 import { RepresentativeVideosFragment } from '@/queries/home.queries'
 import Link from 'next/link'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 
 export function HeroItem(props: { video: FragmentType<typeof RepresentativeVideosFragment> }) {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -38,6 +38,13 @@ export function HeroItem(props: { video: FragmentType<typeof RepresentativeVideo
       videoRef.current?.pause()
     }
   }
+
+  useEffect(() => {
+    const isTouchDevice = window.matchMedia('(hover: none)').matches
+    if (isTouchDevice && videoRef.current) {
+      videoRef.current.play().catch(() => {})
+    }
+  }, [])
 
   const videoTitle = video.title || ''
   const linkHref = `/domain/${videoTitle.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`

@@ -8,7 +8,7 @@ export default async function Hero() {
   const videos = data.pageBy?.home?.representativeVideos
 
   return (
-    <div className='relative h-dvh w-full grid grid-cols-1 md:grid-cols-2'>
+    <div className='relative h-dvh w-full grid grid-cols-1 grid-rows-2 md:grid-cols-2 md:grid-rows-1'>
       <Image
         src='/Logo.svg'
         alt='SCP Parsec Logo'
