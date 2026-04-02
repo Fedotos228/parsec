@@ -40,6 +40,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ro">
+      <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+      </head>
       <body
         className={`${ebGaramond.variable} ${helix.variable} antialiased`}
       >

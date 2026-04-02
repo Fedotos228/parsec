@@ -6,9 +6,8 @@ export const alt = 'Parsec | Consultanță Strategică și PR'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
-// Această funcție transformă Buffer-ul de Node.js într-un ArrayBuffer pur
-// Rezolvă eroarea: TypeError: Cannot read properties of undefined (reading '256')
 function toArrayBuffer(buffer: Buffer) {
   const ab = new ArrayBuffer(buffer.length)
   const view = new Uint8Array(ab)
@@ -22,12 +21,10 @@ const LOGO_SVG = `<svg width="200" height="200" viewBox="0 0 200 200" fill="none
 
 export default async function Image() {
   try {
-    // 1. Citim resursele locale
     const garamondBuffer = readFileSync(join(process.cwd(), 'public/fonts/garamond/EBGaramond-VariableFont.ttf'))
     const hellixBuffer = readFileSync(join(process.cwd(), 'public/fonts/helix/Hellix-Regular.ttf'))
     const bgImageBuffer = readFileSync(join(process.cwd(), 'public/Ilustratie.png'))
 
-    // 2. Convertim explicit Buffer -> ArrayBuffer
     const fontGaramond = toArrayBuffer(garamondBuffer)
     const fontHellix = toArrayBuffer(hellixBuffer)
     const bgBase64 = `data:image/png;base64,${bgImageBuffer.toString('base64')}`
@@ -70,9 +67,10 @@ export default async function Image() {
             zIndex: 10,
             padding: '40px',
           }}>
-            <div 
-              style={{ display: 'flex', width: '160px', height: '160px', marginBottom: '40px' }} 
-              dangerouslySetInnerHTML={{ __html: LOGO_SVG }} 
+            <img
+              src={`data:image/svg+xml;base64,${Buffer.from(LOGO_SVG).toString('base64')}`}
+              alt="Parsec logo"
+              style={{ width: '160px', height: '160px', marginBottom: '40px' }}
             />
             <div style={{ 
               fontSize: 68, 

@@ -6,10 +6,9 @@ export const alt = 'Parsec | Consultanță Strategică și PR'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-// Forțăm randarea dinamică pentru a preveni erorile de buffer la build
 export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
 
-// Logoul SVG optimizat (fără grupuri cu opacitate care cauzează erori în satori)
 const LOGO_SVG = `
 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M84.9633 198.562C89.7456 199.285 94.5832 199.608 99.4153 199.686V199.998C64.8434 200.232 32.1258 181.662 14.2974 151.887C-7.74316 115.354 -3.61955 69.4863 21.9745 37.4513C22.4007 37.9467 22.8546 38.4198 23.3361 38.8651C-2.23579 70.4549 -5.94427 115.816 15.2107 151.336C28.7605 174.331 51.8748 191.381 77.8452 197.192C80.1201 197.743 82.6607 198.189 84.9633 198.562Z" fill="white" fill-opacity="0.75"/>
@@ -25,114 +24,117 @@ const LOGO_SVG = `
 `
 
 export default async function Image() {
-  // 1. Încărcăm resursele locale
-  const garamondBold = readFileSync(join(process.cwd(), 'public/fonts/garamond/EBGaramond-VariableFont.ttf'))
-  const hellixRegular = readFileSync(join(process.cwd(), 'public/fonts/helix/Hellix-Regular.ttf'))
-  
-  // Fundalul vizual optimizat cu Base64
-  const bgImage = readFileSync(join(process.cwd(), 'public/Ilustratie.png'))
-  const bgBase64 = `data:image/png;base64,${bgImage.toString('base64')}`
+  try {
+    const garamondBold = readFileSync(join(process.cwd(), 'public/fonts/garamond/EBGaramond-VariableFont.ttf'))
+    const hellixRegular = readFileSync(join(process.cwd(), 'public/fonts/helix/Hellix-Regular.ttf'))
+    const bgImage = readFileSync(join(process.cwd(), 'public/Ilustratie.png'))
+    const bgBase64 = `data:image/png;base64,${bgImage.toString('base64')}`
+    const logoBase64 = `data:image/svg+xml;base64,${Buffer.from(LOGO_SVG).toString('base64')}`
 
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          background: '#000',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Imaginea de fundal cu opacitate redusă */}
-        <img 
-          src={bgBase64} 
-          alt=""
-          style={{ 
-            position: 'absolute', 
-            top: 0, 
-            left: 0, 
-            width: '1200px', 
-            height: '630px', 
-            opacity: 0.3,
-            objectFit: 'cover'
-          }} 
-        />
-
-        {/* Overlay gradient pentru lizibilitate */}
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%)',
-        }} />
-
-        {/* Logoul SVG optimizat */}
-        <div 
-          style={{ 
-            display: 'flex',
-            width: '160px', 
-            height: '160px',
-            marginBottom: '40px',
-            zIndex: 10
-          }}
-          dangerouslySetInnerHTML={{ __html: LOGO_SVG }}
-        />
-
-        {/* Titlul principal */}
+    return new ImageResponse(
+      (
         <div
           style={{
-            fontSize: 68,
-            fontFamily: 'EB Garamond',
-            color: 'white',
-            lineHeight: 1.1,
-            maxWidth: '1000px',
-            marginBottom: '20px',
-            zIndex: 10
+            background: '#000',
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            textAlign: 'center',
+            position: 'relative',
+            overflow: 'hidden',
           }}
         >
-          Consultanță Strategică și PR Full-Service
-        </div>
+          <img
+            src={bgBase64}
+            alt=""
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '1200px',
+              height: '630px',
+              opacity: 0.3,
+              objectFit: 'cover',
+            }}
+          />
 
-        {/* Subtitlu branding */}
-        <div style={{ 
-          color: '#ccc', 
-          fontSize: 28, 
-          fontFamily: 'Hellix',
-          maxWidth: '850px',
-          zIndex: 10
-        }}>
-          Eficiență și Calitate în Comunicare
-        </div>
+          <div style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.8) 100%)',
+            display: 'flex',
+          }} />
 
-        {/* Indicator site la bază */}
-        <div style={{
-          position: 'absolute',
-          bottom: 40,
-          color: 'rgba(255,255,255,0.4)',
-          fontSize: 20,
-          fontFamily: 'Hellix',
-          textTransform: 'uppercase',
-          letterSpacing: '4px',
-          zIndex: 10
-        }}>
-          parsec.md
+          <img
+            src={logoBase64}
+            alt="Parsec logo"
+            style={{
+              width: '160px',
+              height: '160px',
+              marginBottom: '40px',
+              zIndex: 10,
+            }}
+          />
+
+          <div
+            style={{
+              fontSize: 68,
+              fontFamily: 'EB Garamond',
+              color: 'white',
+              lineHeight: 1.1,
+              maxWidth: '1000px',
+              marginBottom: '20px',
+              zIndex: 10,
+            }}
+          >
+            Consultanță Strategică și PR Full-Service
+          </div>
+
+          <div style={{
+            color: '#ccc',
+            fontSize: 28,
+            fontFamily: 'Hellix',
+            maxWidth: '850px',
+            zIndex: 10,
+          }}>
+            Eficiență și Calitate în Comunicare
+          </div>
+
+          <div style={{
+            position: 'absolute',
+            bottom: 40,
+            color: 'rgba(255,255,255,0.4)',
+            fontSize: 20,
+            fontFamily: 'Hellix',
+            textTransform: 'uppercase',
+            letterSpacing: '4px',
+            zIndex: 10,
+          }}>
+            parsec.md
+          </div>
         </div>
-      </div>
-    ),
-    {
-      ...size,
-      fonts: [
-        { name: 'EB Garamond', data: garamondBold, style: 'normal', weight: 700 },
-        { name: 'Hellix', data: hellixRegular, style: 'normal', weight: 400 },
-      ],
-    }
-  )
+      ),
+      {
+        ...size,
+        fonts: [
+          { name: 'EB Garamond', data: garamondBold, style: 'normal', weight: 700 },
+          { name: 'Hellix', data: hellixRegular, style: 'normal', weight: 400 },
+        ],
+      }
+    )
+  } catch (e: any) {
+    console.error(`OG Root Error: ${e.message}`)
+    return new ImageResponse(
+      <div style={{ backgroundColor: 'black', color: 'white', height: '100%', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        Parsec Strategic Consulting
+      </div>,
+      { ...size }
+    )
+  }
 }
