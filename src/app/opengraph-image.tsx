@@ -1,6 +1,4 @@
-import { readFileSync } from 'fs'
 import { ImageResponse } from 'next/og'
-import { join } from 'path'
 
 export const alt = 'Parsec | Consultanță Strategică și PR'
 export const size = { width: 1200, height: 630 }
@@ -8,6 +6,10 @@ export const contentType = 'image/png'
 
 export const dynamic = 'force-dynamic'
 export const runtime = 'nodejs'
+
+const BASE_URL = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : 'http://localhost:3000'
 
 const LOGO_SVG = `
 <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,10 +27,13 @@ const LOGO_SVG = `
 
 export default async function Image() {
   try {
-    const garamondBold = readFileSync(join(process.cwd(), 'public/fonts/garamond/EBGaramond-VariableFont.ttf'))
-    const hellixRegular = readFileSync(join(process.cwd(), 'public/fonts/helix/Hellix-Regular.ttf'))
-    const bgImage = readFileSync(join(process.cwd(), 'public/Ilustratie.png'))
-    const bgBase64 = `data:image/png;base64,${bgImage.toString('base64')}`
+    const [garamondBold, hellixRegular, bgImageBuf] = await Promise.all([
+      fetch(`${BASE_URL}/fonts/garamond/EBGaramond-VariableFont.ttf`).then(r => r.arrayBuffer()),
+      fetch(`${BASE_URL}/fonts/helix/Hellix-Regular.ttf`).then(r => r.arrayBuffer()),
+      fetch(`${BASE_URL}/Ilustratie.png`).then(r => r.arrayBuffer()),
+    ])
+
+    const bgBase64 = `data:image/png;base64,${Buffer.from(bgImageBuf).toString('base64')}`
     const logoBase64 = `data:image/svg+xml;base64,${Buffer.from(LOGO_SVG).toString('base64')}`
 
     return new ImageResponse(

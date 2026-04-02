@@ -2,6 +2,7 @@ import { ebGaramond, helix } from '@/lib/utils/fonts'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Analytics } from "@vercel/analytics/next"
 
+import CookieBanner from '@/components/shared/cookie-banner'
 import type { Metadata } from "next"
 import "./globals.css"
 
@@ -42,6 +43,19 @@ export default function RootLayout({
     <html lang="ro">
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('consent', 'default', {
+            analytics_storage: 'denied',
+            ad_storage: 'denied',
+            wait_for_update: 500
+          });
+          try {
+            var c = localStorage.getItem('parsec_cookie_consent');
+            if (c === 'accepted') gtag('consent', 'update', { analytics_storage: 'granted', ad_storage: 'granted' });
+          } catch(e) {}
+        `}} />
       </head>
       <body
         className={`${ebGaramond.variable} ${helix.variable} antialiased`}
@@ -49,7 +63,7 @@ export default function RootLayout({
         <div className="wrapper">
           {children}
         </div>
-        {/* <CookieBanner /> */}
+        <CookieBanner />
       </body>
       <GoogleAnalytics gaId='G-MVYRTRHH8G' />
       <Analytics />

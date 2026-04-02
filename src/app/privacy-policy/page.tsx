@@ -31,7 +31,7 @@ export default function PrivacyPolicyPage() {
           Politica de Confidențialitate
         </h1>
         <p className="text-sm text-gray-500 mb-12">
-          Ultima actualizare: 31 martie 2026
+          Ultima actualizare: 2 aprilie 2026
         </p>
 
         <Section title="1. Introducere">
@@ -152,20 +152,47 @@ export default function PrivacyPolicyPage() {
 
         <Section title="5. Cookies și Tehnologii de Urmărire">
           <p>
-            Site-ul nostru poate utiliza cookies și tehnologii similare pentru a asigura
-            funcționalitatea site-ului, a analiza traficul și a îmbunătăți experiența utilizatorilor.
+            Site-ul nostru utilizează cookies și tehnologii similare pentru a asigura funcționalitatea
+            site-ului și a analiza traficul. La prima vizită, vi se afișează un banner de consimțământ
+            prin care puteți accepta sau refuza cookies analitice.
           </p>
-          <ul className="mt-3 space-y-2 list-disc list-inside">
-            <li><strong>Cookies esențiale:</strong> necesare pentru funcționarea corectă a site-ului; nu
-            pot fi dezactivate.</li>
-            <li><strong>Cookies analitice:</strong> ne ajută să înțelegem cum este utilizat site-ul
-            (ex. Google Analytics); activate numai cu consimțământul dumneavoastră.</li>
-            <li><strong>Cookies funcționale:</strong> rețin preferințele dumneavoastră pentru o
-            experiență personalizată.</li>
-          </ul>
-          <p className="mt-3">
-            Puteți gestiona sau dezactiva cookies prin setările browserului dumneavoastră. Dezactivarea
-            anumitor cookies poate afecta funcționalitatea site-ului.
+
+          <div className="mt-4 space-y-4">
+            <div>
+              <p className="font-semibold">a) Cookies esențiale</p>
+              <p className="text-white/60 text-sm mt-1">
+                Necesare pentru funcționarea corectă a site-ului (ex. reținerea preferinței de
+                consimțământ). Nu pot fi dezactivate și nu necesită consimțământul dumneavoastră.
+              </p>
+            </div>
+            <div>
+              <p className="font-semibold">b) Cookies analitice — Google Analytics (GA4)</p>
+              <p className="text-white/60 text-sm mt-1">
+                Utilizăm <strong>Google Analytics 4</strong> (furnizat de Google LLC, SUA) pentru a
+                înțelege cum este utilizat site-ul: pagini vizitate, durată sesiune, sursă de trafic.
+                Aceste cookies sunt activate <strong>exclusiv după acordarea consimțământului</strong>{' '}
+                prin bannerul afișat la prima vizită.
+              </p>
+              <p className="text-white/60 text-sm mt-1">
+                Implementăm <strong>Google Consent Mode v2</strong>: scriptul Google Analytics se
+                încarcă pe toate paginile, însă în mod implicit nu colectează nicio dată. Colectarea
+                începe doar în momentul în care apăsați „Acceptă" în bannerul de cookies. Dacă refuzați,
+                nu se transmit date către Google.
+              </p>
+              <p className="text-white/60 text-sm mt-1">
+                Durata de păstrare a datelor în Google Analytics: <strong>maximum 26 de luni</strong>.
+                Pentru informații despre politica de confidențialitate Google, consultați{' '}
+                <span className="underline">policies.google.com/privacy</span>.
+              </p>
+            </div>
+          </div>
+
+          <p className="mt-4">
+            Vă puteți retrage consimțământul oricând ștergând datele din localStorage al browserului
+            sau folosind opțiunea de ștergere a cookies din setările browserului dumneavoastră.
+            De asemenea, puteți instala extensia{' '}
+            <span className="underline">Google Analytics Opt-out Browser Add-on</span> pentru a bloca
+            colectarea datelor de către Google Analytics indiferent de consimțământ.
           </p>
         </Section>
 
