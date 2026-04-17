@@ -40,7 +40,7 @@ export default function Form() {
                 {...field}
                 id="fullname"
                 aria-invalid={fieldState.invalid}
-                placeholder="Cum vă numiți?"
+                placeholder="Nume"
               />
               {fieldState.invalid && (
                 <FieldError errors={[fieldState.error]} />
@@ -57,7 +57,7 @@ export default function Form() {
                 {...field}
                 id="phone"
                 aria-invalid={fieldState.invalid}
-                placeholder="Număr de telefon"
+                placeholder="Telefon"
               />
               {fieldState.invalid && (
                 <FieldError errors={[fieldState.error]} />
@@ -74,7 +74,7 @@ export default function Form() {
                 {...field}
                 id="email"
                 aria-invalid={fieldState.invalid}
-                placeholder="Adresa de email"
+                placeholder="E-mail"
               />
               {fieldState.invalid && (
                 <FieldError errors={[fieldState.error]} />
@@ -91,7 +91,7 @@ export default function Form() {
                 {...field}
                 id="message"
                 aria-invalid={fieldState.invalid}
-                placeholder="Comentariu"
+                placeholder="Mesaj"
               />
               {fieldState.invalid && (
                 <FieldError errors={[fieldState.error]} />
@@ -100,7 +100,7 @@ export default function Form() {
           )}
         />
         <Button className='max-w-full'>
-          Angajează-ne
+          Trimite mesajul
         </Button>
       </FieldGroup>
     </form>

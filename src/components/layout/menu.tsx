@@ -6,7 +6,7 @@ import Navigation from './navigation'
 
 export default function Menu() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false)
- 
+
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add('overflow-hidden')

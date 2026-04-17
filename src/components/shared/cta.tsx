@@ -4,6 +4,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import ScrollTrigger from "gsap/ScrollTrigger"
 import { SplitText } from 'gsap/SplitText'
+import Link from 'next/link'
 import { useRef } from 'react'
 import { Button } from '../ui/button'
 
@@ -34,8 +35,10 @@ export default function CTA() {
   return (
     <div className='box flex items-center flex-col gap-9 py-40 px-2' ref={containerRef}>
       <h1 className='display-text display-lg'>Putem începe proiectul tău</h1>
-      <Button >
-        Angajează-ne
+      <Button asChild>
+        <Link href={'/contact'}>
+          Angajează-ne
+        </Link>
       </Button>
     </div>
   )
