@@ -1,4 +1,7 @@
 import type { CodegenConfig } from '@graphql-codegen/cli'
+import { config as loadEnv } from 'dotenv'
+
+loadEnv({ path: '.env.local' })
 
 const BASE_URL = process.env.API_URL as string
 

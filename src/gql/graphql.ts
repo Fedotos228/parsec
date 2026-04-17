@@ -155,6 +155,10 @@ export type Category = DatabaseIdentifier & HierarchicalNode & HierarchicalTermN
   isRestricted?: Maybe<Scalars['Boolean']['output']>;
   /** Whether the node is a Term */
   isTermNode: Scalars['Boolean']['output'];
+  /** Category language */
+  language?: Maybe<Language>;
+  /** Category language code */
+  languageCode?: Maybe<Scalars['String']['output']>;
   /** The link to the term */
   link?: Maybe<Scalars['String']['output']>;
   /** The human friendly name of the object. */
@@ -177,6 +181,10 @@ export type Category = DatabaseIdentifier & HierarchicalNode & HierarchicalTermN
   termGroupId?: Maybe<Scalars['Int']['output']>;
   /** The taxonomy ID that the object is associated with */
   termTaxonomyId?: Maybe<Scalars['Int']['output']>;
+  /** Category translation group ID */
+  translationGroupId?: Maybe<Scalars['ID']['output']>;
+  /** Category translations */
+  translations?: Maybe<Array<Maybe<Category>>>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
 };
@@ -630,6 +638,10 @@ export type Comment = DatabaseIdentifier & Node & UniformResourceIdentifiable & 
   isTermNode: Scalars['Boolean']['output'];
   /** Karma value for the comment. This field is equivalent to WP_Comment-&gt;comment_karma and the value matching the &quot;comment_karma&quot; column in SQL. */
   karma?: Maybe<Scalars['Int']['output']>;
+  /** Comment language */
+  language?: Maybe<Language>;
+  /** Comment language code */
+  languageCode?: Maybe<Scalars['String']['output']>;
   /** The permalink of the comment */
   link?: Maybe<Scalars['String']['output']>;
   /** Connection between the Comment type and the Comment type */
@@ -737,13 +749,13 @@ export enum CommentNodeIdTypeEnum {
 
 /** Moderation state for user comments. Determines whether comments are publicly visible, pending approval, or marked as spam. */
 export enum CommentStatusEnum {
-  /** Comments with the Approved status */
+  /** Comments with the Aprobat status */
   Approve = 'APPROVE',
-  /** Comments with the Unapproved status */
+  /** Comments with the Neaprobat status */
   Hold = 'HOLD',
   /** Comments with the Spam status */
   Spam = 'SPAM',
-  /** Comments with the Trash status */
+  /** Comments with the Aruncat la gunoi status */
   Trash = 'TRASH'
 }
 
@@ -1101,6 +1113,10 @@ export type ContentNode = {
   isRestricted?: Maybe<Scalars['Boolean']['output']>;
   /** Whether the node is a Term */
   isTermNode: Scalars['Boolean']['output'];
+  /** ContentNode language */
+  language?: Maybe<Language>;
+  /** ContentNode language code */
+  languageCode?: Maybe<Scalars['String']['output']>;
   /** The user that most recently edited the node */
   lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
   /** The permalink of the post */
@@ -1469,6 +1485,8 @@ export type ContentTypeToContentNodeConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Filter ContentNode objects by language code */
+  language?: InputMaybe<Scalars['String']['input']>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -2210,9 +2228,9 @@ export type DeleteUserPayload = {
 /** The discussion setting type */
 export type DiscussionSettings = {
   __typename?: 'DiscussionSettings';
-  /** Allow people to submit comments on new posts. */
+  /** Permite vizitatorilor să trimită comentarii la articole noi. */
   defaultCommentStatus?: Maybe<Scalars['String']['output']>;
-  /** Allow link notifications from other blogs (pingbacks and trackbacks) on new articles. */
+  /** Permite notificări pentru legături din alte bloguri (pingback-uri și trackback-uri) pentru articole noi. */
   defaultPingStatus?: Maybe<Scalars['String']['output']>;
 };
 
@@ -2275,6 +2293,10 @@ export type Domain = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node 
   isRestricted?: Maybe<Scalars['Boolean']['output']>;
   /** Whether the node is a Term */
   isTermNode: Scalars['Boolean']['output'];
+  /** ContentNode language */
+  language?: Maybe<Language>;
+  /** ContentNode language code */
+  languageCode?: Maybe<Scalars['String']['output']>;
   /** The user that most recently edited the node */
   lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
   /** The permalink of the post */
@@ -2832,29 +2854,29 @@ export type EnqueuedStylesheetConnectionPageInfo = {
 /** The general setting type */
 export type GeneralSettings = WithAcfGeneralSettingsOptions & {
   __typename?: 'GeneralSettings';
-  /** A date format for all date strings. */
+  /** Un format de dată pentru toate șirurile de date. */
   dateFormat?: Maybe<Scalars['String']['output']>;
-  /** Site tagline. */
+  /** Slogan site. */
   description?: Maybe<Scalars['String']['output']>;
-  /** This address is used for admin purposes, like new user notification. */
+  /** Această adresă este folosită în scopuri administrative, cum ar fi notificare nouă pentru utilizator. */
   email?: Maybe<Scalars['String']['output']>;
   /** Fields of the GeneralSettingsOptions ACF Field Group */
   generalSettingsOptions?: Maybe<GeneralSettingsOptions>;
-  /** WordPress locale code. */
+  /** Cod locală WordPress. */
   language?: Maybe<Scalars['String']['output']>;
   /** The media item representing the site icon configured in site settings, used as the site&#039;s favicon and app icon. */
   siteIcon?: Maybe<GeneralSettingsToMediaItemConnectionEdge>;
   /** Site icon URL configured in site settings, used as the site&#039;s favicon and app icon. */
   siteIconUrl?: Maybe<Scalars['String']['output']>;
-  /** A day number of the week that the week should start on. */
+  /** Un număr al zilei săptămânii cu care săptămâna ar trebui să înceapă. */
   startOfWeek?: Maybe<Scalars['Int']['output']>;
-  /** A time format for all time strings. */
+  /** Un format de timp pentru toate șirurile de timp. */
   timeFormat?: Maybe<Scalars['String']['output']>;
-  /** A city in the same timezone as you. */
+  /** Un oraș cu același fus orar ca al tău. */
   timezone?: Maybe<Scalars['String']['output']>;
-  /** Site title. */
+  /** Titlu site. */
   title?: Maybe<Scalars['String']['output']>;
-  /** Site URL. */
+  /** URL site. */
   url?: Maybe<Scalars['String']['output']>;
 };
 
@@ -2986,6 +3008,10 @@ export type HierarchicalContentNode = {
   isRestricted?: Maybe<Scalars['Boolean']['output']>;
   /** Whether the node is a Term */
   isTermNode: Scalars['Boolean']['output'];
+  /** ContentNode language */
+  language?: Maybe<Language>;
+  /** ContentNode language code */
+  languageCode?: Maybe<Scalars['String']['output']>;
   /** The user that most recently edited the node */
   lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
   /** The permalink of the post */
@@ -3245,6 +3271,10 @@ export type HierarchicalTermNode = {
   isRestricted?: Maybe<Scalars['Boolean']['output']>;
   /** Whether the node is a Term */
   isTermNode: Scalars['Boolean']['output'];
+  /** TermNode language */
+  language?: Maybe<Language>;
+  /** TermNode language code */
+  languageCode?: Maybe<Scalars['String']['output']>;
   /** The link to the term */
   link?: Maybe<Scalars['String']['output']>;
   /** The human friendly name of the object. */
@@ -3261,6 +3291,10 @@ export type HierarchicalTermNode = {
   termGroupId?: Maybe<Scalars['Int']['output']>;
   /** The taxonomy ID that the object is associated with */
   termTaxonomyId?: Maybe<Scalars['Int']['output']>;
+  /** TermNode translation group ID */
+  translationGroupId?: Maybe<Scalars['ID']['output']>;
+  /** TermNode translations */
+  translations?: Maybe<Array<Maybe<TermNode>>>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
 };
@@ -3364,6 +3398,27 @@ export type Home_Fields = {
   representativeVideos: Array<Maybe<HomeRepresentativeVideos>>;
 };
 
+/** Language */
+export type Language = {
+  __typename?: 'Language';
+  /** Language code */
+  code: Scalars['String']['output'];
+  /** Language country flag URL */
+  country_flag_url?: Maybe<Scalars['String']['output']>;
+  /** Language default locale */
+  default_locale?: Maybe<Scalars['String']['output']>;
+  /** Language ID */
+  id: Scalars['ID']['output'];
+  /** Language code */
+  language_code: Scalars['String']['output'];
+  /** Language name in its own language */
+  native_name?: Maybe<Scalars['String']['output']>;
+  /** Language name in the default language */
+  translated_name?: Maybe<Scalars['String']['output']>;
+  /** Language front page URL */
+  url?: Maybe<Scalars['String']['output']>;
+};
+
 /** File details for a Media Item */
 export type MediaDetails = {
   __typename?: 'MediaDetails';
@@ -3459,6 +3514,10 @@ export type MediaItem = ContentNode & DatabaseIdentifier & HierarchicalContentNo
   isRestricted?: Maybe<Scalars['Boolean']['output']>;
   /** Whether the node is a Term */
   isTermNode: Scalars['Boolean']['output'];
+  /** MediaItem language */
+  language?: Maybe<Language>;
+  /** MediaItem language code */
+  languageCode?: Maybe<Scalars['String']['output']>;
   /** The user that most recently edited the node */
   lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
   /** The permalink of the post */
@@ -3506,6 +3565,10 @@ export type MediaItem = ContentNode & DatabaseIdentifier & HierarchicalContentNo
   template?: Maybe<ContentTemplate>;
   /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
   title?: Maybe<Scalars['String']['output']>;
+  /** MediaItem translation group ID */
+  translationGroupId?: Maybe<Scalars['ID']['output']>;
+  /** MediaItem translations */
+  translations?: Maybe<Array<Maybe<MediaItem>>>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
 };
@@ -3840,6 +3903,10 @@ export type Menu = DatabaseIdentifier & Node & {
   id: Scalars['ID']['output'];
   /** Whether the object is restricted from the current viewer */
   isRestricted?: Maybe<Scalars['Boolean']['output']>;
+  /** Menu language */
+  language?: Maybe<Language>;
+  /** Menu language code */
+  languageCode?: Maybe<Scalars['String']['output']>;
   /** The locations a menu is assigned to */
   locations?: Maybe<Array<Maybe<MenuLocationEnum>>>;
   /**
@@ -3919,6 +3986,10 @@ export type MenuItem = DatabaseIdentifier & Node & {
   isRestricted?: Maybe<Scalars['Boolean']['output']>;
   /** Label or title of the menu item. */
   label?: Maybe<Scalars['String']['output']>;
+  /** MenuItem language */
+  language?: Maybe<Language>;
+  /** MenuItem language code */
+  languageCode?: Maybe<Scalars['String']['output']>;
   /** Link relationship (XFN) of the menu item. */
   linkRelationship?: Maybe<Scalars['String']['output']>;
   /** The locations the menu item&#039;s Menu is assigned to */
@@ -4587,6 +4658,10 @@ export type Page = ContentNode & DatabaseIdentifier & HierarchicalContentNode & 
   isRevision?: Maybe<Scalars['Boolean']['output']>;
   /** Whether the node is a Term */
   isTermNode: Scalars['Boolean']['output'];
+  /** Page language */
+  language?: Maybe<Language>;
+  /** Page language code */
+  languageCode?: Maybe<Scalars['String']['output']>;
   /** The user that most recently edited the node */
   lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
   /** The permalink of the post */
@@ -4628,6 +4703,10 @@ export type Page = ContentNode & DatabaseIdentifier & HierarchicalContentNode & 
   template?: Maybe<ContentTemplate>;
   /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
   title?: Maybe<Scalars['String']['output']>;
+  /** Page translation group ID */
+  translationGroupId?: Maybe<Scalars['ID']['output']>;
+  /** Page translations */
+  translations?: Maybe<Array<Maybe<Page>>>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
 };
@@ -5084,6 +5163,10 @@ export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & 
   isSticky: Scalars['Boolean']['output'];
   /** Whether the node is a Term */
   isTermNode: Scalars['Boolean']['output'];
+  /** Post language */
+  language?: Maybe<Language>;
+  /** Post language code */
+  languageCode?: Maybe<Scalars['String']['output']>;
   /** The user that most recently edited the node */
   lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
   /** The permalink of the post */
@@ -5134,6 +5217,10 @@ export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & 
   title?: Maybe<Scalars['String']['output']>;
   /** URLs queued to be pinged. */
   toPing?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
+  /** Post translation group ID */
+  translationGroupId?: Maybe<Scalars['ID']['output']>;
+  /** Post translations */
+  translations?: Maybe<Array<Maybe<Post>>>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
 };
@@ -5322,6 +5409,10 @@ export type PostFormat = DatabaseIdentifier & Node & TermNode & UniformResourceI
   isRestricted?: Maybe<Scalars['Boolean']['output']>;
   /** Whether the node is a Term */
   isTermNode: Scalars['Boolean']['output'];
+  /** TermNode language */
+  language?: Maybe<Language>;
+  /** TermNode language code */
+  languageCode?: Maybe<Scalars['String']['output']>;
   /** The link to the term */
   link?: Maybe<Scalars['String']['output']>;
   /** The human friendly name of the object. */
@@ -5343,6 +5434,10 @@ export type PostFormat = DatabaseIdentifier & Node & TermNode & UniformResourceI
   termGroupId?: Maybe<Scalars['Int']['output']>;
   /** The taxonomy ID that the object is associated with */
   termTaxonomyId?: Maybe<Scalars['Int']['output']>;
+  /** TermNode translation group ID */
+  translationGroupId?: Maybe<Scalars['ID']['output']>;
+  /** TermNode translations */
+  translations?: Maybe<Array<Maybe<TermNode>>>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
 };
@@ -6423,6 +6518,10 @@ export type Project = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node
   isRestricted?: Maybe<Scalars['Boolean']['output']>;
   /** Whether the node is a Term */
   isTermNode: Scalars['Boolean']['output'];
+  /** ContentNode language */
+  language?: Maybe<Language>;
+  /** ContentNode language code */
+  languageCode?: Maybe<Scalars['String']['output']>;
   /** The user that most recently edited the node */
   lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
   /** The permalink of the post */
@@ -6862,13 +6961,13 @@ export type ProjectToTermNodeConnectionWhereArgs = {
 /** The reading setting type */
 export type ReadingSettings = {
   __typename?: 'ReadingSettings';
-  /** The ID of the page that should display the latest posts */
+  /** ID-ul paginii care ar trebui să afișeze ultimele articole */
   pageForPosts?: Maybe<Scalars['Int']['output']>;
-  /** The ID of the page that should be displayed on the front page */
+  /** ID-ul paginii care ar trebui afișată în pagina din față */
   pageOnFront?: Maybe<Scalars['Int']['output']>;
-  /** Blog pages show at most. */
+  /** Paginile blogului arată cel mult. */
   postsPerPage?: Maybe<Scalars['Int']['output']>;
-  /** What to show on the front page */
+  /** Ce să arăți în pagina din față */
   showOnFront?: Maybe<Scalars['String']['output']>;
 };
 
@@ -7305,6 +7404,8 @@ export type RootQuery = WithAcfOptionsPageGeneralSettings & {
   contentType?: Maybe<ContentType>;
   /** Connection between the RootQuery type and the ContentType type */
   contentTypes?: Maybe<RootQueryToContentTypeConnection>;
+  /** Get default language */
+  defaultLanguage?: Maybe<Language>;
   /** Fields of the &#039;DiscussionSettings&#039; settings group */
   discussionSettings?: Maybe<DiscussionSettings>;
   /** An object of the domain Type.  */
@@ -7317,6 +7418,8 @@ export type RootQuery = WithAcfOptionsPageGeneralSettings & {
   /** Connection between the RootQuery type and the domain type */
   domains?: Maybe<RootQueryToDomainConnection>;
   generalSettings?: Maybe<GeneralSettings>;
+  /** List registered languages */
+  languages?: Maybe<Array<Maybe<Language>>>;
   /** An object of the mediaItem Type.  */
   mediaItem?: Maybe<MediaItem>;
   /**
@@ -7893,6 +7996,8 @@ export type RootQueryToCategoryConnectionWhereArgs = {
   hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
   /** Array of term ids to include. Default empty array. */
   include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Filter Category objects by language code */
+  language?: InputMaybe<Scalars['String']['input']>;
   /** Array of names to return term(s) for. Default empty. */
   name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Retrieve terms where the name is LIKE the input value. Default empty. */
@@ -7994,6 +8099,8 @@ export type RootQueryToCommentConnectionWhereArgs = {
   includeUnapproved?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Karma score to retrieve matching comments for. */
   karma?: InputMaybe<Scalars['Int']['input']>;
+  /** Filter Comment objects by language code */
+  language?: InputMaybe<Scalars['String']['input']>;
   /** The cardinality of the order of the connection */
   order?: InputMaybe<OrderEnum>;
   /** Field to order the comments by. */
@@ -8057,6 +8164,8 @@ export type RootQueryToContentNodeConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Filter content nodes by language code */
+  language?: InputMaybe<Scalars['String']['input']>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -8306,6 +8415,8 @@ export type RootQueryToMediaItemConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Filter MediaItem objects by language code */
+  language?: InputMaybe<Scalars['String']['input']>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -8371,6 +8482,8 @@ export type RootQueryToMenuConnectionPageInfo = MenuConnectionPageInfo & PageInf
 export type RootQueryToMenuConnectionWhereArgs = {
   /** The database ID of the object */
   id?: InputMaybe<Scalars['Int']['input']>;
+  /** Filter Menu objects by language code */
+  language?: InputMaybe<Scalars['String']['input']>;
   /** The menu location for the menu being queried */
   location?: InputMaybe<MenuLocationEnum>;
   /** The slug of the menu to query items for */
@@ -8414,6 +8527,8 @@ export type RootQueryToMenuItemConnectionPageInfo = MenuItemConnectionPageInfo &
 export type RootQueryToMenuItemConnectionWhereArgs = {
   /** The database ID of the object */
   id?: InputMaybe<Scalars['Int']['input']>;
+  /** Filter MenuItem objects by language code */
+  language?: InputMaybe<Scalars['String']['input']>;
   /** The menu location for the menu being queried */
   location?: InputMaybe<MenuLocationEnum>;
   /** The database ID of the parent menu object */
@@ -8473,6 +8588,8 @@ export type RootQueryToPageConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Filter Page objects by language code */
+  language?: InputMaybe<Scalars['String']['input']>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -8603,6 +8720,8 @@ export type RootQueryToPostConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Filter Post objects by language code */
+  language?: InputMaybe<Scalars['String']['input']>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -8994,6 +9113,8 @@ export type RootQueryToTagConnectionWhereArgs = {
   hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
   /** Array of term ids to include. Default empty array. */
   include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Filter Tag objects by language code */
+  language?: InputMaybe<Scalars['String']['input']>;
   /** Array of names to return term(s) for. Default empty. */
   name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Retrieve terms where the name is LIKE the input value. Default empty. */
@@ -9104,6 +9225,8 @@ export type RootQueryToTermNodeConnectionWhereArgs = {
   hierarchical?: InputMaybe<Scalars['Boolean']['input']>;
   /** Array of term ids to include. Default empty array. */
   include?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Filter TermNode objects by language code */
+  language?: InputMaybe<Scalars['String']['input']>;
   /** Array of names to return term(s) for. Default empty. */
   name?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   /** Retrieve terms where the name is LIKE the input value. Default empty. */
@@ -9336,6 +9459,10 @@ export type Service = DatabaseIdentifier & HierarchicalNode & HierarchicalTermNo
   isRestricted?: Maybe<Scalars['Boolean']['output']>;
   /** Whether the node is a Term */
   isTermNode: Scalars['Boolean']['output'];
+  /** TermNode language */
+  language?: Maybe<Language>;
+  /** TermNode language code */
+  languageCode?: Maybe<Scalars['String']['output']>;
   /** The link to the term */
   link?: Maybe<Scalars['String']['output']>;
   /** The human friendly name of the object. */
@@ -9363,6 +9490,10 @@ export type Service = DatabaseIdentifier & HierarchicalNode & HierarchicalTermNo
   termGroupId?: Maybe<Scalars['Int']['output']>;
   /** The taxonomy ID that the object is associated with */
   termTaxonomyId?: Maybe<Scalars['Int']['output']>;
+  /** TermNode translation group ID */
+  translationGroupId?: Maybe<Scalars['ID']['output']>;
+  /** TermNode translations */
+  translations?: Maybe<Array<Maybe<TermNode>>>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
 };
@@ -9945,6 +10076,10 @@ export type Tag = DatabaseIdentifier & MenuItemLinkable & Node & TermNode & Unif
   isRestricted?: Maybe<Scalars['Boolean']['output']>;
   /** Whether the node is a Term */
   isTermNode: Scalars['Boolean']['output'];
+  /** Tag language */
+  language?: Maybe<Language>;
+  /** Tag language code */
+  languageCode?: Maybe<Scalars['String']['output']>;
   /** The link to the term */
   link?: Maybe<Scalars['String']['output']>;
   /** The human friendly name of the object. */
@@ -9966,6 +10101,10 @@ export type Tag = DatabaseIdentifier & MenuItemLinkable & Node & TermNode & Unif
   termGroupId?: Maybe<Scalars['Int']['output']>;
   /** The taxonomy ID that the object is associated with */
   termTaxonomyId?: Maybe<Scalars['Int']['output']>;
+  /** Tag translation group ID */
+  translationGroupId?: Maybe<Scalars['ID']['output']>;
+  /** Tag translations */
+  translations?: Maybe<Array<Maybe<Tag>>>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
 };
@@ -10440,6 +10579,10 @@ export type TermNode = {
   isRestricted?: Maybe<Scalars['Boolean']['output']>;
   /** Whether the node is a Term */
   isTermNode: Scalars['Boolean']['output'];
+  /** TermNode language */
+  language?: Maybe<Language>;
+  /** TermNode language code */
+  languageCode?: Maybe<Scalars['String']['output']>;
   /** The link to the term */
   link?: Maybe<Scalars['String']['output']>;
   /** The human friendly name of the object. */
@@ -10452,6 +10595,10 @@ export type TermNode = {
   termGroupId?: Maybe<Scalars['Int']['output']>;
   /** The taxonomy ID that the object is associated with */
   termTaxonomyId?: Maybe<Scalars['Int']['output']>;
+  /** TermNode translation group ID */
+  translationGroupId?: Maybe<Scalars['ID']['output']>;
+  /** TermNode translations */
+  translations?: Maybe<Array<Maybe<TermNode>>>;
   /** The unique resource identifier path */
   uri?: Maybe<Scalars['String']['output']>;
 };
@@ -11002,41 +11149,41 @@ export type UpdateServicePayload = {
 export type UpdateSettingsInput = {
   /** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
   clientMutationId?: InputMaybe<Scalars['String']['input']>;
-  /** Allow people to submit comments on new posts. */
+  /** Permite vizitatorilor să trimită comentarii la articole noi. */
   discussionSettingsDefaultCommentStatus?: InputMaybe<Scalars['String']['input']>;
-  /** Allow link notifications from other blogs (pingbacks and trackbacks) on new articles. */
+  /** Permite notificări pentru legături din alte bloguri (pingback-uri și trackback-uri) pentru articole noi. */
   discussionSettingsDefaultPingStatus?: InputMaybe<Scalars['String']['input']>;
-  /** A date format for all date strings. */
+  /** Un format de dată pentru toate șirurile de date. */
   generalSettingsDateFormat?: InputMaybe<Scalars['String']['input']>;
-  /** Site tagline. */
+  /** Slogan site. */
   generalSettingsDescription?: InputMaybe<Scalars['String']['input']>;
-  /** This address is used for admin purposes, like new user notification. */
+  /** Această adresă este folosită în scopuri administrative, cum ar fi notificare nouă pentru utilizator. */
   generalSettingsEmail?: InputMaybe<Scalars['String']['input']>;
-  /** WordPress locale code. */
+  /** Cod locală WordPress. */
   generalSettingsLanguage?: InputMaybe<Scalars['String']['input']>;
-  /** A day number of the week that the week should start on. */
+  /** Un număr al zilei săptămânii cu care săptămâna ar trebui să înceapă. */
   generalSettingsStartOfWeek?: InputMaybe<Scalars['Int']['input']>;
-  /** A time format for all time strings. */
+  /** Un format de timp pentru toate șirurile de timp. */
   generalSettingsTimeFormat?: InputMaybe<Scalars['String']['input']>;
-  /** A city in the same timezone as you. */
+  /** Un oraș cu același fus orar ca al tău. */
   generalSettingsTimezone?: InputMaybe<Scalars['String']['input']>;
-  /** Site title. */
+  /** Titlu site. */
   generalSettingsTitle?: InputMaybe<Scalars['String']['input']>;
-  /** Site URL. */
+  /** URL site. */
   generalSettingsUrl?: InputMaybe<Scalars['String']['input']>;
-  /** The ID of the page that should display the latest posts */
+  /** ID-ul paginii care ar trebui să afișeze ultimele articole */
   readingSettingsPageForPosts?: InputMaybe<Scalars['Int']['input']>;
-  /** The ID of the page that should be displayed on the front page */
+  /** ID-ul paginii care ar trebui afișată în pagina din față */
   readingSettingsPageOnFront?: InputMaybe<Scalars['Int']['input']>;
-  /** Blog pages show at most. */
+  /** Paginile blogului arată cel mult. */
   readingSettingsPostsPerPage?: InputMaybe<Scalars['Int']['input']>;
-  /** What to show on the front page */
+  /** Ce să arăți în pagina din față */
   readingSettingsShowOnFront?: InputMaybe<Scalars['String']['input']>;
-  /** Default post category. */
+  /** Categorie articol implicită. */
   writingSettingsDefaultCategory?: InputMaybe<Scalars['Int']['input']>;
-  /** Default post format. */
+  /** Format de articol implicit. */
   writingSettingsDefaultPostFormat?: InputMaybe<Scalars['String']['input']>;
-  /** Convert emoticons like :-) and :-P to graphics on display. */
+  /** Convertește emoticoanele în pictograme, de exemplu :-) și :-P. */
   writingSettingsUseSmilies?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
@@ -11134,6 +11281,8 @@ export type UpdateUserPayload = {
 /** A registered user account. Users can be assigned roles, author content, and have various capabilities within the site. */
 export type User = Commenter & DatabaseIdentifier & Node & UniformResourceIdentifiable & {
   __typename?: 'User';
+  /** The admin color scheme preference for the user. Possible values include &quot;fresh&quot;, &quot;light&quot;, &quot;blue&quot;, &quot;coffee&quot;, &quot;ectoplasm&quot;, &quot;midnight&quot;, &quot;ocean&quot;, &quot;sunrise&quot;. Default is &quot;fresh&quot;. */
+  adminColor?: Maybe<Scalars['String']['output']>;
   /** Avatar object for user. The avatar object can be retrieved in different sizes by specifying the size argument. */
   avatar?: Maybe<Avatar>;
   /** User metadata option name. Usually it will be &quot;wp_capabilities&quot;. */
@@ -11156,6 +11305,12 @@ export type User = Commenter & DatabaseIdentifier & Node & UniformResourceIdenti
   extraCapabilities?: Maybe<Array<Maybe<Scalars['String']['output']>>>;
   /** First name of the user. This is equivalent to the WP_User-&gt;user_first_name property. */
   firstName?: Maybe<Scalars['String']['output']>;
+  /** Whether the user has enabled keyboard shortcuts for comment moderation. Defaults to false. */
+  hasCommentShortcutsEnabled?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the user has enabled the visual editor. When enabled, the WYSIWYG editor is used for content editing. Defaults to true. */
+  hasRichEditingEnabled?: Maybe<Scalars['Boolean']['output']>;
+  /** Whether the user has enabled syntax highlighting when editing code within the post editor. Defaults to true. */
+  hasSyntaxHighlightingEnabled?: Maybe<Scalars['Boolean']['output']>;
   /** The globally unique identifier for the user object. */
   id: Scalars['ID']['output'];
   /** Whether the node is a Comment */
@@ -11476,6 +11631,8 @@ export type UserToCommentConnectionWhereArgs = {
   includeUnapproved?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   /** Karma score to retrieve matching comments for. */
   karma?: InputMaybe<Scalars['Int']['input']>;
+  /** Filter Comment objects by language code */
+  language?: InputMaybe<Scalars['String']['input']>;
   /** The cardinality of the order of the connection */
   order?: InputMaybe<OrderEnum>;
   /** Field to order the comments by. */
@@ -11611,6 +11768,8 @@ export type UserToMediaItemConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Filter MediaItem objects by language code */
+  language?: InputMaybe<Scalars['String']['input']>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -11690,6 +11849,8 @@ export type UserToPageConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Filter Page objects by language code */
+  language?: InputMaybe<Scalars['String']['input']>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -11777,6 +11938,8 @@ export type UserToPostConnectionWhereArgs = {
   id?: InputMaybe<Scalars['Int']['input']>;
   /** Array of IDs for the objects to retrieve */
   in?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
+  /** Filter Post objects by language code */
+  language?: InputMaybe<Scalars['String']['input']>;
   /** Get objects with a specific mimeType property */
   mimeType?: InputMaybe<MimeTypeEnum>;
   /** Slug / post_name of the object */
@@ -12015,11 +12178,11 @@ export type WithAcfServiceFields = {
 /** The writing setting type */
 export type WritingSettings = {
   __typename?: 'WritingSettings';
-  /** Default post category. */
+  /** Categorie articol implicită. */
   defaultCategory?: Maybe<Scalars['Int']['output']>;
-  /** Default post format. */
+  /** Format de articol implicit. */
   defaultPostFormat?: Maybe<Scalars['String']['output']>;
-  /** Convert emoticons like :-) and :-P to graphics on display. */
+  /** Convertește emoticoanele în pictograme, de exemplu :-) și :-P. */
   useSmilies?: Maybe<Scalars['Boolean']['output']>;
 };
 
@@ -12110,7 +12273,7 @@ export type SingleProjectQueryVariables = Exact<{
 export type SingleProjectQuery = { __typename?: 'RootQuery', projectBy?: { __typename?: 'Project', id: string, slug?: string | null, title?: string | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', id: string, altText?: string | null, sourceUrl?: string | null } } | null, services?: { __typename?: 'ProjectToServiceConnection', nodes: Array<(
         { __typename?: 'Service' }
         & { ' $fragmentRefs'?: { 'ServicesTaxonomiesFragmentFragment': ServicesTaxonomiesFragmentFragment } }
-      )> } | null, projectFields?: { __typename?: 'ProjectFields', client?: string | null, year?: string | null, description?: string | null, gallery?: (
+      )> } | null, projectFields?: { __typename?: 'ProjectFields', client?: string | null, year?: string | null, description?: string | null, youtubeVideo?: string | null, gallery?: (
         { __typename?: 'AcfMediaItemConnection' }
         & { ' $fragmentRefs'?: { 'GalleryFragmentFragment': GalleryFragmentFragment } }
       ) | null } | null } | null };
@@ -12139,5 +12302,5 @@ export const SocialsQueryDocument = {"kind":"Document","definitions":[{"kind":"O
 export const HomepageQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"HomepageQuery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pageBy"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"uri"},"value":{"kind":"StringValue","value":"home","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"home"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"representativeVideos"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"RepresentativeVideo"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"Video"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AcfMediaItemConnectionEdge"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"mimeType"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}},{"kind":"Field","name":{"kind":"Name","value":"filePath"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"size"},"value":{"kind":"EnumValue","value":"LARGE"}}]}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"RepresentativeVideo"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"HomeRepresentativeVideos_Fields"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"video"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"Video"}}]}}]}}]} as unknown as DocumentNode<HomepageQueryQuery, HomepageQueryQueryVariables>;
 export const PartnersQueryDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"PartnersQuery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"pageBy"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"uri"},"value":{"kind":"StringValue","value":"home","block":false}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"home"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"partners"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"image"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"altText"}},{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"size"},"value":{"kind":"EnumValue","value":"LARGE"}}]}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<PartnersQueryQuery, PartnersQueryQueryVariables>;
 export const ProjectsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"Projects"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projects"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"first"},"value":{"kind":"IntValue","value":"10"}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ProjectDetails"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"CardFragment"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Project"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"projectFields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"client"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"shortDescription"}}]}},{"kind":"Field","name":{"kind":"Name","value":"featuredImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ProjectDetails"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Project"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"FragmentSpread","name":{"kind":"Name","value":"CardFragment"}},{"kind":"Field","name":{"kind":"Name","value":"services"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"slug"}}]}}]}}]}}]} as unknown as DocumentNode<ProjectsQuery, ProjectsQueryVariables>;
-export const SingleProjectDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"SingleProject"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projectBy"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"featuredImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}},{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"services"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ServicesTaxonomiesFragment"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"projectFields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"client"}},{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"gallery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"GalleryFragment"}}]}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ServicesTaxonomiesFragment"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Service"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"GalleryFragment"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AcfMediaItemConnection"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}},{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}}]}}]}}]} as unknown as DocumentNode<SingleProjectQuery, SingleProjectQueryVariables>;
+export const SingleProjectDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"SingleProject"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"slug"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"String"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"projectBy"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"slug"},"value":{"kind":"Variable","name":{"kind":"Name","value":"slug"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"featuredImage"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}},{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"services"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ServicesTaxonomiesFragment"}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"projectFields"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"client"}},{"kind":"Field","name":{"kind":"Name","value":"year"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"gallery"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"GalleryFragment"}}]}},{"kind":"Field","name":{"kind":"Name","value":"youtubeVideo"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ServicesTaxonomiesFragment"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Service"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"GalleryFragment"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"AcfMediaItemConnection"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"altText"}},{"kind":"Field","name":{"kind":"Name","value":"sourceUrl"}}]}}]}}]} as unknown as DocumentNode<SingleProjectQuery, SingleProjectQueryVariables>;
 export const ServicesTaxonomiesDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"ServicesTaxonomies"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"services"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"nodes"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"FragmentSpread","name":{"kind":"Name","value":"ServicesTaxonomiesFragment"}}]}}]}}]}},{"kind":"FragmentDefinition","name":{"kind":"Name","value":"ServicesTaxonomiesFragment"},"typeCondition":{"kind":"NamedType","name":{"kind":"Name","value":"Service"}},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"slug"}},{"kind":"Field","name":{"kind":"Name","value":"name"}}]}}]} as unknown as DocumentNode<ServicesTaxonomiesQuery, ServicesTaxonomiesQueryVariables>;

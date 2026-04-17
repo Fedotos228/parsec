@@ -67,6 +67,7 @@ export const SingleProject = graphql(`
         gallery{
           ...GalleryFragment
         }
+        youtubeVideo
       }
     }
   }

@@ -34,7 +34,7 @@ export default function CTA() {
 
   return (
     <div className='box flex items-center flex-col gap-9 py-40 px-2' ref={containerRef}>
-      <h1 className='display-text display-lg'>Putem începe proiectul tău</h1>
+      <h1 className='display-text display-lg'>Putem începe proiectul tău!</h1>
       <Button asChild>
         <Link href={'/contact'}>
           Angajează-ne

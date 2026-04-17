@@ -43,8 +43,6 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
   const singleProject = data.projectBy
   const servicesNode = getNodes(singleProject?.services)
 
-
-
   return (
     <div>
       <Hero
@@ -70,6 +68,9 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
           {singleProject?.projectFields?.gallery && (
             <Gallery images={singleProject?.projectFields?.gallery} />
           )}
+        </div>
+        <div>
+          
         </div>
         <div className='max-md:w-full mt-14'>
           <Button className='max-md:block max-md:mx-auto'>
