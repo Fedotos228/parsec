@@ -1,5 +1,6 @@
 
 import { FragmentType, useFragment } from '@/gql'
+import { toHttps } from '@/lib/utils/utils'
 import { ProjectFragment } from '@/queries/domains.queries'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -15,7 +16,7 @@ export default function ProjectCard(props: ProjectCardProps) {
     <Link href={`/projects/${card.slug}`}>
       {card.featuredImage?.node.sourceUrl && (
         <Image
-          src={card.featuredImage?.node.sourceUrl}
+          src={toHttps(card.featuredImage?.node.sourceUrl)!}
           alt={card.featuredImage?.node.altText || "Project Card Image"}
           width={450}
           height={500}

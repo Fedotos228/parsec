@@ -2,6 +2,7 @@ import Hero from '@/components/pages/services/hero'
 import ServicesList from '@/components/pages/services/services-list'
 import CTA from '@/components/shared/cta'
 import { getNodes } from '@/lib/utils/getNodes'
+import { toHttps } from '@/lib/utils/utils'
 import { DomainQuery } from '@/queries/domains.queries'
 import { wpFetch } from '@/queries/wordpress'
 import { Metadata } from 'next'
@@ -23,7 +24,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     openGraph: {
       title: `${title} | Consultanță Strategică`,
       images: [{
-        url: data.domainBy?.featuredImage?.node.sourceUrl || '/og-image.jpg',
+        url: toHttps(data.domainBy?.featuredImage?.node.sourceUrl) || '/og-image.jpg',
         width: 1200,
         height: 630,
       }],

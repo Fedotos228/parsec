@@ -2,6 +2,7 @@
 
 import { FragmentType, useFragment } from '@/gql'
 import useFancybox from '@/hook/useFancybox'
+import { toHttps } from '@/lib/utils/utils'
 import { GalleryFragment } from '@/queries/fragments.queries'
 import "@fancyapps/ui/dist/fancybox/fancybox.css"
 import Image from 'next/image'
@@ -23,13 +24,13 @@ export default function Gallery({ images }: GalleryProps) {
       {galleryImages.nodes.map((item, i) => (
         <Link
           key={i}
-          href={item.sourceUrl || '#'}
+          href={toHttps(item.sourceUrl) || '#'}
           data-fancybox="project gallery"
           className='first-of-type:col-span-2 h-auto'
         >
           {item.sourceUrl && (
             <Image
-              src={item.sourceUrl}
+              src={toHttps(item.sourceUrl)!}
               alt={item.altText || 'Gallery image'}
               width={450}
               height={500}
