@@ -40,7 +40,6 @@ export default async function page({ params }: PageProps<'/domain/[slug]'>) {
   const title = data.domainBy?.title ?? 'Serviciu'
   const services = getNodes(data.domainBy.services)
 
-
   return (
     <div>
       <Hero

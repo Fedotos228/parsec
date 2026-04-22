@@ -59,6 +59,7 @@ export default function Hero({ title, services }: ProjectHeroPros) {
                         key={category.id}
                         href={`/projects?filter=${category.slug}`}
                         onClick={() => setIsOpen(false)}
+                        scroll={false}
                         className={`px-4 py-3 text-sm font-light tracking-wide  hover:text-white hover:bg-white/5 rounded-xl transition-colors ${filterParam === category.slug ? 'text-white underline underline-offset-5' : 'text-gray-400'} `}
                       >
                         {category.name}

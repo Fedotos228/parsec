@@ -3,6 +3,8 @@
 import BackgroundVideo from '@/components/shared/background-video'
 import { Button } from '@/components/ui/button'
 import { FragmentType, useFragment } from '@/gql'
+import { getNodes } from '@/lib/utils/getNodes'
+import { paths } from '@/lib/utils/paths'
 import { RepresentativeVideosFragment } from '@/queries/home.queries'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
@@ -13,24 +15,24 @@ export function HeroItem(props: { video: FragmentType<typeof RepresentativeVideo
   const video = useFragment(RepresentativeVideosFragment, props.video)
 
   const handleMouseEnter = () => {
-    if(videoRef.current) {
+    if (videoRef.current) {
       playPromiseRef.current = videoRef.current.play()
     }
 
     playPromiseRef.current?.catch((e) => {
-      if(e.name !== 'AbortError') {
+      if (e.name !== 'AbortError') {
         console.log('Video play error', e)
       }
     })
   }
 
   const hadleMouseLeave = () => {
-    if(playPromiseRef.current !== null) {
+    if (playPromiseRef.current !== null) {
       playPromiseRef.current
         .then(() => {
           videoRef.current?.pause()
         })
-        .catch(() => {})
+        .catch(() => { })
         .finally(() => {
           playPromiseRef.current = null
         })
@@ -42,12 +44,11 @@ export function HeroItem(props: { video: FragmentType<typeof RepresentativeVideo
   useEffect(() => {
     const isTouchDevice = window.matchMedia('(hover: none)').matches
     if (isTouchDevice && videoRef.current) {
-      videoRef.current.play().catch(() => {})
+      videoRef.current.play().catch(() => { })
     }
   }, [])
 
-  const videoTitle = video.title || ''
-  const linkHref = `/domain/${videoTitle.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`
+  const domainSlug = getNodes(video.domain)[0].slug || '#'
 
   return (
     <div
@@ -55,18 +56,16 @@ export function HeroItem(props: { video: FragmentType<typeof RepresentativeVideo
       onMouseEnter={handleMouseEnter}
       onMouseLeave={hadleMouseLeave}
     >
-      {
-        video.video ? (
-          <BackgroundVideo video={video.video} videoRef={videoRef} />
-        ) : (
-          <div className='absolute inset-0 bg-background/80' />
-        )
-      }
+      {video.video ? (
+        <BackgroundVideo video={video.video} videoRef={videoRef} />
+      ) : (
+        <div className='absolute inset-0 bg-background/80' />
+      )}
 
       <div className='absolute left-1/2 translate-y-1/2 md:translate-y-0 -translate-x-1/2 md:-translate-x-1/2 bottom-1/2 md:bottom-12 lg:bottom-14 2xl:bottom-20 flex flex-col items-center gap-4 z-30 w-full px-4 text-center'>
         <h2 className='drop-shadow-md'>{video.title}</h2>
         <Button variant='link'>
-          <Link href={linkHref}>
+          <Link href={paths.domain(domainSlug)}>
             Descoperă
           </Link>
         </Button>

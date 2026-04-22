@@ -3,6 +3,7 @@
 import { FragmentType, useFragment } from '@/gql'
 import { ProjectDetails } from '@/queries/projects.queries'
 import { useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import Card from './card'
 
 interface GridProps {
@@ -10,15 +11,25 @@ interface GridProps {
 }
 
 export default function Grid({ projects }: GridProps) {
-  const searchParams = useSearchParams()
-  const activeFilter = searchParams.get('filter')
-
+  const activeFilter = useSearchParams().get('filter')
   const allProjects = useFragment(ProjectDetails, projects)
+  const [filter, setFilter] = useState<string | null>(activeFilter)
 
-  const filteredProjects = !activeFilter || activeFilter === 'all'
+
+  useEffect(() => {
+    if (!activeFilter || activeFilter === 'all') {
+      setFilter(null)
+    } else {
+      setFilter(activeFilter)
+    }
+
+    
+  }, [activeFilter])
+
+  const filteredProjects = !filter || filter === 'all'
     ? allProjects
     : allProjects.filter((project) =>
-      project.services?.nodes.some(service => service.slug === activeFilter)
+      project.services?.nodes.some(service => service.slug === filter)
     )
 
   return (

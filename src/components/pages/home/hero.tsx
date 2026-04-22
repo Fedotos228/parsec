@@ -4,9 +4,9 @@ import Image from 'next/image'
 import { HeroItem } from './hero-item'
 
 export default async function Hero() {
-  const data = await wpFetch(HomeQuery)
-  const videos = data.pageBy?.home?.representativeVideos
-
+  const videoData = await wpFetch(HomeQuery)
+  const videos = videoData.pageBy?.home?.representativeVideos
+  
   return (
     <div className='relative h-dvh w-full grid grid-cols-1 grid-rows-2 md:grid-cols-2 md:grid-rows-1'>
       <Image

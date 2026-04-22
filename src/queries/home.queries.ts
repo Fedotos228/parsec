@@ -3,6 +3,11 @@ import { graphql } from '../gql'
 export const RepresentativeVideosFragment = graphql(`
   fragment RepresentativeVideo on HomeRepresentativeVideos_Fields {
     title
+    domain {
+      nodes {
+        slug
+      }
+    }
     video {
       ...Video
     }
