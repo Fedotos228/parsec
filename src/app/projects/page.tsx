@@ -22,7 +22,6 @@ export const metadata: Metadata = {
 
 export default async function ProjectsPage() {
   const { services } = await wpFetch(ServcesTaxonomieQuery)
-
   const servicesNode = getNodes(services)
 
   return (

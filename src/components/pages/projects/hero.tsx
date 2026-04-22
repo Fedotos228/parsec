@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 import { FragmentType, useFragment } from '@/gql'
+import { cn } from '@/lib/utils/utils'
 import { ServicesTaxonomiesFragment } from '@/queries/fragments.queries'
 import { AnimatePresence, motion } from 'framer-motion'
 import { SlidersHorizontal, X } from 'lucide-react'
@@ -78,7 +79,14 @@ export default function Hero({ title, services }: ProjectHeroPros) {
           <Link href="/projects">Toate</Link>
         </Button>
         {categories.map((category) => (
-          <Button asChild key={category.id} variant={'secondary'} className="rounded-full px-6">
+          <Button
+            asChild key={category.id}
+            variant={'secondary'}
+            className={cn(
+              "rounded-full px-6",
+              filterParam === category.slug && 'active'
+            )}
+          >
             <Link href={`/projects?filter=${category.slug}`}>
               {category.name}
             </Link>

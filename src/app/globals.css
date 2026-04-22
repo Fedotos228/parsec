@@ -240,4 +240,15 @@
         rgba(255, 255, 255, 0) 100%);
     backdrop-filter: blur(64.7px);
   }
+
+  .secondary-border.active {
+    background: var(--foreground);
+    color: var(--background);
+    backdrop-filter: none;
+    box-shadow: none;
+  }
+
+  .secondary-border.active::before {
+    display: none;
+  }
 }
