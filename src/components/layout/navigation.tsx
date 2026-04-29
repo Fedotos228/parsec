@@ -1,5 +1,6 @@
 'use client'
 
+import { paths } from '@/lib/utils/paths'
 import { motion } from 'framer-motion'
 import { X } from 'lucide-react'
 import Link from 'next/link'
@@ -7,12 +8,12 @@ import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 
 const navigation: { name: string; href: string }[] = [
-  { name: 'Acasă', href: '/' },
-  { name: 'Proiecte', href: '/projects' },
-  { name: 'Strategic', href: '/domain/strategic' },
+  { name: 'Acasă', href: paths.home() },
+  { name: 'Proiecte', href: paths.projects() },
+  { name: 'Strategic', href: '/domain/consultanta-strategica' },
   { name: 'PR & Marketing', href: '/domain/pr-marketing' },
-  { name: 'Contact', href: '/contact' },
-  { name: 'Privacy Policy', href: '/privacy-policy' },
+  { name: 'Contact', href: paths.contact() },
+  { name: 'Privacy Policy', href: paths.privacy() },
 ]
 
 export default function Navigation({
