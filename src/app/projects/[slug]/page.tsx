@@ -44,6 +44,8 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
   const singleProject = data.projectBy
   const servicesNode = getNodes(singleProject?.services)
 
+  singleProject?.projectFields?.youtubeVideo
+
   return (
     <div>
       <Hero
@@ -70,9 +72,13 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
             <Gallery images={singleProject?.projectFields?.gallery} />
           )}
         </div>
-        <div>
-          
-        </div>
+
+        {singleProject?.projectFields?.youtubeVideo && (
+          <div
+            dangerouslySetInnerHTML={{ __html: singleProject.projectFields.youtubeVideo }}
+            className='[&_iframe]:w-full! [&_iframe]:h-full! [&_iframe]:aspect-video [&_iframe]:object-cover my-10'
+          />
+        )}
         <div className='max-md:w-full mt-14'>
           <Button className='max-md:block max-md:mx-auto'>
             Angajează-ne

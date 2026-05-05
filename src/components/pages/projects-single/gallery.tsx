@@ -35,6 +35,7 @@ export default function Gallery({ images }: GalleryProps) {
               width={450}
               height={500}
               className='w-full h-full object-cover'
+              loading='eager'
             />
           )}
         </Link>
