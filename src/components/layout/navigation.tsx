@@ -10,7 +10,7 @@ import { useEffect, useRef } from 'react'
 const navigation: { name: string; href: string }[] = [
   { name: 'Acasă', href: paths.home() },
   { name: 'Proiecte', href: paths.projects() },
-  { name: 'Strategic', href: '/domain/consultanta-strategica' },
+  { name: 'Consultanță strategică', href: '/domain/consultanta-strategica' },
   { name: 'PR & Marketing', href: '/domain/pr-marketing' },
   { name: 'Contact', href: paths.contact() },
   { name: 'Privacy Policy', href: paths.privacy() },
