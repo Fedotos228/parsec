@@ -13,7 +13,35 @@ export const metadata: Metadata = {
     template: '%s | Parsec',
   },
   description: 'Agenție de PR și comunicare strategică. Oferim servicii de management de criză, campanii media, branding și soluții digitale pentru companii și instituții internaționale.',
-  keywords: ['PR', 'comunicare strategică', 'management de criză', 'branding', 'campanii media', 'consultanță afaceri', 'producție video'],
+  keywords: [
+    // Short-tail
+    'reels maker Chișinău', 'reels maker Moldova',
+    'social media manager Chișinău', 'social media manager Moldova',
+    'organizare evenimente Chișinău', 'agenție publicitate Chișinău',
+    'design grafic Chișinău', 'consultanță business Moldova',
+    // Long-tail
+    'servicii reels și video marketing Chișinău',
+    'creare conținut video pentru Instagram Chișinău',
+    'managementul rețelelor sociale Moldova',
+    'agenție SMM Chișinău',
+    'organizare evenimente corporate Chișinău',
+    'organizare evenimente private Moldova',
+    'publicitate online Moldova',
+    'promovare online afaceri Chișinău',
+    'plasare publicitate mass-media Moldova',
+    'design broșură Chișinău',
+    'design materiale publicitare Moldova',
+    'consultanță marketing digital Moldova',
+    'agenție de marketing Chișinău',
+    'promovare social media Moldova',
+    'creare conținut social media Chișinău',
+    // Russian
+    'рилс мейкер Кишинев', 'SMM менеджер Кишинев',
+    'организация мероприятий Кишинев', 'реклама онлайн Молдова',
+    'графический дизайн Кишинев', 'маркетинговое агентство Кишинев',
+    // Branded
+    'Parsec Moldova', 'parsec.md', 'SCP Parsec Chișinău', 'agenție Parsec Moldova',
+  ],
   authors: [{ name: 'Parsec Team' }],
   openGraph: {
     title: 'Parsec | Partenerul tău în Comunicare Strategică',
