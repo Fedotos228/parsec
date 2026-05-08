@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
         port: '8888',
         pathname: "/wp-content/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "parsec.stellarsolutions.md",
+        pathname: "/wp-content/uploads/**",
+      },
     ],
     unoptimized: true,
   },

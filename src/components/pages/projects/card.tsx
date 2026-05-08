@@ -14,9 +14,9 @@ export default function Card({ project }: CardProps) {
   return (
     <Link
       href={`projects/${slug}`}
-      className='relative w-full h-134.5 rounded-lg overflow-hidden group cursor-pointer '
+      className='relative w-full h-134.5 rounded-lg overflow-hidden group cursor-pointer'
     >
-      <div className='w-full h-full inset-0 project-card-bg relative'>
+      <div className='relative inset-0 w-full h-full'>
         {featuredImage?.node.sourceUrl && (
           <Image
             src={toHttps(featuredImage?.node.sourceUrl)!}
@@ -27,11 +27,11 @@ export default function Card({ project }: CardProps) {
           />
         )}
       </div>
-      <p className='absolute top-6 left-6 flex items-center gap-1.5 text-lg before:inline-block before:w-2.5 before:h-2.5 before:bg-red-400'>{title}</p>
-      <span className='absolute top-6 right-6'>{projectFields?.year}</span>
+      <div className='absolute inset-0 w-full h-full bg-linear-180 from-black/60 to-transparent ' />
+      <p className='absolute top-6 left-6 flex items-center gap-1.5 text-lg max-w-3/4 before:inline-block before:w-2.5 before:h-2.5 before:bg-red-400 '>{title}</p>
+      <span className='absolute top-6.5 right-6'>{projectFields?.year}</span>
       <div className='absolute inset-0 flex flex-col justify-between bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity p-6'>
         <h5>{projectFields?.client}</h5>
-
         {projectFields?.shortDescription && (
           <div
             className='prose prose-sm'

@@ -1,6 +1,5 @@
 import { graphql } from '@/gql'
 
-
 export const CardDetails = graphql(`
   fragment CardFragment on Project {
     title
@@ -67,7 +66,10 @@ export const SingleProject = graphql(`
         gallery{
           ...GalleryFragment
         }
-        youtubeVideo
+        youtubeVideo {
+          fieldGroupName
+          video
+        }
       }
     }
   }
