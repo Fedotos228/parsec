@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     description: 'Agenție de marketing și PR în Chișinău, Moldova. Social media management, creare reels, design grafic, organizare evenimente și consultanță business.',
     url: 'https://parsec.md',
     type: 'website',
+    images: [{ url: 'https://parsec.md/opengraph-image', width: 1200, height: 630 }],
   },
 }
 

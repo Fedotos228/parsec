@@ -1,5 +1,4 @@
 import { FragmentType, useFragment } from '@/gql'
-import { toHttps } from '@/lib/utils/utils'
 import { CardDetails } from '@/queries/projects.queries'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -19,7 +18,7 @@ export default function Card({ project }: CardProps) {
       <div className='relative inset-0 w-full h-full'>
         {featuredImage?.node.sourceUrl && (
           <Image
-            src={toHttps(featuredImage?.node.sourceUrl)!}
+            src={featuredImage?.node.sourceUrl!}
             alt={featuredImage?.node.altText || 'Project image'}
             fill
             className='object-cover'

@@ -1,4 +1,3 @@
-import { toHttps } from '@/lib/utils/utils'
 import { PartnersQuery } from '@/queries/home.queries'
 import { wpFetch } from '@/queries/wordpress'
 import Image from 'next/image'
@@ -19,7 +18,7 @@ export default async function Partners() {
               {partner?.image && partner?.image.node.sourceUrl ? (
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Image
-                    src={toHttps(partner.image.node.sourceUrl)!}
+                    src={partner.image.node.sourceUrl!}
                     alt={partner.image.node.altText || 'Partner Logo'}
                     width={220}
                     height={120}

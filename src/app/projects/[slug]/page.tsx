@@ -3,7 +3,7 @@ import Gallery from '@/components/pages/projects-single/gallery'
 import Hero from '@/components/pages/projects-single/hero'
 import { Button } from '@/components/ui/button'
 import { getNodes } from '@/lib/utils/getNodes'
-import { cn, toHttps } from '@/lib/utils/utils'
+import { cn } from '@/lib/utils/utils'
 import { SingleProject } from '@/queries/projects.queries'
 import { wpFetch } from '@/queries/wordpress'
 import Image from 'next/image'
@@ -29,7 +29,7 @@ export async function generateMetadata({
     openGraph: {
       title: `${title} | Parsec`,
       images: [{
-        url: toHttps(data.projectBy?.featuredImage?.node.sourceUrl) || '/og-image.jpg',
+        url: 'https://parsec.md/opengraph-image',
         width: 1200,
         height: 630,
       }],
@@ -57,7 +57,7 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
       />
       {singleProject?.featuredImage?.node.sourceUrl && (
         <Image
-          src={toHttps(singleProject?.featuredImage?.node.sourceUrl)!}
+          src={singleProject?.featuredImage?.node.sourceUrl!}
           alt={singleProject?.featuredImage?.node.altText || 'Single project imaghe'}
           width={1872}
           height={1000}
