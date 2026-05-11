@@ -28,9 +28,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { projects, domains } = await fetchSlugs()
 
   return [
-    { url: base, changeFrequency: 'weekly', priority: 1 },
-    { url: `${base}/projects`, changeFrequency: 'weekly', priority: 0.9 },
-    { url: `${base}/contact`, changeFrequency: 'yearly', priority: 0.5 },
+    { url: base, changeFrequency: 'weekly', priority: 1, lastModified: new Date() },
+    { url: `${base}/projects`, changeFrequency: 'weekly', priority: 0.9, lastModified: new Date() },
+    { url: `${base}/contact`, changeFrequency: 'yearly', priority: 0.5, lastModified: new Date() },
     ...domains.map((slug) => ({
       url: `${base}/domain/${slug}`,
       changeFrequency: 'monthly' as const,

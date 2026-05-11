@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     },
     openGraph: {
       title: `${title} | Consultanță Strategică`,
+      description: description.substring(0, 160),
       images: [{
         url: data.domainBy?.featuredImage?.node.sourceUrl || 'https://parsec.md/opengraph-image',
         width: 1200,

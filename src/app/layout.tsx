@@ -60,6 +60,12 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 }
 
@@ -71,7 +77,6 @@ export default function RootLayout({
   return (
     <html lang="ro">
       <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <script dangerouslySetInnerHTML={{ __html: `
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -93,9 +98,9 @@ export default function RootLayout({
           {children}
         </div>
         <CookieBanner />
+        <GoogleAnalytics gaId='G-MVYRTRHH8G' />
+        <Analytics />
       </body>
-      <GoogleAnalytics gaId='G-MVYRTRHH8G' />
-      <Analytics />
     </html>
   )
 }

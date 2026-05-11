@@ -28,8 +28,9 @@ export async function generateMetadata({
     },
     openGraph: {
       title: `${title} | Parsec`,
+      description: description.substring(0, 160),
       images: [{
-        url: 'https://parsec.md/opengraph-image',
+        url: data.projectBy?.featuredImage?.node.sourceUrl || '',
         width: 1200,
         height: 630,
       }],
@@ -58,7 +59,7 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
       {singleProject?.featuredImage?.node.sourceUrl && (
         <Image
           src={singleProject?.featuredImage?.node.sourceUrl!}
-          alt={singleProject?.featuredImage?.node.altText || 'Single project imaghe'}
+          alt={singleProject?.featuredImage?.node.altText || 'Single project image'}
           width={1872}
           height={1000}
           className='px-3 md:p-6 h-auto aspect-video object-cover'

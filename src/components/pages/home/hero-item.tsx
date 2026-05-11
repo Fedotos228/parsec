@@ -56,13 +56,14 @@ export function HeroItem(props: { video: FragmentType<typeof RepresentativeVideo
       onMouseEnter={handleMouseEnter}
       onMouseLeave={hadleMouseLeave}
     >
+      
       {video.video ? (
         <BackgroundVideo video={video.video} videoRef={videoRef} />
       ) : (
         <div className='absolute inset-0 bg-background/80' />
       )}
 
-      <div className='absolute left-1/2 translate-y-1/2 md:translate-y-0 -translate-x-1/2 md:-translate-x-1/2 bottom-1/2 md:bottom-12 lg:bottom-14 2xl:bottom-20 flex flex-col items-center gap-4 z-30 w-full px-4 text-center'>
+      <div className='absolute left-1/2 translate-y-0 -translate-x-1/2 md:-translate-x-1/2 bottom-12 lg:bottom-14 2xl:bottom-20 flex flex-col items-center gap-4 z-30 w-full px-4 text-center'>
         <h2 className='drop-shadow-md'>{video.title}</h2>
         <Button variant='link'>
           <Link href={paths.domain(domainSlug)}>
