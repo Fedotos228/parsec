@@ -16,7 +16,6 @@ export default function BackgroundVideo(props: {
     <div className='absolute inset-0 z-10 group'>
       <video
         ref={props.videoRef}
-        poster=''
         className='h-full w-full object-cover'
         muted
         playsInline
@@ -25,7 +24,7 @@ export default function BackgroundVideo(props: {
       >
         <source src={getWPMedia(node.filePath)} type={node.mimeType ?? 'video/mp4'} />
       </video>
-      <div className='absolute inset-0 bg-background/60 transition-colors duration-150 ease-in-out group-hover:bg-background/40 z-20' />
+      <div className='absolute inset-0 bg-background/40 transition-colors duration-150 ease-in-out group-hover:bg-background/30 z-20' />
     </div>
   )
 }

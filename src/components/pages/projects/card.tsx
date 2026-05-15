@@ -26,8 +26,8 @@ export default function Card({ project }: CardProps) {
           />
         )}
       </div>
-      <div className='absolute inset-0 w-full h-full bg-linear-180 from-black/60 to-transparent ' />
-      <p className='absolute top-6 left-6 flex items-center gap-1.5 text-lg max-w-3/4 before:inline-block before:w-2.5 before:h-2.5 before:bg-red-400 '>{title}</p>
+      <div className='absolute inset-0 w-full h-full bg-linear-180 from-black/60 to-transparent' />
+      <p className='absolute top-6 left-6 flex items-center gap-1.5 text-lg max-w-3/4 before:inline-block before:w-2.5 before:h-2.5 before:bg-red-400 group-hover:invisible group-hover:opacity-0'>{title}</p>
       <span className='absolute top-6.5 right-6'>{projectFields?.year}</span>
       <div className='absolute inset-0 flex flex-col justify-between bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity p-6'>
         <h5>{projectFields?.client}</h5>
