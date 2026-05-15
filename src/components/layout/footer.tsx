@@ -6,9 +6,6 @@ import Link from 'next/link'
 export default function Footer() {
   return (
     <footer className='p-6'>
-      <div>
-        <h2 className='text-center mb-4'>Suntem punctul tău de sprijin</h2>
-      </div>
       <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 bg-footer p-10 rounded-xl'>
         <nav className='flex items-center flex-col md:flex-row gap-9'>
           {footerNav.map((item) => (
