@@ -15,7 +15,7 @@ export default async function Hero() {
           alt='SCP Parsec Logo'
           width={200}
           height={200}
-          className='mx-auto mb-3.5 h-20 w-20 md:w-52 md:h-52'
+          className='mx-auto mb-3.5 hidden md:block md:w-52 md:h-52'
           priority
         />
       </div>
