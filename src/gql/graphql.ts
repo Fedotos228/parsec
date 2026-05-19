@@ -3373,6 +3373,8 @@ export type HomePartners = AcfFieldGroup & AcfFieldGroupFields & HomePartners_Fi
    */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
   /** Field of the &quot;image&quot; Field Type added to the schema as part of the &quot;HomePartners&quot; Field Group */
+  gray?: Maybe<AcfMediaItemConnectionEdge>;
+  /** Field of the &quot;image&quot; Field Type added to the schema as part of the &quot;HomePartners&quot; Field Group */
   image?: Maybe<AcfMediaItemConnectionEdge>;
 };
 
@@ -3383,6 +3385,8 @@ export type HomePartners_Fields = {
    * @deprecated Use __typename instead
    */
   fieldGroupName?: Maybe<Scalars['String']['output']>;
+  /** Field of the &quot;image&quot; Field Type added to the schema as part of the &quot;HomePartners&quot; Field Group */
+  gray?: Maybe<AcfMediaItemConnectionEdge>;
   /** Field of the &quot;image&quot; Field Type added to the schema as part of the &quot;HomePartners&quot; Field Group */
   image?: Maybe<AcfMediaItemConnectionEdge>;
 };
