@@ -20,7 +20,7 @@ export default async function Partners() {
 
   return (
     <section className='my-8 md:my-10'>
-      <h2 className='mt-20 mb-5 text-center'>Partenerii Noștri</h2>
+      <h2 className='mt-20 mb-5 text-center'>Partenerii noștri</h2>
       <PartnersCarousel firstThird={firstThird} secondThird={secondThird} thirdThird={thirdThird} />
     </section>
   )
