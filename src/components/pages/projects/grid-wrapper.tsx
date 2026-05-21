@@ -5,7 +5,8 @@ import Grid from './grid'
 
 export default async function GridWrapper() {
   const { projects } = await wpFetch(Projects)
-  const projectNode = getNodes(projects)
+  const projectNodes = getNodes(projects)
+  const pageInfo = projects?.pageInfo ?? { hasNextPage: false, endCursor: null }
 
-  return <Grid projects={projectNode} />
+  return <Grid projects={projectNodes} initialPageInfo={pageInfo} />
 }

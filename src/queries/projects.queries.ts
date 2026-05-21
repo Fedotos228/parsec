@@ -38,8 +38,12 @@ export const ProjectDetails = graphql(`
 `)
 
 export const Projects = graphql(`
-  query Projects {
-    projects(first: 10) {
+  query Projects($after: String) {
+    projects(first: 6, after: $after) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
       nodes {
         ...ProjectDetails
       }
