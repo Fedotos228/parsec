@@ -2,6 +2,7 @@ import { graphql } from '@/gql'
 
 export const ProjectFragment = graphql(`
   fragment ProjectFragment on Project {
+    __typename
     slug
     title
     featuredImage {

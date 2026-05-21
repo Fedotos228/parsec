@@ -90,7 +90,7 @@ export default function ScrollingServices({ services }: ScrollingServicesProps) 
               <Hr position='top' />
               <div className='grid grid-cols-2 max-[1366px]:grid-cols-1 gap-6'>
                 {projects && projects
-                  .filter((p): p is Extract<typeof p, { __typename?: 'Project' }> => p.__typename === 'Project')
+                  .filter((p): p is Extract<typeof p, { __typename?: "Project" }> => p.__typename === "Project")
                   .slice(0, width < 1366 ? 1 : 2)
                   .map((project, i) => (
                     <ProjectCard key={i} card={project} />
