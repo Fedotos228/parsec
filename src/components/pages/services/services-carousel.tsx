@@ -34,9 +34,12 @@ export default function ServicesCarousel({ services }: ServicesCarouselProps) {
               <p className='text-foreground/80 text-lg leading-relaxed mb-10'>
                 {item.description}
               </p>
-              {item.projects?.nodes.slice(0, 1).map((project, i) => (
-                <ProjectCard key={i} card={project} />
-              ))}
+              {item.serviceCategories?.projects?.nodes
+                .filter((p): p is Extract<typeof p, { __typename?: 'Project' }> => p.__typename === 'Project')
+                .slice(0, 1)
+                .map((project, i) => (
+                  <ProjectCard key={i} card={project} />
+                ))}
             </CarouselItem>
           ))}
         </CarouselContent>

@@ -5,6 +5,12 @@ export const CardDetails = graphql(`
     title
     slug
     projectFields {
+      secundaryFeaturedImage {
+        node {
+          sourceUrl
+          altText
+        }
+      }
       year
       client
       description
@@ -60,6 +66,12 @@ export const SingleProject = graphql(`
         }
       }
       projectFields {
+        secundaryFeaturedImage {
+          node {
+            sourceUrl
+            altText
+          }
+        }
         client
         year
         description

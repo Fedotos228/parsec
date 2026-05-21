@@ -3,6 +3,7 @@
 import Hr from '@/components/shared/hr'
 import { FragmentType, useFragment } from '@/gql'
 import { useBreakpoint } from '@/hook/useBreakpoint'
+import { getNodes } from '@/lib/utils/getNodes'
 import { cn } from '@/lib/utils/utils'
 import { ServiceFragment } from '@/queries/domains.queries'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -19,7 +20,10 @@ export default function ScrollingServices({ services }: ScrollingServicesProps) 
   const [isVisible, setIsVisible] = useState<boolean>(false)
   const { width } = useBreakpoint()
 
-  service[currentProject].projects?.nodes
+  const projects = getNodes(service[currentProject].serviceCategories?.projects)
+
+  console.log(projects)
+
 
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -85,9 +89,12 @@ export default function ScrollingServices({ services }: ScrollingServicesProps) 
             <div className='relative h-full flex flex-col justify-center items-center'>
               <Hr position='top' />
               <div className='grid grid-cols-2 max-[1366px]:grid-cols-1 gap-6'>
-                {service[currentProject].projects?.nodes?.slice(0, width < 1366 ? 1 : 2).map((project, i) => (
-                  <ProjectCard key={i} card={project} />
-                ))}
+                {projects && projects
+                  .filter((p): p is Extract<typeof p, { __typename?: 'Project' }> => p.__typename === 'Project')
+                  .slice(0, width < 1366 ? 1 : 2)
+                  .map((project, i) => (
+                    <ProjectCard key={i} card={project} />
+                  ))}
               </div>
               <Hr position='bottom' />
             </div>

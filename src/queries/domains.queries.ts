@@ -11,6 +11,12 @@ export const ProjectFragment = graphql(`
       }
     }
     projectFields {
+      secundaryFeaturedImage {
+        node {
+          sourceUrl
+          altText
+        }
+      }
       description
       shortDescription
     }
@@ -23,9 +29,11 @@ export const ServiceFragment = graphql(`
     slug
     name
     description
-    projects(first: 2) {
-      nodes {
-        ...ProjectFragment
+    serviceCategories {
+      projects {
+        nodes {
+          ...ProjectFragment
+        }
       }
     }
   }

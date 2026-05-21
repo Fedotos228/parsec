@@ -7,6 +7,8 @@ import { wpFetch } from '@/queries/wordpress'
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 
+export const revalidate = 300
+
 export const metadata: Metadata = {
   title: 'Proiecte',
   description: 'Descoperă proiectele noastre de PR, comunicare strategică și campanii media realizate pentru clienți din Moldova și România.',

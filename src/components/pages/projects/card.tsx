@@ -10,16 +10,18 @@ interface CardProps {
 export default function Card({ project }: CardProps) {
   const { title, slug, projectFields, featuredImage } = useFragment(CardDetails, project)
 
+  const featuredImageUrl = projectFields?.secundaryFeaturedImage?.node.sourceUrl ?? featuredImage?.node.sourceUrl
+
   return (
     <Link
       href={`projects/${slug}`}
       className='relative w-full h-134.5 rounded-lg overflow-hidden group cursor-pointer'
     >
       <div className='relative inset-0 w-full h-full'>
-        {featuredImage?.node.sourceUrl && (
+        {featuredImageUrl && (
           <Image
-            src={featuredImage?.node.sourceUrl!}
-            alt={featuredImage?.node.altText || 'Project image'}
+            src={featuredImageUrl}
+            alt={projectFields?.secundaryFeaturedImage?.node.altText || featuredImage?.node.altText || 'Project image'}
             fill
             className='object-cover'
             loading='eager'

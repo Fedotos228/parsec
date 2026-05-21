@@ -11,11 +11,13 @@ interface ProjectCardProps {
 export default function ProjectCard(props: ProjectCardProps) {
   const card = useFragment(ProjectFragment, props.card)
 
+  const featuredImageUrl = card.projectFields?.secundaryFeaturedImage?.node.sourceUrl ?? card.featuredImage?.node.sourceUrl
+
   return (
     <Link href={`/projects/${card.slug}`}>
-      {card.featuredImage?.node.sourceUrl && (
+      {featuredImageUrl && (
         <Image
-          src={card.featuredImage?.node.sourceUrl!}
+          src={featuredImageUrl}
           alt={card.featuredImage?.node.altText || "Project Card Image"}
           width={450}
           height={500}

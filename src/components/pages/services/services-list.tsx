@@ -15,11 +15,7 @@ export default function ServicesList({ services }: ScrollingProjectsProps) {
 
   return (
     <>
-      {isMobile ? (
-        <ServicesCarousel services={services} />
-      ) : (
-        <ScrollingServices services={services} />
-      )}
+      {isMobile ? <ServicesCarousel services={services} /> : <ScrollingServices services={services} />}
     </>
   )
 }

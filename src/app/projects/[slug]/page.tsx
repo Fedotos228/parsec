@@ -58,7 +58,7 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
       />
       {singleProject?.featuredImage?.node.sourceUrl && (
         <Image
-          src={singleProject?.featuredImage?.node.sourceUrl!}
+          src={singleProject?.featuredImage?.node.sourceUrl}
           alt={singleProject?.featuredImage?.node.altText || 'Single project image'}
           width={1872}
           height={1000}

@@ -9,6 +9,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 import Script from 'next/script'
 
+// Fallback ISR: revalidează la 5 min dacă webhook-ul WordPress nu ajunge
+export const revalidate = 300
+
 export const metadata: Metadata = homeMetadata
 
 export default function Home() {

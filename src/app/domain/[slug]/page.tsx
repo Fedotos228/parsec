@@ -8,9 +8,9 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const { slug } = await params
+  const { slug } = (await params)
   const data = await wpFetch(DomainQuery, { slug })
-
+  
   const title = data.domainBy?.title || 'Serviciu PR'
   const description = data.domainBy?.serviceFields?.hero?.shortDescription || 'Servicii profesionale de consultanță.'
 
