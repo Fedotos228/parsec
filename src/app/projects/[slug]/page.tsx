@@ -50,7 +50,7 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
 
 
   return (
-    <div>
+    <div className="mt-20 md:mt-32">
       <Hero
         title={singleProject?.title}
         services={servicesNode}
