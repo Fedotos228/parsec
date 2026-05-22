@@ -10,6 +10,7 @@
     "generate": "graphql-codegen --config codegen.config.ts"
   },
   "dependencies": {
+    "@fancyapps/ui": "^6.1.9",
     "@graphql-typed-document-node/core": "^3.2.0",
     "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^5.2.2",
@@ -40,7 +41,6 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@fancyapps/ui": "^6.1.9",
     "@graphql-codegen/cli": "^6.1.1",
     "@graphql-codegen/client-preset": "^5.2.2",
     "@graphql-codegen/typescript": "^5.0.7",

@@ -54,7 +54,7 @@ export default function Image() {
               textAlign: 'center',
             }}
           >
-            Parsec - Agenție de Marketing și PR în Chișinău, Moldova
+            Parsec - Companie de consultanță strategică și marketing
           </div>
         </div>
       </div>
