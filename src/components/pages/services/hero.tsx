@@ -1,21 +1,12 @@
-import { FragmentType, useFragment } from '@/gql'
-import { VideoFragment } from '@/queries/fragments.queries'
 import Image from 'next/image'
 
 export default function Hero({
-  background,
   title,
   description
 }: {
-  background: FragmentType<typeof VideoFragment> | undefined | null,
   title: string,
   description: string | null | undefined
 }) {
-  const backgroundFragment = useFragment(VideoFragment, background)
-  const node = backgroundFragment?.node
-
-  if (!node?.filePath) return <div className='absolute inset-0 bg-background/60' />
-
   return (
     <div className='relative h-dvh xl:h-162 2xl:h-208'>
       {/* <div className='relative h-full w-full'>

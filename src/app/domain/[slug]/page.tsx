@@ -44,7 +44,6 @@ export default async function page({ params }: PageProps<'/domain/[slug]'>) {
   return (
     <div>
       <Hero
-        background={heroData?.video}
         title={title}
         description={heroData?.description}
       />
