@@ -39,7 +39,7 @@ export const ProjectDetails = graphql(`
 
 export const Projects = graphql(`
   query Projects($after: String) {
-    projects(first: 6, after: $after) {
+    projects(first: 6, after: $after, where: { orderby: [{ field: MENU_ORDER, order: ASC }] }) {
       pageInfo {
         hasNextPage
         endCursor
