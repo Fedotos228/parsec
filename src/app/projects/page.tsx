@@ -29,7 +29,8 @@ export default async function ProjectsPage() {
 
   return (
     <main>
-      <Hero title='Proiecte' services={servicesNode} />
+
+      <Hero services={servicesNode} />
       <Suspense fallback={<ProjectsGridSkeleton />}>
         <GridWrapper />
       </Suspense>

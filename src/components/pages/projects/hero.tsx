@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils/utils'
 import { ServicesTaxonomiesFragment } from '@/queries/fragments.queries'
 import { AnimatePresence, motion } from 'framer-motion'
 import { SlidersHorizontal, X } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
 import { useState } from 'react'
@@ -15,7 +16,7 @@ interface ProjectHeroPros {
   services: FragmentType<typeof ServicesTaxonomiesFragment>[]
 }
 
-export default function Hero({ title, services }: ProjectHeroPros) {
+export default function Hero({ services }: ProjectHeroPros) {
   const searchParam = useSearchParams()
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const categories = useFragment(ServicesTaxonomiesFragment, services)
@@ -25,10 +26,17 @@ export default function Hero({ title, services }: ProjectHeroPros) {
   const toggleMenu = () => setIsOpen(prev => !prev)
 
   return (
-    <div className='relative py-10.75 md:py-28.5 px-4 md:px-10'>
+    <div className='relative h-dvh xl:h-162 2xl:h-208 flex items-center justify-center flex-col'>
+
+      <Image
+        src="/parsec-bg.png"
+        alt="Background"
+        className="-z-10 absolute inset-0 object-cover w-auto h-full"
+        fill
+      />
 
       <div className='flex items-start justify-between md:block'>
-        <h1 className='display-lg md:mb-6 text-left md:text-center'>{title}</h1>
+        <h1 className='display-lg text-left md:text-center'>Proiecte</h1>
 
         <div className='relative md:hidden'>
           <Button

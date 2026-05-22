@@ -64,6 +64,7 @@ export default function Navigation({
               key={item.name}
               href={item.href}
               className={`block w-fit text-lable-dark ${item.href === pathname ? active : ''}`}
+              onClick={() => setIsMenuOpen(false)}
             >
               {item.name}
             </Link>
