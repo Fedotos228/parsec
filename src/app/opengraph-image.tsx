@@ -31,7 +31,7 @@ export default function Image() {
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'flex-start',
+          alignItems: 'center',
           justifyContent: 'space-between',
           padding: '72px 80px',
         }}
@@ -39,7 +39,7 @@ export default function Image() {
         {/* Logo mark top-left */}
         <img
           src={logoSrc}
-          style={{ width: '100px', height: '100px' }}
+          style={{ width: '350px', height: '350px', justifySelf: 'center' }}
         />
 
         {/* Bottom text block */}
@@ -51,19 +51,10 @@ export default function Image() {
               letterSpacing: '0.5px',
               lineHeight: 1.4,
               fontFamily: 'sans-serif',
+              textAlign: 'center',
             }}
           >
-            Agenție de Consultanță strategică & Marketing &amp; PR · Chișinău, Moldova
-          </div>
-          <div
-            style={{
-              fontSize: 22,
-              color: 'rgba(255,255,255,0.3)',
-              letterSpacing: '1px',
-              fontFamily: 'sans-serif',
-            }}
-          >
-            parsec.md
+            Parsec - Agenție de Marketing și PR în Chișinău, Moldova
           </div>
         </div>
       </div>

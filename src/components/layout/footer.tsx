@@ -20,7 +20,7 @@ export default function Footer() {
         </nav>
         <div className='hidden xl:flex items-center justify-center gap-9'>
           {footerContacts.map((item) => (
-            <Link key={item.id} href={item.href} className='label'>
+            <Link key={item.id} href={item.href} className='label' target='_blank'>
               {item.label}
             </Link>
           ))}

@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     title: 'Proiecte | Parsec',
     description: 'Descoperă proiectele noastre de PR, comunicare strategică și campanii media.',
     url: 'https://parsec.md/projects',
+    images: [{ url: 'https://parsec.md/opengraph-image', width: 1200, height: 630 }],
   },
   alternates: {
     canonical: 'https://parsec.md/projects',
