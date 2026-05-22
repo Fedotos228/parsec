@@ -28,9 +28,14 @@ export default function Card({ project }: CardProps) {
           />
         )}
       </div>
-      <div className='absolute inset-0 w-full h-full bg-linear-180 from-black/60 to-transparent' />
+      <div className='absolute inset-0 w-full h-full bg-linear-180 from-black/60 to-black/40 md:to-transparent' />
       <p className='absolute top-6 left-6 flex items-center gap-1.5 text-lg max-w-3/4 group-hover:invisible group-hover:opacity-0'>{title}</p>
       <span className='absolute top-6.5 right-6'>{projectFields?.year}</span>
+
+      <div 
+        className='absolute bottom-0 p-5 flex flex-col justify-end opacity-100 md:opacity-0'
+        dangerouslySetInnerHTML={{ __html: projectFields?.shortDescription ?? '' }}
+      />
       <div className='absolute inset-0 flex flex-col justify-between bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity p-6'>
         <h5>{projectFields?.client}</h5>
         {projectFields?.shortDescription && (
