@@ -4,8 +4,6 @@ import { Button } from '@/components/ui/button'
 import { FragmentType, useFragment } from '@/gql'
 import { cn } from '@/lib/utils/utils'
 import { ServicesTaxonomiesFragment } from '@/queries/fragments.queries'
-import { AnimatePresence, motion } from 'framer-motion'
-import { SlidersHorizontal, X } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
@@ -25,7 +23,7 @@ export default function Hero({ services }: ProjectHeroPros) {
   const toggleMenu = () => setIsOpen(prev => !prev)
 
   return (
-    <div className='relative h-dvh xl:h-162 2xl:h-208 flex items-center justify-center flex-col'>
+    <div className='relative h-112 xl:h-162 2xl:h-208 flex items-center justify-center flex-col'>
 
       <Image
         src="/parsec-bg.png"
@@ -37,7 +35,7 @@ export default function Hero({ services }: ProjectHeroPros) {
       <div className='flex items-start justify-between md:block'>
         <h1 className='display-lg text-left md:text-center'>Proiecte</h1>
 
-        <div className='relative md:hidden'>
+        {/* <div className='relative md:hidden'>
           <Button
             className={`size-13 `}
             onClick={toggleMenu}
@@ -78,7 +76,7 @@ export default function Hero({ services }: ProjectHeroPros) {
               </motion.div>
             )}
           </AnimatePresence>
-        </div>
+        </div> */}
       </div>
 
       <div className='hidden md:flex max-w-4xl mx-auto mt-12 text-center flex-wrap gap-3 justify-center'>
