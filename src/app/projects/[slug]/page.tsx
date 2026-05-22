@@ -78,10 +78,10 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
         {youtubeVideo && (
           <YoutubeVideos youtubeVideo={youtubeVideo} />
         )}
-        <div className='max-md:w-full mt-14'>
-          <Button asChild className='max-md:block max-md:mx-auto'>
+        <div className='w-full mt-10 flex justify-center'>
+          <Button asChild>
             <Link href='/contact' className='w-full h-full'>
-              Angajează-ne
+              Angajează-ne!
             </Link>
           </Button>
         </div>

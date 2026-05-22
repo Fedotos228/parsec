@@ -37,7 +37,7 @@ export default function CTA() {
       <h1 className='display-text display-lg'>Putem începe proiectul tău!</h1>
       <Button asChild>
         <Link href={'/contact'}>
-          Angajează-ne
+          Angajează-ne!
         </Link>
       </Button>
     </div>

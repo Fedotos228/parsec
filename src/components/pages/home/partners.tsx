@@ -20,8 +20,14 @@ export default async function Partners() {
 
   return (
     <section className='my-8 md:my-10'>
+      <div
+        className='relative mx-auto w-[90%] h-px bg-hr border-0 after:absolute after:left-0 after:top-1/2 after:-translate-1/2 after:bg-hr after:w-px after:h-1.5 before:absolute before:right-0 before:top-1/2 before:-translate-1/2 before:bg-hr before:w-px before:h-1.5'
+      />
       <h2 className='mt-20 mb-5 text-center'>Partenerii noștri</h2>
       <PartnersCarousel firstThird={firstThird} secondThird={secondThird} thirdThird={thirdThird} />
+      <div
+        className='relative mx-auto mt-20 w-[90%] h-px bg-hr border-0 after:absolute after:left-0 after:top-1/2 after:-translate-1/2 after:bg-hr after:w-px after:h-1.5 before:absolute before:right-0 before:top-1/2 before:-translate-1/2 before:bg-hr before:w-px before:h-1.5'
+      />
     </section>
   )
 }

@@ -1,6 +1,6 @@
 import { FragmentType, useFragment } from '@/gql'
-import { getWPMedia } from '@/lib/utils/getWPMedia'
 import { VideoFragment } from '@/queries/fragments.queries'
+import Image from 'next/image'
 
 export default function Hero({
   background,
@@ -18,7 +18,7 @@ export default function Hero({
 
   return (
     <div className='relative h-dvh xl:h-162 2xl:h-208'>
-      <div className='relative h-full w-full'>
+      {/* <div className='relative h-full w-full'>
         <video
           className='h-full w-full object-cover'
           muted
@@ -30,7 +30,14 @@ export default function Hero({
           <source src={getWPMedia(node.filePath)} type={node.mimeType ?? "video/mp4"} />
         </video>
         <div className='absolute inset-0 bg-background/80'></div>
-      </div>
+      </div> */}
+
+      <Image 
+        src="/parsec-bg.png"
+        alt="Background"
+        className="absolute inset-0 object-cover w-auto h-full"
+        fill
+      />
 
       <div className='absolute top-1/2 left-1/2 transform -translate-1/2 text-center w-full px-3.5'>
         <h1 className='display-lg mb-4'>

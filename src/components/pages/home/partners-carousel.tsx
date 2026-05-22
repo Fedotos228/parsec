@@ -21,7 +21,7 @@ function MarqueeRow({ partners, reverse }: { partners: Partner[]; reverse?: bool
   const items = [...partners, ...partners]
 
   return (
-    <div className='overflow-hidden'>
+    <div className='overflow-hidden' >
       <div
         className='flex gap-8 w-max'
         style={{ animation: `${reverse ? 'marquee-reverse' : 'marquee'} var(--marquee-duration) linear infinite` }}
@@ -47,7 +47,7 @@ function MarqueeRow({ partners, reverse }: { partners: Partner[]; reverse?: bool
 
 export default function PartnersCarousel({ firstThird, secondThird, thirdThird }: Props) {
   return (
-    <div className='flex flex-col gap-8 py-12 px-4 overflow-hidden'>
+    <div className='flex flex-col gap-8 py-12 px-4 overflow-hidden max-w-[90%] mx-auto'>
       <MarqueeRow partners={firstThird} />
       <MarqueeRow partners={secondThird} reverse />
       <MarqueeRow partners={thirdThird} />

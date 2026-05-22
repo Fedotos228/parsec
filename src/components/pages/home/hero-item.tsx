@@ -67,7 +67,7 @@ export function HeroItem(props: { video: FragmentType<typeof RepresentativeVideo
         <h2 className='drop-shadow-md'>{video.title}</h2>
         <Button variant='link'>
           <Link href={paths.domain(domainSlug)}>
-            Descoperă
+            Vezi mai mult
           </Link>
         </Button>
       </div>
