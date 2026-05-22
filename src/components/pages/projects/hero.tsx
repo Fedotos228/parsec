@@ -12,7 +12,6 @@ import { useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
 interface ProjectHeroPros {
-  title: string | null | undefined
   services: FragmentType<typeof ServicesTaxonomiesFragment>[]
 }
 
