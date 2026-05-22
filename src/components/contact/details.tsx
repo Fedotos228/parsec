@@ -1,4 +1,5 @@
 import { FragmentType, useFragment } from '@/gql'
+import { footerContacts } from '@/lib/constans/footer.constans'
 import { ContactDetailsFragment } from '@/queries/contact.queries'
 import { SocialsLinkFragment } from '@/queries/general.queries'
 import Link from 'next/link'
@@ -11,6 +12,8 @@ interface DetailsProps {
 export default function Details({ socials, details }: DetailsProps) {
   const links = useFragment(SocialsLinkFragment, socials)
   const detail = useFragment(ContactDetailsFragment, details)
+
+  console.log(links)
 
   return (
     <div className='self-center *:text-label-dark bg-footer rounded-3xl xl:rounded-none xl:bg-transparent p-6 xl:p-0'>
@@ -32,14 +35,14 @@ export default function Details({ socials, details }: DetailsProps) {
       <div>
         <h4 className='mb-3'>Urmăriți</h4>
         <div className='flex items-center gap-4 md:gap-9'>
-          {links.links && links.links.map((item, i) => (
+          {footerContacts.map((item) => (
             <Link
-              key={i}
-              href={item?.link?.url || "#"}
-              target={item?.link?.target || '_blank'}
+              key={item.id}
+              href={item.href}
               className='text-lable text-sm md:text-base'
+              target='_blank'
             >
-              {item?.link?.title}
+              {item.label}
             </Link>
           ))}
         </div>
