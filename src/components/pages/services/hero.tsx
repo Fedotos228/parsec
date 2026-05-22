@@ -32,7 +32,7 @@ export default function Hero({
         <div className='absolute inset-0 bg-background/80'></div>
       </div>
 
-      <div className='absolute bottom-5 left-1/2 transform -translate-1/2 text-center w-full px-3.5'>
+      <div className='absolute top-1/2 left-1/2 transform -translate-1/2 text-center w-full px-3.5'>
         <h1 className='display-lg mb-4'>
           {title}
         </h1>

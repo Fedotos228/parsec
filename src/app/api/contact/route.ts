@@ -1,5 +1,5 @@
-import nodemailer from 'nodemailer'
 import { NextRequest, NextResponse } from 'next/server'
+import nodemailer from 'nodemailer'
 import { z } from 'zod'
 
 const contactSchema = z.object({
@@ -9,7 +9,6 @@ const contactSchema = z.object({
   message: z.string().min(1, 'Mesajul este obligatoriu').max(200),
 })
 
-// Transporter-ul e creat o singură dată și reutilizat (warm connection)
 let transporter: nodemailer.Transporter | null = null
 
 function getTransporter() {
@@ -20,8 +19,8 @@ function getTransporter() {
     port: 465,
     secure: true, // SSL
     auth: {
-      user: process.env.SMTP_USER,   // ex: contact@parsec.md
-      pass: process.env.SMTP_PASS,   // App Password din Google Account
+      user: process.env.SMTP_USER,   
+      pass: process.env.SMTP_PASS,
     },
   })
 
@@ -29,7 +28,6 @@ function getTransporter() {
 }
 
 export async function POST(req: NextRequest) {
-  // 1. Parsează și validează body-ul
   let body: unknown
   try {
     body = await req.json()
@@ -47,7 +45,6 @@ export async function POST(req: NextRequest) {
 
   const { fullname, phone, email, message } = result.data
 
-  // 2. Verifică că variabilele de env sunt configurate
   if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
     console.error('SMTP_USER sau SMTP_PASS lipsesc din variabilele de environment.')
     return NextResponse.json(
@@ -56,14 +53,13 @@ export async function POST(req: NextRequest) {
     )
   }
 
-  // 3. Trimite email-ul
   try {
     const mail = getTransporter()
 
     await mail.sendMail({
       from: `"Site Parsec" <${process.env.SMTP_USER}>`,
       to: process.env.CONTACT_EMAIL ?? process.env.SMTP_USER,
-      replyTo: email,    // Reply direct la persoana care a scris
+      replyTo: email,
       subject: `Mesaj nou de la ${fullname}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">

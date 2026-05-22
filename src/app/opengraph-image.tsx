@@ -53,7 +53,7 @@ export default function Image() {
               fontFamily: 'sans-serif',
             }}
           >
-            Agenție de Marketing &amp; PR · Chișinău, Moldova
+            Agenție de Consultanță strategică & Marketing &amp; PR · Chișinău, Moldova
           </div>
           <div
             style={{

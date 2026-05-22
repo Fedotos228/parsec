@@ -3,7 +3,7 @@ export const homeMetadata = {
   description: 'Agenție de marketing și PR în Chișinău, Moldova. Social media management, creare reels, design grafic, organizare evenimente și consultanță business.',
   keywords: [
     'reels maker Chișinău', 'social media manager Chișinău',
-    'agenție de marketing Chișinău', 'organizare evenimente Chișinău',
+    'agenție de marketing Chișinău', 'organizare evenimente Chiși nău',
     'design grafic Chișinău', 'consultanță business Moldova',
     'agenție SMM Chișinău', 'promovare online afaceri Chișinău',
     'Parsec Moldova', 'parsec.md',
