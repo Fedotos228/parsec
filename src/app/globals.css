@@ -175,7 +175,7 @@
   }
 
   .display-lg {
-    @apply font-sans text-5xl xl:text-7xl 2xl:text-9xl font-semibold text-center
+    @apply font-sans text-4xl xl:text-7xl 2xl:text-9xl font-semibold text-center leading-tight
   }
 
   .project-card-bg {
