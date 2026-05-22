@@ -22,9 +22,6 @@ export default function ScrollingServices({ services }: ScrollingServicesProps) 
 
   const projects = getNodes(service[currentProject].serviceCategories?.projects)
 
-  console.log(projects)
-
-
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {

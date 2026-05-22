@@ -1,12 +1,13 @@
 import Description from '@/components/pages/projects-single/description'
 import Gallery from '@/components/pages/projects-single/gallery'
 import Hero from '@/components/pages/projects-single/hero'
+import YoutubeVideos from '@/components/pages/projects-single/youtube-videos'
 import { Button } from '@/components/ui/button'
 import { getNodes } from '@/lib/utils/getNodes'
-import { cn } from '@/lib/utils/utils'
 import { SingleProject } from '@/queries/projects.queries'
 import { wpFetch } from '@/queries/wordpress'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export async function generateMetadata({
   params
@@ -46,9 +47,7 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
   const servicesNode = getNodes(singleProject?.services)
 
   const youtubeVideo = singleProject?.projectFields?.youtubeVideo
-  const singleVideo = youtubeVideo && youtubeVideo.length === 1
-  const twoVideos = youtubeVideo && youtubeVideo.length === 2
-  const multipleVideos = youtubeVideo && youtubeVideo.length > 2
+
 
   return (
     <div>
@@ -76,49 +75,14 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
             <Gallery images={singleProject?.projectFields?.gallery} />
           )}
         </div>
-        <div className='mt-10'>
-          {/* Single Youtube video */}
-          {youtubeVideo && singleVideo && (
-            <div
-              dangerouslySetInnerHTML={{ __html: singleProject?.projectFields?.youtubeVideo?.[0]?.video || '' }}
-              className='[&_iframe]:w-full! [&_iframe]:h-full! [&_iframe]:aspect-video [&_iframe]:object-cover my-10'
-            />
-          )}
-
-          {/* Two Youtube videos */}
-          {youtubeVideo && twoVideos && (
-            <div className='grid grid-cols-2 gap-3.5'>
-              {youtubeVideo.map((video, i) => (
-                <div
-                  key={i}
-                  dangerouslySetInnerHTML={{ __html: video?.video || '' }}
-                  className={cn(
-                    '[&_iframe]:w-full! [&_iframe]:h-full! [&_iframe]:aspect-video [&_iframe]:object-cover',
-                  )}
-                />
-              ))}
-            </div>
-          )}
-
-          {/* Multiple Youtube videos */}
-          {youtubeVideo && multipleVideos && (
-            <div className='grid grid-cols-2 gap-3.5'>
-              {youtubeVideo.map((video, i) => (
-                <div
-                  key={i}
-                  dangerouslySetInnerHTML={{ __html: video?.video || '' }}
-                  className={cn(
-                    '[&_iframe]:w-full! [&_iframe]:h-full! [&_iframe]:aspect-video [&_iframe]:object-cover',
-                    i === 0 ? 'col-span-2' : ''
-                  )}
-                />
-              ))}
-            </div>
-          )}
-        </div>
+        {youtubeVideo && (
+          <YoutubeVideos youtubeVideo={youtubeVideo} />
+        )}
         <div className='max-md:w-full mt-14'>
-          <Button className='max-md:block max-md:mx-auto'>
-            Angajează-ne
+          <Button asChild className='max-md:block max-md:mx-auto'>
+            <Link href='/contact' className='w-full h-full'>
+              Angajează-ne
+            </Link>
           </Button>
         </div>
       </div>

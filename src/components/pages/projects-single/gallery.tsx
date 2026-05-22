@@ -25,7 +25,7 @@ export default function Gallery({ images }: GalleryProps) {
           key={i}
           href={item.sourceUrl || '#'}
           data-fancybox="project gallery"
-          className='first-of-type:col-span-2 h-auto'
+          className='first-of-type:col-span-2 last-of-type:col-span-2 h-auto'
         >
           {item.sourceUrl && (
             <Image
