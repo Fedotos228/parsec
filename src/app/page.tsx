@@ -22,11 +22,11 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <header className='absolute top-0 w-full p-8 z-40 opacity-100 md:opacity-0 flex items-center '>
+      <header className='absolute top-0 w-full p-8 z-40 flex items-center '>
         <div className='flex-1'>
           <Menu />
         </div>
-        <Link href='/' className='cursor-pointer'>
+        <Link href='/' className='cursor-pointer opacity-100 md:opacity-0'>
           <Image
             src="/Logo.svg"
             alt="Logo"

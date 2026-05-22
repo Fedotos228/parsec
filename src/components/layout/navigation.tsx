@@ -51,7 +51,7 @@ export default function Navigation({
       animate={{ left: isMenuOpen ? '12px' : '-100%' }}
       ref={menuRef}
     >
-      <div className='px-5 py-9 md:p-9 bg-[#F4F4F4]' >
+      <div className='px-5 py-9 md:px-5 md:py-9 bg-[#F4F4F4]' >
         <div className='flex items-center gap-2 cursor-pointer' onClick={() => setIsMenuOpen(false)}>
           <X color='black' />
           <span className='text-background'>
