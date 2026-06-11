@@ -13,8 +13,6 @@ export default function Details({ socials, details }: DetailsProps) {
   const links = useFragment(SocialsLinkFragment, socials)
   const detail = useFragment(ContactDetailsFragment, details)
 
-  console.log(links)
-
   return (
     <div className='self-center *:text-label-dark bg-footer rounded-3xl xl:rounded-none xl:bg-transparent p-6 xl:p-0'>
       <h4 className='mb-6'>Contacte:</h4>

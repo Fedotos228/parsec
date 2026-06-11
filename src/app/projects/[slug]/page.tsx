@@ -48,6 +48,7 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
 
   const youtubeVideo = singleProject?.projectFields?.youtubeVideo
 
+  console.log('singleProject', singleProject?.projectFields?.gallery)
 
   return (
     <div className="mt-20 md:mt-32">

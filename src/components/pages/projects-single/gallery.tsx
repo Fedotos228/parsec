@@ -17,7 +17,6 @@ export default function Gallery({ images }: GalleryProps) {
     Carousel: {}
   })
 
-
   return (
     <div ref={fancyboxRef} className='grid grid-cols-2 gap-6'>
       {galleryImages.nodes.map((item, i) => (
