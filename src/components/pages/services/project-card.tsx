@@ -1,5 +1,6 @@
 
 import { FragmentType, useFragment } from '@/gql'
+import { sanitizeHtml } from '@/lib/utils/sanitize'
 import { ProjectFragment } from '@/queries/domains.queries'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -18,9 +19,10 @@ export default function ProjectCard(props: ProjectCardProps) {
       {featuredImageUrl && (
         <Image
           src={featuredImageUrl}
-          alt={card.featuredImage?.node.altText || "Project Card Image"}
+          alt={card.featuredImage?.node.altText || card.title || "Project Card Image"}
           width={450}
           height={500}
+          sizes='(max-width: 1024px) 100vw, 450px'
           className='w-full lg:h-100 2xl:h-125 object-cover mb-6'
         />
       )}
@@ -28,7 +30,7 @@ export default function ProjectCard(props: ProjectCardProps) {
       {card?.projectFields?.shortDescription && (
         <div
           className='text-foreground/80'
-          dangerouslySetInnerHTML={{ __html: card.projectFields?.shortDescription }}
+          dangerouslySetInnerHTML={{ __html: sanitizeHtml(card.projectFields?.shortDescription) }}
         />
       )}
     </Link>

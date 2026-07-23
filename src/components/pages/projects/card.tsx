@@ -1,4 +1,5 @@
 import { FragmentType, useFragment } from '@/gql'
+import { sanitizeHtml } from '@/lib/utils/sanitize'
 import { CardDetails } from '@/queries/projects.queries'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -15,16 +16,16 @@ export default function Card({ project }: CardProps) {
   return (
     <Link
       href={`projects/${slug}`}
-      className='relative w-full h-134.5 rounded-lg overflow-hidden group cursor-pointer'
+      className='relative w-full h-134.5 rounded-lg overflow-hidden group cursor-pointer focus-visible:outline focus-visible:outline-offset-2'
     >
       <div className='relative inset-0 w-full h-full'>
         {featuredImageUrl && (
           <Image
             src={featuredImageUrl}
-            alt={projectFields?.secundaryFeaturedImage?.node.altText || featuredImage?.node.altText || 'Project image'}
+            alt={projectFields?.secundaryFeaturedImage?.node.altText || featuredImage?.node.altText || title || 'Project image'}
             fill
+            sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw'
             className='object-cover'
-            loading='eager'
           />
         )}
       </div>
@@ -32,16 +33,16 @@ export default function Card({ project }: CardProps) {
       <p className='absolute top-6 left-6 flex items-center gap-1.5 text-lg max-w-3/4 group-hover:invisible group-hover:opacity-0'>{title}</p>
       <span className='absolute top-6.5 right-6'>{projectFields?.year}</span>
 
-      <div 
-        className='absolute bottom-0 p-5 flex flex-col justify-end opacity-100 md:opacity-0'
-        dangerouslySetInnerHTML={{ __html: projectFields?.shortDescription ?? '' }}
+      <div
+        className='absolute bottom-0 p-5 flex flex-col justify-end opacity-100 md:opacity-0 md:group-focus-visible:opacity-100'
+        dangerouslySetInnerHTML={{ __html: sanitizeHtml(projectFields?.shortDescription) }}
       />
-      <div className='absolute inset-0 flex flex-col justify-between bg-background/80 opacity-0 group-hover:opacity-100 transition-opacity p-6'>
+      <div className='absolute inset-0 flex flex-col justify-between bg-background/80 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity p-6'>
         <h5>{projectFields?.client}</h5>
         {projectFields?.shortDescription && (
           <div
             className='prose prose-sm'
-            dangerouslySetInnerHTML={{ __html: projectFields?.shortDescription }}
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(projectFields?.shortDescription) }}
           />
         )}
       </div>

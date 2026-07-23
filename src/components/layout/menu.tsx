@@ -17,7 +17,7 @@ export default function Menu() {
 
   return (
     <>
-      <Burger setIsMenuOpen={setIsMenuOpen} />
+      <Burger isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <Navigation setIsMenuOpen={setIsMenuOpen} isMenuOpen={isMenuOpen} />
     </>
   )

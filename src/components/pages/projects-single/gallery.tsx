@@ -21,7 +21,7 @@ export default function Gallery({ images }: GalleryProps) {
     <div ref={fancyboxRef} className='grid grid-cols-2 gap-6'>
       {galleryImages.nodes.map((item, i) => (
         <Link
-          key={i}
+          key={item.id}
           href={item.sourceUrl || '#'}
           data-fancybox="project gallery"
           className='first-of-type:col-span-2 last-of-type:col-span-2 h-auto'
@@ -32,8 +32,9 @@ export default function Gallery({ images }: GalleryProps) {
               alt={item.altText || 'Gallery image'}
               width={450}
               height={500}
+              sizes='(max-width: 768px) 100vw, 450px'
               className='w-full h-full object-cover'
-              loading='eager'
+              loading={i === 0 ? 'eager' : 'lazy'}
             />
           )}
         </Link>

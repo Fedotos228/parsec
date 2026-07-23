@@ -19,11 +19,7 @@ export function HeroItem(props: { video: FragmentType<typeof RepresentativeVideo
       playPromiseRef.current = videoRef.current.play()
     }
 
-    playPromiseRef.current?.catch((e) => {
-      if (e.name !== 'AbortError') {
-        console.log('Video play error', e)
-      }
-    })
+    playPromiseRef.current?.catch(() => { })
   }
 
   const hadleMouseLeave = () => {

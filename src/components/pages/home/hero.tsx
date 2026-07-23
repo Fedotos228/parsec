@@ -9,6 +9,7 @@ export default async function Hero() {
 
   return (
     <div className='relative h-dvh w-full grid grid-cols-1 grid-rows-2 md:grid-cols-2 md:grid-rows-1'>
+      <h1 className='sr-only'>Parsec | Agenție de Marketing și PR în Chișinău, Moldova</h1>
       <div className='absolute top-1/2 left-1/2 -translate-1/2 z-30'>
         <Image
           src='/Logo.svg'

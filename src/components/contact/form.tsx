@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import z from 'zod'
 import { Button } from '../ui/button'
-import { Field, FieldError, FieldGroup } from '../ui/field'
+import { Field, FieldError, FieldGroup, FieldLabel } from '../ui/field'
 import { Input } from '../ui/input'
 import { contactFormSchema } from './form-schema'
 
@@ -58,10 +58,12 @@ export default function Form() {
           control={form.control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor="fullname">Nume</FieldLabel>
               <Input
                 {...field}
                 id="fullname"
                 aria-invalid={fieldState.invalid}
+                aria-required="true"
                 placeholder="Nume"
               />
               {fieldState.invalid && (
@@ -75,10 +77,12 @@ export default function Form() {
           control={form.control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor="phone">Telefon</FieldLabel>
               <Input
                 {...field}
                 id="phone"
                 aria-invalid={fieldState.invalid}
+                aria-required="true"
                 placeholder="Telefon"
               />
               {fieldState.invalid && (
@@ -92,10 +96,12 @@ export default function Form() {
           control={form.control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor="email">E-mail</FieldLabel>
               <Input
                 {...field}
                 id="email"
                 aria-invalid={fieldState.invalid}
+                aria-required="true"
                 placeholder="E-mail"
               />
               {fieldState.invalid && (
@@ -109,10 +115,12 @@ export default function Form() {
           control={form.control}
           render={({ field, fieldState }) => (
             <Field data-invalid={fieldState.invalid}>
+              <FieldLabel htmlFor="message">Mesaj</FieldLabel>
               <Input
                 {...field}
                 id="message"
                 aria-invalid={fieldState.invalid}
+                aria-required="true"
                 placeholder="Mesaj"
               />
               {fieldState.invalid && (
@@ -122,7 +130,7 @@ export default function Form() {
           )}
         />
         {serverError && (
-          <p className='text-red-500 text-sm'>{serverError}</p>
+          <p role="alert" aria-live="assertive" className='text-red-500 text-sm'>{serverError}</p>
         )}
         <Button className='max-w-full' disabled={isSubmitting}>
           {isSubmitting ? 'Se trimite...' : 'Trimite mesajul'}

@@ -3,6 +3,12 @@
 import Link from 'next/link'
 import { useLayoutEffect, useState } from 'react'
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void
+  }
+}
+
 const COOKIE_KEY = 'parsec_cookie_consent'
 
 export default function CookieBanner() {
@@ -15,13 +21,13 @@ export default function CookieBanner() {
 
   function accept() {
     localStorage.setItem(COOKIE_KEY, 'accepted')
-    ;(window as any).gtag?.('consent', 'update', { analytics_storage: 'granted', ad_storage: 'granted' })
+    window.gtag?.('consent', 'update', { analytics_storage: 'granted', ad_storage: 'granted' })
     setVisible(false)
   }
 
   function decline() {
     localStorage.setItem(COOKIE_KEY, 'declined')
-    ;(window as any).gtag?.('consent', 'update', { analytics_storage: 'denied', ad_storage: 'denied' })
+    window.gtag?.('consent', 'update', { analytics_storage: 'denied', ad_storage: 'denied' })
     setVisible(false)
   }
 

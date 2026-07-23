@@ -11,7 +11,7 @@ export default function SuccesRoute() {
       <main className='h-dvh relative'>
         <Image
           src='/contact-img.png'
-          alt='Ilustratie pizdoasa'
+          alt='Echipa Parsec a primit mesajul tău'
           fill
           className='object-cover'
         />

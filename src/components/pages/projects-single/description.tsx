@@ -1,3 +1,4 @@
+import { sanitizeHtml } from '@/lib/utils/sanitize'
 
 interface ProjectDescriptionProps {
   year: string | undefined | null
@@ -12,7 +13,7 @@ export default function Description({ content, year, client }: ProjectDescriptio
       <p className='mb-3'>Anul: <strong>{year}</strong></p>
       {content && (
         <div
-          dangerouslySetInnerHTML={{ __html: content }}
+          dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }}
           className='project-single__content'
         />
       )}

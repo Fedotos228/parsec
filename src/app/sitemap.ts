@@ -15,6 +15,10 @@ async function fetchSlugs(): Promise<{ projects: string[]; domains: string[] }> 
     next: { revalidate: 3600 },
   })
 
+  if (!res.ok) {
+    throw new Error(`Failed to fetch sitemap slugs: ${res.status} ${res.statusText}`)
+  }
+
   const { data } = await res.json()
 
   return {

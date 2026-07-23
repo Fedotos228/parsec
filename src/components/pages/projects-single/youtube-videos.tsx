@@ -1,3 +1,4 @@
+import { sanitizeHtml } from '@/lib/utils/sanitize'
 import { cn } from '@/lib/utils/utils'
 
 type Props = {
@@ -18,7 +19,7 @@ export default function YoutubeVideos({ youtubeVideo }: Props) {
       {/* Single Youtube video */}
       {youtubeVideo && singleVideo && (
         <div
-          dangerouslySetInnerHTML={{ __html: youtubeVideo?.[0]?.video || '' }}
+          dangerouslySetInnerHTML={{ __html: sanitizeHtml(youtubeVideo?.[0]?.video) }}
           className='[&_iframe]:w-full! [&_iframe]:h-full! [&_iframe]:aspect-video [&_iframe]:object-cover my-10'
         />
       )}
@@ -29,7 +30,7 @@ export default function YoutubeVideos({ youtubeVideo }: Props) {
           {youtubeVideo.map((video, i) => (
             <div
               key={i}
-              dangerouslySetInnerHTML={{ __html: video?.video || '' }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(video?.video) }}
               className={cn(
                 '[&_iframe]:w-full! [&_iframe]:h-full! [&_iframe]:aspect-video [&_iframe]:object-cover',
               )}
@@ -44,7 +45,7 @@ export default function YoutubeVideos({ youtubeVideo }: Props) {
           {youtubeVideo.map((video, i) => (
             <div
               key={i}
-              dangerouslySetInnerHTML={{ __html: video?.video || '' }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(video?.video) }}
               className={cn(
                 '[&_iframe]:w-full! [&_iframe]:h-full! [&_iframe]:aspect-video [&_iframe]:object-cover',
                 i === 0 ? 'col-span-2' : ''

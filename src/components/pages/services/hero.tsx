@@ -1,8 +1,9 @@
 'use client'
 
-import Image from 'next/image'
-import { useRef, useEffect } from 'react'
+import { sanitizeHtml } from '@/lib/utils/sanitize'
 import gsap from 'gsap'
+import Image from 'next/image'
+import { useEffect, useRef } from 'react'
 
 export default function Hero({
   title,
@@ -40,6 +41,8 @@ export default function Hero({
         alt="Background"
         className="absolute inset-0 object-cover w-auto h-full"
         fill
+        sizes='100vw'
+        priority
       />
 
       <div className='absolute top-1/2 left-1/2 transform -translate-1/2 text-center w-full px-3.5'>
@@ -50,7 +53,7 @@ export default function Hero({
           <div
             ref={descRef}
             className='md:max-w-1/2 mx-auto leading-relaxed'
-            dangerouslySetInnerHTML={{ __html: description }}
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(description) }}
             style={{ opacity: 0 }}
           />
         )}

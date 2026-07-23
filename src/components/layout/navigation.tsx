@@ -35,14 +35,22 @@ export default function Navigation({
       }
     }
 
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false)
+      }
+    }
+
     if (isMenuOpen) {
       document.addEventListener('mousedown', handleClickOutside)
+      document.addEventListener('keydown', handleKeyDown)
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleKeyDown)
     }
-  }, [isMenuOpen])
+  }, [isMenuOpen, setIsMenuOpen])
 
   return (
     <motion.div
@@ -50,14 +58,15 @@ export default function Navigation({
       initial={{ left: '-100%' }}
       animate={{ left: isMenuOpen ? '12px' : '-100%' }}
       ref={menuRef}
+      id='main-navigation'
     >
       <div className='px-5 py-9 md:px-5 md:py-9 bg-[#F4F4F4]' >
-        <div className='flex items-center gap-2 cursor-pointer' onClick={() => setIsMenuOpen(false)}>
+        <button className='flex items-center gap-2 cursor-pointer' onClick={() => setIsMenuOpen(false)}>
           <X color='black' />
           <span className='text-background'>
             Închide
           </span>
-        </div>
+        </button>
         <nav className='space-y-14 w-62.75 border-t-[#E4E4E4] border-b-[#E4E4E4] border-t border-b my-14 py-14'>
           {navigation.map((item) => (
             <Link

@@ -1,11 +1,11 @@
 'use client'
 
-import { FragmentType, useFragment } from '@/gql'
+import { FragmentType, useFragment as unmaskFragment } from '@/gql'
 import { ProjectDetailsFragment } from '@/gql/graphql'
 import { fetchMoreProjects } from '@/app/projects/actions'
 import { ProjectDetails } from '@/queries/projects.queries'
 import { useSearchParams } from 'next/navigation'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import Card from './card'
 
 interface PageInfo {
@@ -20,16 +20,25 @@ interface GridProps {
 
 export default function Grid({ projects, initialPageInfo }: GridProps) {
   const activeFilter = useSearchParams().get('filter')
-  const initialProjects = useFragment(ProjectDetails, projects)
+  const initialProjects = unmaskFragment(ProjectDetails, projects)
   const [allProjects, setAllProjects] = useState<ProjectDetailsFragment[]>(() => [...initialProjects])
   const [pageInfo, setPageInfo] = useState(initialPageInfo)
   const [loading, setLoading] = useState(false)
-  const [filter, setFilter] = useState<string | null>(activeFilter)
   const sentinelRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    setFilter(!activeFilter || activeFilter === 'all' ? null : activeFilter)
-  }, [activeFilter])
+  const filter = !activeFilter || activeFilter === 'all' ? null : activeFilter
+
+  const loadMore = useCallback(async () => {
+    if (!pageInfo.endCursor || loading) return
+    setLoading(true)
+    try {
+      const { nodes, pageInfo: nextPageInfo } = await fetchMoreProjects(pageInfo.endCursor)
+      setAllProjects((prev) => [...prev, ...unmaskFragment(ProjectDetails, nodes)])
+      setPageInfo(nextPageInfo)
+    } finally {
+      setLoading(false)
+    }
+  }, [pageInfo.endCursor, loading])
 
   useEffect(() => {
     if (!pageInfo.hasNextPage || !sentinelRef.current) return
@@ -45,20 +54,7 @@ export default function Grid({ projects, initialPageInfo }: GridProps) {
 
     observer.observe(sentinelRef.current)
     return () => observer.disconnect()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageInfo.hasNextPage, pageInfo.endCursor, loading])
-
-  async function loadMore() {
-    if (!pageInfo.endCursor || loading) return
-    setLoading(true)
-    try {
-      const { nodes, pageInfo: nextPageInfo } = await fetchMoreProjects(pageInfo.endCursor)
-      setAllProjects((prev) => [...prev, ...(nodes as unknown as ProjectDetailsFragment[])])
-      setPageInfo(nextPageInfo)
-    } finally {
-      setLoading(false)
-    }
-  }
+  }, [pageInfo.hasNextPage, loading, loadMore])
 
   const filteredProjects = !filter
     ? allProjects

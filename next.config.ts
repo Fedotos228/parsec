@@ -23,7 +23,6 @@ const nextConfig: NextConfig = {
         pathname: "/wp-content/uploads/**",
       },
     ],
-    unoptimized: true,
   },
 }
 
