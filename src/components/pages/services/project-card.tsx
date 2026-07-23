@@ -1,5 +1,6 @@
 
 import { FragmentType, useFragment } from '@/gql'
+import { getFeaturedImage } from '@/lib/utils/getFeaturedImage'
 import { sanitizeHtml } from '@/lib/utils/sanitize'
 import { ProjectFragment } from '@/queries/domains.queries'
 import Image from 'next/image'
@@ -12,14 +13,14 @@ interface ProjectCardProps {
 export default function ProjectCard(props: ProjectCardProps) {
   const card = useFragment(ProjectFragment, props.card)
 
-  const featuredImageUrl = card.projectFields?.secundaryFeaturedImage?.node.sourceUrl ?? card.featuredImage?.node.sourceUrl
+  const { url: featuredImageUrl, altText } = getFeaturedImage(card)
 
   return (
     <Link href={`/projects/${card.slug}`}>
       {featuredImageUrl && (
         <Image
           src={featuredImageUrl}
-          alt={card.featuredImage?.node.altText || card.title || "Project Card Image"}
+          alt={altText || card.title || "Project Card Image"}
           width={450}
           height={500}
           sizes='(max-width: 1024px) 100vw, 450px'

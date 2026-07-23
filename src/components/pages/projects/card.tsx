@@ -1,4 +1,5 @@
 import { FragmentType, useFragment } from '@/gql'
+import { getFeaturedImage } from '@/lib/utils/getFeaturedImage'
 import { sanitizeHtml } from '@/lib/utils/sanitize'
 import { CardDetails } from '@/queries/projects.queries'
 import Image from 'next/image'
@@ -11,18 +12,18 @@ interface CardProps {
 export default function Card({ project }: CardProps) {
   const { title, slug, projectFields, featuredImage } = useFragment(CardDetails, project)
 
-  const featuredImageUrl = projectFields?.secundaryFeaturedImage?.node.sourceUrl ?? featuredImage?.node.sourceUrl
+  const { url: featuredImageUrl, altText } = getFeaturedImage({ featuredImage, projectFields })
 
   return (
     <Link
-      href={`projects/${slug}`}
+      href={`/projects/${slug}`}
       className='relative w-full h-134.5 rounded-lg overflow-hidden group cursor-pointer focus-visible:outline focus-visible:outline-offset-2'
     >
       <div className='relative inset-0 w-full h-full'>
         {featuredImageUrl && (
           <Image
             src={featuredImageUrl}
-            alt={projectFields?.secundaryFeaturedImage?.node.altText || featuredImage?.node.altText || title || 'Project image'}
+            alt={altText || title || 'Project image'}
             fill
             sizes='(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw'
             className='object-cover'
