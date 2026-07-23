@@ -2,12 +2,11 @@ import Description from '@/components/pages/projects-single/description'
 import Gallery from '@/components/pages/projects-single/gallery'
 import Hero from '@/components/pages/projects-single/hero'
 import YoutubeVideos from '@/components/pages/projects-single/youtube-videos'
-import { Button } from '@/components/ui/button'
+import CTA from '@/components/shared/cta'
 import { getNodes } from '@/lib/utils/getNodes'
 import { SingleProject } from '@/queries/projects.queries'
 import { wpFetch } from '@/queries/wordpress'
 import Image from 'next/image'
-import Link from 'next/link'
 import Script from 'next/script'
 
 export async function generateMetadata({
@@ -104,11 +103,13 @@ export default async function SingleProjectPage({ params }: PageProps<'/projects
           <YoutubeVideos youtubeVideo={youtubeVideo} />
         )}
         <div className='w-full mt-10 flex justify-center'>
-          <Button asChild>
+
+          <CTA />
+          {/* <Button asChild>
             <Link href='/contact' className='w-full h-full'>
               Angajează-ne!
             </Link>
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>
