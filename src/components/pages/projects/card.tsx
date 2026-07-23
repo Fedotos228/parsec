@@ -35,7 +35,7 @@ export default function Card({ project }: CardProps) {
       <span className='absolute top-6.5 right-6'>{projectFields?.year}</span>
 
       <div
-        className='absolute bottom-0 p-5 flex flex-col justify-end opacity-100 md:opacity-0 md:group-focus-visible:opacity-100'
+        className='absolute bottom-0 p-5 flex flex-col justify-end group-hover:opacity-0 opacity-100 md:opacity-0 md:group-focus-visible:opacity-100'
         dangerouslySetInnerHTML={{ __html: sanitizeHtml(projectFields?.shortDescription) }}
       />
       <div className='absolute inset-0 flex flex-col justify-between bg-background/80 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100 transition-opacity p-6'>
