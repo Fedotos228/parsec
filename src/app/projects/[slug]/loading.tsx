@@ -28,15 +28,15 @@ export default function Loading() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-6">
-            <div className="col-span-2 aspect-4/3 bg-lable-dark rounded" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="md:col-span-2 aspect-4/3 bg-lable-dark rounded" />
             <div className="aspect-4/3 bg-lable-dark rounded" />
             <div className="aspect-4/3 bg-lable-dark rounded" />
           </div>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-3.5">
-          <div className="col-span-2 aspect-video bg-lable-dark rounded" />
+        <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-3.5">
+          <div className="md:col-span-2 aspect-video bg-lable-dark rounded" />
           <div className="aspect-video bg-lable-dark rounded" />
           <div className="aspect-video bg-lable-dark rounded" />
         </div>

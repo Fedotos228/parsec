@@ -26,7 +26,7 @@ export default function YoutubeVideos({ youtubeVideo }: Props) {
 
       {/* Two Youtube videos */}
       {youtubeVideo && twoVideos && (
-        <div className='grid grid-cols-2 gap-3.5'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-3.5'>
           {youtubeVideo.map((video, i) => (
             <div
               key={i}
@@ -41,14 +41,14 @@ export default function YoutubeVideos({ youtubeVideo }: Props) {
 
       {/* Multiple Youtube videos */}
       {youtubeVideo && multipleVideos && (
-        <div className='grid grid-cols-2 gap-3.5'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-3.5'>
           {youtubeVideo.map((video, i) => (
             <div
               key={i}
               dangerouslySetInnerHTML={{ __html: sanitizeHtml(video?.video) }}
               className={cn(
                 '[&_iframe]:w-full! [&_iframe]:h-full! [&_iframe]:aspect-video [&_iframe]:object-cover',
-                i === 0 ? 'col-span-2' : ''
+                i === 0 ? 'md:col-span-2' : ''
               )}
             />
           ))}

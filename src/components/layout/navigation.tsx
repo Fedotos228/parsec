@@ -54,7 +54,7 @@ export default function Navigation({
 
   return (
     <motion.div
-      className='absolute z-90 top-3'
+      className='absolute z-90 top-3 max-h-[calc(100dvh-1.5rem)] overflow-y-auto overscroll-contain'
       initial={{ left: '-100%' }}
       animate={{ left: isMenuOpen ? '12px' : '-100%' }}
       ref={menuRef}

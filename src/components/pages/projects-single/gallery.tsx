@@ -18,13 +18,13 @@ export default function Gallery({ images }: GalleryProps) {
   })
 
   return (
-    <div ref={fancyboxRef} className='grid grid-cols-2 gap-6'>
+    <div ref={fancyboxRef} className='grid grid-cols-1 md:grid-cols-2 gap-6'>
       {galleryImages.nodes.map((item, i) => (
         <Link
           key={item.id}
           href={item.sourceUrl || '#'}
           data-fancybox="project gallery"
-          className='first-of-type:col-span-2 last-of-type:col-span-2 h-auto'
+          className='md:first-of-type:col-span-2 md:last-of-type:col-span-2 h-auto'
         >
           {item.sourceUrl && (
             <Image

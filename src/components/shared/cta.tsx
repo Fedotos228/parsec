@@ -33,7 +33,7 @@ export default function CTA() {
   }, { scope: containerRef })
 
   return (
-    <div className='box flex items-center flex-col gap-9 py-40 px-2' ref={containerRef}>
+    <div className='box flex items-center flex-col gap-9 py-20 md:py-40 px-2' ref={containerRef}>
       <h1 className='display-text display-lg leading-tight'>Putem începe proiectul tău!</h1>
       <Button asChild>
         <Link href={'/contact'}>
