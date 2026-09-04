@@ -1,5 +1,5 @@
 import { ebGaramond, helix } from '@/lib/utils/fonts'
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import { Analytics } from "@vercel/analytics/next"
 
 import CookieBanner from '@/components/shared/cookie-banner'
@@ -99,6 +99,7 @@ export default function RootLayout({
         </div>
         <CookieBanner />
         <GoogleAnalytics gaId='G-MVYRTRHH8G' />
+        <GoogleTagManager gtmId='GTM-MQ3MN2P5'/>
         <Analytics />
       </body>
     </html>
